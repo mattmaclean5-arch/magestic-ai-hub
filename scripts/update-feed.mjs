@@ -127,9 +127,9 @@ const FEEDS = [
   { url: "https://www.bing.com/news/search?q=%22generative%20design%22%20OR%20%22AI%20toolpath%22%20manufacturing&format=rss", a: "Generative Design & AI CAM", av: "auto", t: "industry", tags: ["Developers", "Product Managers"], topic: "Industry AI", max: 3 },
   { url: "https://www.bing.com/news/search?q=%22material%20utilization%22%20OR%20%22material%20yield%22%20manufacturing&format=rss", a: "Material Yield & Optimization", av: "auto", t: "industry", tags: ["C-Suite", "Marketing & Sales"], topic: "Industry AI", max: 2 },
   /* Company video channels (YouTube RSS; thumbnails render in the feed) */
-  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCrDwWp7EBBv4NwvScIpBDOA", a: "Anthropic (video)", who: "Official Anthropic channel · agent & Claude Code deep dives", av: "anthropic", t: "official", tags: ["Everyone", "Developers"], topic: "Models", vid: true, max: 4 },
-  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCXZCJLdBC09xxGZ6gcdrc6A", a: "OpenAI (video)", who: "Official OpenAI channel · developer sessions & demos", av: "openai", t: "official", tags: ["Everyone", "Developers"], topic: "Models", vid: true, max: 4 },
-  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCP7jMXSY2xbc3KCAE0MHQ-A", a: "Google DeepMind (video)", who: "Official DeepMind channel · research explainers", av: "google", t: "official", tags: ["Everyone"], topic: "Models", vid: true, max: 3 },
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCrDwWp7EBBv4NwvScIpBDOA", a: "Anthropic (video)", who: "Official Anthropic channel · agent & Claude Code deep dives", av: "anthropic", t: "official", tags: ["Everyone", "Developers"], topic: "Models", vid: true, prefer: /code|codex|context|agent|harness|prompt|how|build|engineer|tool|develop/i, max: 4 },
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCXZCJLdBC09xxGZ6gcdrc6A", a: "OpenAI (video)", who: "Official OpenAI channel · developer sessions & demos", av: "openai", t: "official", tags: ["Everyone", "Developers"], topic: "Models", vid: true, prefer: /code|codex|context|agent|harness|prompt|how|build|engineer|tool|develop/i, max: 4 },
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCP7jMXSY2xbc3KCAE0MHQ-A", a: "Google DeepMind (video)", who: "Official DeepMind channel · research explainers", av: "google", t: "official", tags: ["Everyone"], topic: "Models", vid: true, prefer: /code|codex|context|agent|harness|prompt|how|build|engineer|tool|develop/i, max: 3 },
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC9IEkprr46ScglWU79HF5qQ", a: "Boeing (video)", av: "auto", t: "industry", tags: ["C-Suite", "Marketing & Sales"], topic: "Company Watch", vid: true, kw: true, max: 2 },
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCJWcF0ex7_doPdIQGbVpDsQ", a: "Lockheed Martin (video)", av: "auto", t: "industry", tags: ["C-Suite", "Marketing & Sales"], topic: "Company Watch", vid: true, kw: true, max: 2 },
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCYR5Kgzn6suihs56iJ8_vfw", a: "Siemens Software (video)", av: "siemens", t: "industry", tags: ["Developers", "Application Specialists"], topic: "Industry AI", vid: true, kw: true, max: 2 },
@@ -150,11 +150,10 @@ const FEEDS = [
   { url: "https://www.fabricatingandmetalworking.com/feed/", a: "Fabricating & Metalworking", who: "Metal fabrication industry magazine", av: "auto", t: "industry", tags: ["Application Specialists", "C-Suite"], topic: "Industry AI", kw: true, max: 2 },
   { url: "https://www.jeccomposites.com/feed/", a: "JEC Composites", who: "The composites industry's global trade body", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI", kw: true, max: 2 },
   { url: "https://www.aerospacetestinginternational.com/feed", a: "Aerospace Testing Intl", who: "Aerospace test & certification tech", av: "auto", t: "industry", tags: ["Developers", "Application Specialists"], topic: "Industry AI", kw: true, max: 1 },
-  { url: "https://newatlas.com/index.rss", a: "New Atlas", who: "Emerging technology news", av: "auto", t: "industry", tags: ["Everyone"], topic: "Industry AI", kw: true, max: 2 },
   { url: "https://www.etmm-online.com/rss/news.xml", a: "ETMM", who: "European toolmaking & mould making", av: "auto", t: "industry", tags: ["Application Specialists"], topic: "Industry AI", kw: true, max: 1 },
   { url: "https://metrology.news/feed/", a: "Metrology News", who: "Precision measurement & inspection tech", av: "auto", t: "industry", tags: ["Developers", "Application Specialists"], topic: "Industry AI", kw: true, max: 1 },
   /* Developer education & industry video channels */
-  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCLKPca3kwwd-B59HNr-_lvA", a: "AI Engineer (video)", who: "AI Engineer conference talks · agents, harnesses, evals", av: "auto", t: "voice", tags: ["Developers"], topic: "Tools", vid: true, max: 3 },
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCLKPca3kwwd-B59HNr-_lvA", a: "AI Engineer (video)", who: "AI Engineer conference talks · agents, harnesses, evals", av: "auto", t: "voice", tags: ["Developers"], topic: "Tools", vid: true, prefer: /code|codex|context|agent|harness|prompt|how|build|engineer|tool|develop/i, max: 3 },
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCXUPKJO5MZQN11PqgIvyuvQ", a: "Andrej Karpathy (video)", who: "Deep technical LLM education from first principles", av: "auto", t: "voice", tags: ["Developers", "Database Engineers"], topic: "Models", vid: true, max: 2 },
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC_x5XG1OV2P6uZZ5FSM9Ttw", a: "Google for Developers (video)", who: "Official Google developer channel", av: "google", t: "official", tags: ["Developers"], topic: "Tools", vid: true, kw: true, max: 2 },
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg", a: "Google Cloud Tech (video)", who: "Cloud + AI engineering sessions", av: "google", t: "official", tags: ["Developers", "Database Engineers"], topic: "Tools", vid: true, kw: true, max: 2 },
@@ -200,7 +199,7 @@ function items(xml) {
   return out;
 }
 
-const AI_KW = /\b(AI|A\.I\.|artificial intelligence|machine learning|automation|automated|robot|robotic|digital twin|generative|copilot|smart factory|neural|LLM|autonomous)\b/i;
+const AI_KW = /\b(AI|A\.I\.|artificial intelligence|machine[- ]learning|deep learning|computer vision|digital twin|generative|GenAI|copilot|smart factory|neural|LLM|large language|GPT-?\d*|Claude|Gemini|Codex|agentic|autonomous)\b/i;
 
 const posts = [];
 for (const f of FEEDS) {
@@ -211,6 +210,7 @@ for (const f of FEEDS) {
     let feedItems = items(xml);
     if (f.skip) feedItems = feedItems.filter(i => !f.skip.test(i.title));
     if (f.kw) feedItems = feedItems.filter(i => AI_KW.test(f.kw === "title" ? i.title : i.title + " " + i.desc));
+    if (f.prefer) feedItems = [...feedItems.filter(i => f.prefer.test(i.title)), ...feedItems.filter(i => !f.prefer.test(i.title))];
     for (const it of feedItems.slice(0, f.max || DEFAULT_PER_FEED)) {
       posts.push({
         a: f.a, s: f.who || `via ${new URL(f.url).hostname}`, av: f.av, t: f.t,
@@ -254,6 +254,7 @@ async function pullCompany(c) {
       if (!res.ok) return;
       its = items(await res.text());
     }
+    its = its.filter(i => AI_KW.test(i.title + " " + i.desc));
     const cutoff = Date.now() - 14 * 86400000; // only news from the last 2 weeks
     for (const it of its.filter(i => i.date.getTime() > cutoff).slice(0, c.p ? 3 : 1)) {
       companyPosts.push({
