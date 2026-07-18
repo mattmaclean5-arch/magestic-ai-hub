@@ -46,28 +46,7 @@ function renderFeed(){
   let posts=POSTS.filter(p=>matchesRole(p.tags)).filter(FEED_FILTERS[feedFilter]);
   if(q)posts=posts.filter(p=>(p.a+" "+p.body+" "+p.topic+" "+p.tags.join(" ")).toLowerCase().includes(q));
   posts=[...posts].sort((x,y)=>sort==="topic"?x.topic.localeCompare(y.topic)||y.d.localeCompare(x.d):y.d.localeCompare(x.d));
-  let sections=null;
-  if(activeRole!=="Everyone"){
-    const spec=posts.filter(p=>p.tags.includes(activeRole));
-    const gen=posts.filter(p=>!p.tags.includes(activeRole));
-    sections=[[`Picked for ${activeRole}`,spec],["General AI news",gen]];
-    posts=[...spec,...gen];
-  }else if(!q && feedFilter==="All"){
-    // industry-first default view: Magestic's world leads, general AI follows
-    const isEdu=p=>p.topic==="Tools"&&(p.vid||p.tags.includes("Developers"));
-    const isInd=p=>p.topic==="Industry AI"||p.topic==="Company Watch";
-    const eduAll=posts.filter(isEdu).sort((x,y)=>((!!y.vid)-(!!x.vid))||y.d.localeCompare(x.d));
-    // top of feed: the 3 freshest training items, refreshed with every feed update
-    const edu=eduAll.slice(0,3), eduRest=eduAll.slice(3);
-    const ind=posts.filter(p=>!isEdu(p)&&isInd(p)).sort((x,y)=>(y.w||0)-(x.w||0)||y.d.localeCompare(x.d));
-    const gen=posts.filter(p=>!isEdu(p)&&!isInd(p));
-    const pinIdx=gen.findIndex(p=>p.t==="internal");
-    if(pinIdx>0){const [pin]=gen.splice(pinIdx,1);gen.unshift(pin);}
-    sections=[["Learn: today's top training picks (full set under Instructional)",edu],
-              ["Our industry: customers, competitors & peers",ind],
-              ["The broader AI landscape & more training",[...gen,...eduRest]]];
-    posts=[...edu,...ind,...gen,...eduRest];
-  }
+  // single unified feed, newest first; role/pill/search are pure filters
   document.getElementById("feedCount").textContent=
     `${posts.length} post${posts.length===1?"":"s"}`+(activeRole!=="Everyone"?` · filtered for ${activeRole}`:"")+(q?` · matching "${q}"`:"");
   const postHTML=p=>`
@@ -93,16 +72,8 @@ function renderFeed(){
         <a href="#" onclick="return false;">Save</a>
       </div>
     </article>`;
-  let html;
-  if(!posts.length){
-    html=`<div class="card empty">No posts match. Try clearing the search or switching the role filter.</div>`;
-  }else if(sections){
-    html=sections.filter(([,list])=>list.length).map(([label,list])=>
-      `<div class="feed-divider">${label} · ${list.length}</div>`+list.map(postHTML).join("")).join("");
-  }else{
-    html=posts.map(postHTML).join("");
-  }
-  document.getElementById("feedList").innerHTML=html;
+  document.getElementById("feedList").innerHTML=posts.length?posts.map(postHTML).join(""):
+    `<div class="card empty">No posts match. Try clearing the search or switching the role filter.</div>`;
 }
 
 /* ---------- right rail ---------- */
