@@ -191,6 +191,13 @@ const FEEDS = [
   { url: "https://www.bing.com/news/search?q=%22Grok%22%20xAI%20developer&format=rss", a: "Grok News", who: "News about xAI's Grok for developers", av: "auto", t: "industry", tags: ["Developers"], topic: "Tools", max: 1 },
   { url: "https://www.bing.com/news/search?q=%22Perplexity%22%20AI&format=rss", a: "Perplexity News", who: "News about Perplexity", av: "auto", t: "industry", tags: ["Everyone"], topic: "Tools", max: 1 },
   { url: "https://www.bing.com/news/search?q=Aider%20OR%20Cline%20OR%20OpenHands%20coding%20agent&format=rss", a: "Open-Source Agents News", who: "News on open-source coding agents", av: "auto", t: "industry", tags: ["Developers"], topic: "Tools", max: 1 },
+  /* Industry video: what OEMs, peers & trade media are doing with AI (AI-filtered) */
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC09R-RDOwz88FqD--3YWmew", a: "MTDCNC (video)", who: "CNC industry video network", av: "auto", t: "industry", tags: ["Application Specialists", "Developers"], topic: "Industry AI", vid: true, kw: true, max: 2 },
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCZsiZ9RIRtzpoToh4noauAw", a: "TRUMPF (video)", who: "Official TRUMPF channel · punch/laser OEM", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists"], topic: "Industry AI", vid: true, kw: true, max: 1 },
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCc2lUKVOTXKlQR7Fm7h1JfQ", a: "Titans of CNC (video)", who: "Machining education powerhouse", av: "auto", t: "industry", tags: ["Application Specialists", "Developers"], topic: "Industry AI", vid: true, kw: true, max: 1 },
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCi-1bvDwzwBq0OFKiF2atkg", a: "Haas Automation (video)", who: "Official Haas CNC channel", av: "auto", t: "industry", tags: ["Application Specialists"], topic: "Industry AI", vid: true, kw: true, max: 1 },
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCE_crBpIk_NtYb_6AbLA5Cw", a: "Machina Labs (video)", who: "AI-native robotic forming · direct AI competitor class", av: "auto", t: "industry", tags: ["C-Suite", "Developers"], topic: "Industry AI", vid: true, max: 1 },
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCvFJMO2exEwenV_TZHwBl6g", a: "Okuma (video)", who: "Official Okuma CNC channel", av: "auto", t: "industry", tags: ["Application Specialists"], topic: "Industry AI", vid: true, kw: true, max: 1 },
 ];
 
 const strip = (s = "") =>
@@ -224,6 +231,7 @@ const companiesSrcEarly = readFileSync(join(dirname(fileURLToPath(import.meta.ur
 const WATCHLIST = new Function(companiesSrcEarly + ";return COMPANIES;")();
 const COMPANY_RE = new RegExp("\\b(" + WATCHLIST.map(c => c.n.replace(/\s*\(.*?\)/g, "").trim()).filter(n => n.length > 3)
   .map(n => n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|") + ")\\b", "i");
+const WAR_NOISE = /\b(combat|weapon|missile|warhead|munition|battlefield|kamikaze|drone strike|air defen[cs]e|counter-?UAS|warfare|lethal)\b/i;
 const norm = (x) => (x || "").toLowerCase().replace(/[^a-z0-9]/g, "");
 const FIN_NOISE = /\b(stocks?|shares?|share price|earnings|dividend|NYSE|NASDAQ|price target|analyst rating|analysts? (?:say|rate|expect)|market cap|sell-?off|hedge fund|portfolio|52-week|strong buy|strong sell|buy rating|hold rating|undervalued|overvalued|bargain|too cheap|bullish|bearish|rall(?:y|ies)|upgraded?|downgraded?|top \d+ (?:AI )?stocks?|trading|traders?|IPO|ticker)\b|seeking ?alpha|motley ?fool|zacks|benzinga|marketbeat|barchart|insider ?monkey|investing\.com|investor.s business daily|simplywall|thestreet|barron|yahoo finance|24.7 ?wall ?st|cramer|\(NASDAQ|\(NYSE|\(ENXT|stock analysis/i;
 const AI_KW = /\b(AI|A\.I\.|artificial intelligence|machine[- ]learning|deep learning|computer vision|digital twin|generative|GenAI|copilot|smart factory|neural|LLM|large language|GPT-?\d*|Claude|Gemini|Codex|agentic|autonomous)\b/i;
@@ -262,8 +270,9 @@ for (const f of FEEDS) {
    Priority companies (p:1) are fetched every run; the rest rotate in slices of 30 per hour,
    so the full 265-company watchlist cycles roughly every 8 hours. */
 const COMPANIES = WATCHLIST;
-const gnUrl = (n) => `https://news.google.com/rss/search?q=${encodeURIComponent('"' + n.replace(/\s*\(.*?\)/g, "") + '" AI')}&hl=en-US&gl=US&ceid=US:en`;
-const bingUrl = (n) => `https://www.bing.com/news/search?q=${encodeURIComponent('"' + n.replace(/\s*\(.*?\)/g, "") + '" AI')}&format=rss`;
+const coQ = (n) => '"' + n.replace(/\s*\(.*?\)/g, "") + '" AI (manufacturing OR production OR factory OR engineering OR software)';
+const gnUrl = (n) => `https://news.google.com/rss/search?q=${encodeURIComponent(coQ(n))}&hl=en-US&gl=US&ceid=US:en`;
+const bingUrl = (n) => `https://www.bing.com/news/search?q=${encodeURIComponent(coQ(n))}&format=rss`;
 const prio = COMPANIES.filter(c => c.p);
 const rest = COMPANIES.filter(c => !c.p);
 const slice = Math.floor(new Date().getUTCHours() / 1) % Math.ceil(rest.length / 40);
@@ -282,7 +291,8 @@ async function pullCompany(c) {
       if (!res.ok) return;
       its = items(await res.text());
     }
-    its = its.filter(i => AI_KW.test(i.title + " " + i.desc) && !FIN_NOISE.test(i.title + " " + i.desc + " " + i.link));
+    its = its.filter(i => AI_KW.test(i.title + " " + i.desc) && !FIN_NOISE.test(i.title + " " + i.desc + " " + i.link)
+      && (!WAR_NOISE.test(i.title + " " + i.desc) || MFG_KW.test(i.title + " " + i.desc)));
     const cutoff = Date.now() - 14 * 86400000; // only news from the last 2 weeks
     for (const it of its.filter(i => i.date.getTime() > cutoff).slice(0, c.p ? 3 : 1)) {
       companyPosts.push({
