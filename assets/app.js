@@ -57,7 +57,11 @@ function renderFeed(){
     const isEdu=p=>p.topic==="Tools"&&(p.vid||p.tags.includes("Developers"));
     const isInd=p=>p.topic==="Industry AI"||p.topic==="Company Watch";
     const eduAll=posts.filter(isEdu).sort((x,y)=>((y.when==="Pinned")-(x.when==="Pinned"))||((!!y.vid)-(!!x.vid))||y.d.localeCompare(x.d));
-    const edu=eduAll.slice(0,6), eduRest=eduAll.slice(6);
+    // top of feed: 3 training picks (1 rotating pinned tutorial + 2 freshest videos), then industry
+    const pins=eduAll.filter(p=>p.when==="Pinned"), nonPin=eduAll.filter(p=>p.when!=="Pinned");
+    const day=Math.floor(Date.now()/86400000);
+    const edu=[...(pins.length?[pins[day%pins.length]]:[]),...nonPin.slice(0,2)];
+    const eduRest=eduAll.filter(p=>!edu.includes(p));
     const ind=posts.filter(p=>!isEdu(p)&&isInd(p)).sort((x,y)=>(y.w||0)-(x.w||0)||y.d.localeCompare(x.d));
     const gen=posts.filter(p=>!isEdu(p)&&!isInd(p));
     const pinIdx=gen.findIndex(p=>p.t==="internal");
