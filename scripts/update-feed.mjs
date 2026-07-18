@@ -11,7 +11,7 @@ import { dirname, join } from "node:path";
 const OUT = join(dirname(fileURLToPath(import.meta.url)), "..", "data", "feed-live.js");
 const DEFAULT_PER_FEED = 2;
 const MAX_TOTAL = 100;
-const MAX_COMPANY_ITEMS = 60;
+const MAX_COMPANY_ITEMS = 85;
 
 /* Public feeds. Each entry: url, display name, avatar key (from data/content.js AV), post type, role tags, topic. */
 const FEEDS = [
@@ -68,25 +68,18 @@ const FEEDS = [
   { url: "https://machinelearningmastery.com/blog/feed/", a: "Machine Learning Mastery", av: "auto", t: "voice", tags: ["Developers"], topic: "Tools" },
   { url: "https://jurgengravestein.substack.com/feed", a: "Jurgen Gravestein", av: "auto", t: "voice", tags: ["Everyone"], topic: "Adoption" },
   { url: "https://eugeneyan.com/rss/", a: "Eugene Yan (feed)", av: "auto", t: "voice", tags: ["Developers", "Database Engineers"], topic: "Tools" },
-  { url: "https://www.artificialintelligence-news.com/feed/", a: "AI News (TechForge)", av: "auto", t: "industry", tags: ["Everyone"], topic: "Industry AI" },
   { url: "https://bair.berkeley.edu/blog/feed.xml", a: "BAIR Blog", av: "auto", t: "voice", tags: ["Developers"], topic: "Models" },
   { url: "https://blog.ml.cmu.edu/feed/", a: "CMU ML Blog", av: "auto", t: "voice", tags: ["Developers"], topic: "Models" },
   { url: "https://news.mit.edu/rss/topic/artificial-intelligence2", a: "MIT News · AI", av: "auto", t: "industry", tags: ["Everyone"], topic: "Models" },
   { url: "https://thegradient.pub/rss/", a: "The Gradient", av: "auto", t: "voice", tags: ["Developers"], topic: "Models" },
   { url: "https://www.lesswrong.com/feed.xml", a: "LessWrong", av: "auto", t: "voice", tags: ["Developers"], topic: "Adoption" },
   { url: "https://artificialintelligenceact.eu/feed/", a: "EU AI Act Newsletter", av: "auto", t: "voice", tags: ["C-Suite", "Product Managers"], topic: "Adoption" },
-  { url: "https://www.technologyreview.com/feed/", kw: "title", skip: /^The Download/i, a: "MIT Technology Review", av: "auto", t: "industry", tags: ["Everyone"], topic: "Industry AI" },
-  { url: "https://techcrunch.com/category/artificial-intelligence/feed/", a: "TechCrunch AI", av: "auto", t: "industry", tags: ["Everyone"], topic: "Industry AI" },
-  { url: "https://venturebeat.com/category/ai/feed/", a: "VentureBeat AI", av: "auto", t: "industry", tags: ["Everyone"], topic: "Industry AI" },
+  { url: "https://www.technologyreview.com/feed/", kw: "title", skip: /^The Download/i, a: "MIT Technology Review", av: "auto", t: "industry", tags: ["Everyone"], topic: "Industry AI", max: 1 },
   { url: "https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss", a: "IEEE Spectrum AI", av: "auto", t: "industry", tags: ["Developers"], topic: "Models" },
-  { url: "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml", a: "The Verge AI", av: "auto", t: "industry", tags: ["Everyone"], topic: "Industry AI" },
-  { url: "https://www.wired.com/feed/tag/ai/latest/rss", a: "WIRED AI", av: "auto", t: "industry", tags: ["Everyone"], topic: "Industry AI" },
-  { url: "https://www.zdnet.com/topic/artificial-intelligence/rss.xml", a: "ZDNET AI", av: "auto", t: "industry", tags: ["Everyone"], topic: "Tools" },
-  { url: "https://feeds.arstechnica.com/arstechnica/technology-lab", kw: "title", a: "Ars Technica", av: "auto", t: "industry", tags: ["Developers"], topic: "Industry AI" },
-  { url: "https://www.marktechpost.com/feed/", a: "MarkTechPost", av: "auto", t: "industry", tags: ["Developers"], topic: "Models" },
-  { url: "https://syncedreview.com/feed/", a: "Synced", av: "auto", t: "industry", tags: ["Developers"], topic: "Models" },
+  { url: "https://www.marktechpost.com/feed/", a: "MarkTechPost", av: "auto", t: "industry", tags: ["Developers"], topic: "Models", max: 1 },
+  { url: "https://syncedreview.com/feed/", a: "Synced", av: "auto", t: "industry", tags: ["Developers"], topic: "Models", max: 1 },
   { url: "https://bdtechtalks.com/feed/", a: "Ben Dickson · TechTalks", av: "auto", t: "voice", tags: ["Everyone"], topic: "Adoption" },
-  { url: "https://the-decoder.com/feed/", a: "The Decoder", av: "auto", t: "industry", tags: ["Everyone"], topic: "Models" },
+  { url: "https://the-decoder.com/feed/", a: "The Decoder", av: "auto", t: "industry", tags: ["Everyone"], topic: "Models", max: 1 },
   { url: "https://towardsdatascience.com/feed", a: "Towards Data Science", av: "auto", t: "industry", tags: ["Developers", "Database Engineers"], topic: "Tools" },
   { url: "https://www.oreilly.com/radar/feed/index.xml", kw: "title", a: "O'Reilly Radar", av: "auto", t: "industry", tags: ["Developers"], topic: "Adoption" },
   { url: "https://flowingdata.com/feed", kw: "title", a: "FlowingData", av: "auto", t: "voice", tags: ["Database Engineers"], topic: "Tools" },
@@ -109,7 +102,6 @@ const FEEDS = [
   { url: "https://tldr.tech/api/rss/ai", a: "TLDR AI", av: "auto", t: "voice", tags: ["Everyone"], topic: "Models" },
   { url: "https://news.smol.ai/rss.xml", a: "AI News (smol.ai)", av: "auto", t: "voice", tags: ["Developers"], topic: "Models" },
   { url: "https://emerj.com/feed/", a: "Emerj", av: "auto", t: "voice", tags: ["C-Suite", "Product Managers"], topic: "Adoption" },
-  { url: "https://dailyai.com/feed/", a: "DailyAI", av: "auto", t: "industry", tags: ["Everyone"], topic: "Industry AI" },
   { url: "https://www.answer.ai/index.xml", a: "Answer.AI", av: "auto", t: "voice", tags: ["Developers"], topic: "Tools" },
   { url: "https://www.fast.ai/index.xml", a: "fast.ai", av: "auto", t: "voice", tags: ["Developers"], topic: "Tools" },
   { url: "https://www.kdnuggets.com/feed", a: "KDnuggets", av: "auto", t: "industry", tags: ["Developers", "Database Engineers"], topic: "Tools" },
@@ -122,7 +114,6 @@ const FEEDS = [
   { url: "https://feed.infoq.com/ai-ml-data-eng/", a: "InfoQ AI/ML", av: "auto", t: "industry", tags: ["Developers", "Database Engineers"], topic: "Tools" },
   { url: "https://thenewstack.io/feed/", kw: "title", a: "The New Stack", av: "auto", t: "industry", tags: ["Developers"], topic: "Tools" },
   { url: "https://semiengineering.com/feed/", kw: "title", who: "Semiconductor & industrial electronics", a: "Semiconductor Engineering", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
-  { url: "https://singularityhub.com/feed/", kw: "title", a: "Singularity Hub", av: "auto", t: "industry", tags: ["Everyone"], topic: "Adoption" },
   { url: "https://www.quantamagazine.org/feed/", kw: "title", a: "Quanta Magazine", av: "auto", t: "industry", tags: ["Everyone"], topic: "Models" },
   { url: "https://hnrss.org/newest?q=AI+manufacturing", a: "Hacker News · AI x mfg", av: "auto", t: "voice", tags: ["Developers"], topic: "Industry AI" },
   { url: "https://www.reddit.com/r/MachineLearning/.rss", a: "r/MachineLearning", av: "auto", t: "voice", tags: ["Developers"], topic: "Models" },
@@ -173,6 +164,14 @@ const FEEDS = [
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCZsiZ9RIRtzpoToh4noauAw", a: "TRUMPF (video)", who: "Machine OEM incumbent · punching & laser tech", av: "auto", t: "industry", tags: ["Application Specialists", "C-Suite"], topic: "Industry AI", vid: true, kw: true, max: 2 },
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCYO_jab_esuFRV4b17AJtAw", a: "3Blue1Brown (video)", who: "Visual math of neural networks · evergreen education", av: "auto", t: "voice", tags: ["Developers", "Everyone"], topic: "Models", vid: true, max: 1 },
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCbfYPyITQ-7l4upoX8nvctg", a: "Two Minute Papers (video)", who: "AI research explained in minutes", av: "auto", t: "voice", tags: ["Everyone"], topic: "Models", vid: true, max: 2 },
+  /* Instructional AI-dev channels (video; how to actually use Claude Code, Codex, agents) */
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCsBjURrPoezykLs9EqgamOA", a: "Fireship", who: "Fast, sharp dev explainers (video)", av: "auto", t: "voice", tags: ["Developers"], topic: "Tools", vid: true, max: 3, kw: true },
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC8butISFwT-Wl7EV0hUK0BQ", a: "freeCodeCamp", who: "Free full-length programming courses (video)", av: "auto", t: "voice", tags: ["Developers"], topic: "Tools", vid: true, max: 2, kw: true },
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCcIXc5mJsHVYTZR1maL5l9w", a: "DeepLearning.AI (video)", who: "Andrew Ng's courses and AI interviews", av: "auto", t: "voice", tags: ["Developers", "Product Managers"], topic: "Tools", vid: true, max: 3 },
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC_x36zCEGilGpB1m-V4gmjg", a: "IndyDevDan", who: "Agentic coding workflows: Claude Code in practice (video)", av: "auto", t: "voice", tags: ["Developers"], topic: "Tools", vid: true, max: 3 },
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCMwVTLZIRRUyyVrkjDpn4pA", a: "Cole Medin", who: "AI agent build tutorials (video)", av: "auto", t: "voice", tags: ["Developers"], topic: "Tools", vid: true, max: 2 },
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCswG6FSbgZjbWtdf_hMLaow", a: "Matt Pocock (video)", who: "AI Hero: hands-on AI engineering training", av: "auto", t: "voice", tags: ["Developers"], topic: "Tools", vid: true, max: 2 },
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UChpleBmo18P08aKCIgti38g", a: "Matt Wolfe (video)", who: "Weekly AI tools roundup", av: "auto", t: "voice", tags: ["Everyone"], topic: "Tools", vid: true, max: 2 },
 ];
 
 const strip = (s = "") =>
@@ -239,8 +238,8 @@ const gnUrl = (n) => `https://news.google.com/rss/search?q=${encodeURIComponent(
 const bingUrl = (n) => `https://www.bing.com/news/search?q=${encodeURIComponent('"' + n.replace(/\s*\(.*?\)/g, "") + '" AI')}&format=rss`;
 const prio = COMPANIES.filter(c => c.p);
 const rest = COMPANIES.filter(c => !c.p);
-const slice = Math.floor(new Date().getUTCHours() / 1) % Math.ceil(rest.length / 30);
-const batch = [...prio, ...rest.slice(slice * 30, slice * 30 + 30)];
+const slice = Math.floor(new Date().getUTCHours() / 1) % Math.ceil(rest.length / 40);
+const batch = [...prio, ...rest.slice(slice * 40, slice * 40 + 40)];
 console.log(`company watch: ${prio.length} priority + ${batch.length - prio.length} rotating (slice ${slice})`);
 const companyPosts = [];
 async function pullCompany(c) {
@@ -256,7 +255,7 @@ async function pullCompany(c) {
       its = items(await res.text());
     }
     const cutoff = Date.now() - 14 * 86400000; // only news from the last 2 weeks
-    for (const it of its.filter(i => i.date.getTime() > cutoff).slice(0, c.p ? 2 : 1)) {
+    for (const it of its.filter(i => i.date.getTime() > cutoff).slice(0, c.p ? 3 : 1)) {
       companyPosts.push({
         a: c.n, s: `Company Watch · ${c.side === "s" ? "competitor/supplier" : "customer/market"}${c.score != null ? ` · AI ${c.score}/10` : ""}`,
         av: "auto", t: "industry",

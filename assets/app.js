@@ -9,6 +9,7 @@ const FEED_FILTERS = {
   "Industry News": p=>p.topic==="Industry AI"||p.topic==="Company Watch",
   "AI News": p=>["Models","Agents","Tools","Adoption"].includes(p.topic),
   "Developers": p=>p.tags.includes("Developers"),
+  "Instructional": p=>p.topic==="Tools"&&(p.vid||p.tags.includes("Developers")),
   "Videos": p=>!!p.vid
 };
 
