@@ -45,7 +45,7 @@ function renderFeed(){
   const sort=document.getElementById("sortSel").value;
   let posts=POSTS.filter(p=>matchesRole(p.tags)).filter(FEED_FILTERS[feedFilter]);
   if(q)posts=posts.filter(p=>(p.a+" "+p.body+" "+p.topic+" "+p.tags.join(" ")).toLowerCase().includes(q));
-  posts=[...posts].sort((x,y)=>sort==="topic"?x.topic.localeCompare(y.topic)||y.d.localeCompare(x.d):y.d.localeCompare(x.d));
+  posts=[...posts].sort((x,y)=>sort==="topic"?x.topic.localeCompare(y.topic)||y.d.localeCompare(x.d):y.d.localeCompare(x.d)||(y.w||0)-(x.w||0));
   // single unified feed, newest first; role/pill/search are pure filters
   document.getElementById("feedCount").textContent=
     `${posts.length} post${posts.length===1?"":"s"}`+(activeRole!=="Everyone"?` · filtered for ${activeRole}`:"")+(q?` · matching "${q}"`:"");

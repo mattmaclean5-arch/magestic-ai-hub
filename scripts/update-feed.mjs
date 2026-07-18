@@ -238,6 +238,8 @@ const COMPANY_RE = new RegExp("\\b(" + WATCHLIST.map(c => c.n.replace(/\s*\(.*?\
 const WAR_NOISE = /\b(combat|weapon|missile|warhead|munition|battlefield|kamikaze|drone strike|air defen[cs]e|counter-?UAS|warfare|lethal)\b/i;
 const norm = (x) => (x || "").toLowerCase().replace(/[^a-z0-9]/g, "");
 const FIN_NOISE = /\b(stocks?|shares?|share price|earnings|dividend|NYSE|NASDAQ|price target|analyst rating|analysts? (?:say|rate|expect)|market cap|sell-?off|hedge fund|portfolio|52-week|strong buy|strong sell|buy rating|hold rating|undervalued|overvalued|bargain|too cheap|bullish|bearish|rall(?:y|ies)|upgraded?|downgraded?|top \d+ (?:AI )?stocks?|trading|traders?|IPO|ticker)\b|seeking ?alpha|motley ?fool|zacks|benzinga|marketbeat|barchart|insider ?monkey|investing\.com|investor.s business daily|simplywall|thestreet|barron|yahoo finance|24.7 ?wall ?st|cramer|\(NASDAQ|\(NYSE|\(ENXT|stock analysis/i;
+const CORE_KW = /\b(nest(?:ing|s)?|punch(?:ing|es)?|nibbling|bin[- ]?packing|packing optimi|composite|prepreg|ply|layup|lay-up|draping|kitting|AFP|ATL|fiber placement|tape laying|honeycomb|sheet ?metal|TruLaser|TruTops|laser projection|laser cutting|laser templat|LPT|waterjet|plasma cutting|press brake|turret|CAM\b|CAD\b|toolpath|NC program|post[- ]?processor|material (?:yield|utilization)|cutting path|fabricat)\b/i;
+const OFFTOPIC = /\b(supply chain|logistics|warehous(?:e|ing)|procurement|freight|shipping|inventory management|webinar|register now)\b/i;
 const AI_KW = /\b(AI|A\.I\.|artificial intelligence|machine[- ]learning|deep learning|computer vision|digital twin|generative|GenAI|copilot|smart factory|neural|LLM|large language|GPT-?\d*|Claude|Gemini|Codex|agentic|autonomous)\b/i;
 
 const posts = [];
@@ -250,11 +252,13 @@ for (const f of FEEDS) {
     if (f.skip) feedItems = feedItems.filter(i => !f.skip.test(i.title));
     if (f.kw) feedItems = feedItems.filter(i => AI_KW.test(f.kw === "title" ? i.title : i.title + " " + i.desc));
     if (f.domain) feedItems = feedItems.filter(i => MFG_KW.test(i.title + " " + i.desc) || COMPANY_RE.test(i.title + " " + i.desc));
+    if (f.topic === "Industry AI") feedItems = feedItems.filter(i => !OFFTOPIC.test(i.title + " " + i.desc) || CORE_KW.test(i.title + " " + i.desc));
     if (/bing\.com|news\.google/.test(f.url)) feedItems = feedItems.filter(i => !FIN_NOISE.test(i.title + " " + i.desc + " " + i.link));
     if (f.prefer) feedItems = [...feedItems.filter(i => f.prefer.test(i.title)), ...feedItems.filter(i => !f.prefer.test(i.title))];
     for (const it of feedItems.slice(0, f.max || DEFAULT_PER_FEED)) {
       posts.push({
-        a: f.a, s: f.who || `via ${new URL(f.url).hostname}`, av: f.av, t: f.t, ...(f.w ? { w: f.w } : {}),
+        a: f.a, s: f.who || `via ${new URL(f.url).hostname}`, av: f.av, t: f.t,
+        ...(((f.w || 0) + (CORE_KW.test(it.title + " " + it.desc) ? 3 : 0)) ? { w: (f.w || 0) + (CORE_KW.test(it.title + " " + it.desc) ? 3 : 0) } : {}),
         d: it.date.toISOString().slice(0, 10),
         when: it.date.toLocaleDateString("en-US", { month: "short", day: "numeric" }),
         body: `${it.title}${it.desc && !norm(it.desc).startsWith(norm(it.title).slice(0, 50)) ? "\n\n" + it.desc + "…" : ""}`,
@@ -296,7 +300,8 @@ async function pullCompany(c) {
       its = items(await res.text());
     }
     its = its.filter(i => AI_KW.test(i.title + " " + i.desc) && !FIN_NOISE.test(i.title + " " + i.desc + " " + i.link)
-      && (!WAR_NOISE.test(i.title + " " + i.desc) || MFG_KW.test(i.title + " " + i.desc)));
+      && (!WAR_NOISE.test(i.title + " " + i.desc) || MFG_KW.test(i.title + " " + i.desc))
+      && (!OFFTOPIC.test(i.title + " " + i.desc) || CORE_KW.test(i.title + " " + i.desc)));
     const cutoff = Date.now() - 14 * 86400000; // only news from the last 2 weeks
     for (const it of its.filter(i => i.date.getTime() > cutoff).slice(0, c.p ? 3 : 1)) {
       companyPosts.push({
@@ -305,6 +310,7 @@ async function pullCompany(c) {
         d: it.date.toISOString().slice(0, 10),
         when: it.date.toLocaleDateString("en-US", { month: "short", day: "numeric" }),
         body: it.title + (it.desc && !norm(it.desc).startsWith(norm(it.title).slice(0, 50)) ? "\n\n" + it.desc + "…" : ""), tags: ["C-Suite", "Marketing & Sales", "Product Managers"], topic: "Company Watch",
+        ...(CORE_KW.test(it.title + " " + it.desc) ? { w: 3 } : {}),
         ...(it.img ? { img: it.img } : {}),
         link: { u: it.link, b: it.title.slice(0, 90), s: (()=>{try{return new URL(it.link).hostname}catch{return "news"}})() },
       });
