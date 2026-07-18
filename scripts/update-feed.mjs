@@ -19,8 +19,8 @@ const FEEDS = [
   { url: "https://openai.com/news/rss.xml", who: "Official OpenAI newsroom", a: "OpenAI", av: "openai", t: "official", tags: ["Everyone"], topic: "Models", max: 2 },
   { url: "https://blog.google/technology/ai/rss/", who: "Official Google AI blog", a: "Google AI", av: "google", t: "official", tags: ["Everyone"], topic: "Models", max: 2 },
   { url: "https://github.blog/feed/", who: "Official GitHub blog", a: "GitHub", av: "github", t: "official", tags: ["Developers"], topic: "Tools", max: 3 },
-  { url: "https://www.compositesworld.com/rss/news", kw: true, who: "The composites manufacturing industry's leading publication", a: "CompositesWorld", av: "industry", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI", max: 4 },
-  { url: "https://mtdcnc.com/feed/", kw: true, who: "CNC machining industry news & video (UK)", a: "MTDCNC", av: "industry", t: "industry", tags: ["Developers", "Application Specialists"], topic: "Industry AI", max: 3 },
+  { w: 2, url: "https://www.compositesworld.com/rss/news", kw: true, who: "The composites manufacturing industry's leading publication", a: "CompositesWorld", av: "industry", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI", max: 4 },
+  { w: 2, url: "https://mtdcnc.com/feed/", kw: true, who: "CNC machining industry news & video (UK)", a: "MTDCNC", av: "industry", t: "industry", tags: ["Developers", "Application Specialists"], topic: "Industry AI", max: 3 },
   /* SMEs & thought leaders with open feeds (max 2 each, all equal) */
   { url: "https://simonwillison.net/atom/everything/", who: "Independent AI researcher & blogger", a: "Simon Willison", av: "willison", t: "voice", tags: ["Developers", "Database Engineers"], topic: "Adoption" },
   { url: "https://www.oneusefulthing.org/feed", who: "Wharton professor · AI adoption (One Useful Thing)", a: "Ethan Mollick", av: "mollick", t: "voice", tags: ["C-Suite", "Product Managers", "Everyone"], topic: "Adoption" },
@@ -75,7 +75,7 @@ const FEEDS = [
   { url: "https://www.lesswrong.com/feed.xml", a: "LessWrong", av: "auto", t: "voice", tags: ["Developers"], topic: "Adoption" },
   { url: "https://artificialintelligenceact.eu/feed/", a: "EU AI Act Newsletter", av: "auto", t: "voice", tags: ["C-Suite", "Product Managers"], topic: "Adoption" },
   { url: "https://www.technologyreview.com/feed/", kw: "title", skip: /^The Download/i, a: "MIT Technology Review", av: "auto", t: "industry", tags: ["Everyone"], topic: "Industry AI", max: 1 },
-  { url: "https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss", a: "IEEE Spectrum AI", av: "auto", t: "industry", tags: ["Developers"], topic: "Models" },
+  { domain: true, url: "https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss", a: "IEEE Spectrum AI", av: "auto", t: "industry", tags: ["Developers"], topic: "Models" },
   { url: "https://www.marktechpost.com/feed/", a: "MarkTechPost", av: "auto", t: "industry", tags: ["Developers"], topic: "Models", max: 1 },
   { url: "https://syncedreview.com/feed/", a: "Synced", av: "auto", t: "industry", tags: ["Developers"], topic: "Models", max: 1 },
   { url: "https://bdtechtalks.com/feed/", a: "Ben Dickson · TechTalks", av: "auto", t: "voice", tags: ["Everyone"], topic: "Adoption" },
@@ -86,12 +86,12 @@ const FEEDS = [
   { url: "https://sloanreview.mit.edu/feed/", kw: "title", a: "MIT Sloan Mgmt Review", av: "auto", t: "industry", tags: ["C-Suite", "Product Managers"], topic: "Adoption" },
   { url: "https://knowledge.wharton.upenn.edu/feed/", kw: "title", a: "Knowledge at Wharton", av: "auto", t: "industry", tags: ["C-Suite", "Product Managers"], topic: "Adoption" },
   { url: "https://www.mckinsey.com/insights/rss", kw: "title", a: "McKinsey Insights", av: "auto", t: "industry", tags: ["C-Suite", "Product Managers"], topic: "Adoption" },
-  { url: "https://www.mmsonline.com/rss/news", kw: true, who: "Modern Machine Shop · machining technology", a: "Modern Machine Shop", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
+  { w: 2, url: "https://www.mmsonline.com/rss/news", kw: true, who: "Modern Machine Shop · machining technology", a: "Modern Machine Shop", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
   { url: "https://www.additivemanufacturing.media/rss/news", kw: true, who: "Industrial 3D printing publication", a: "Additive Manufacturing Media", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
   { url: "https://www.productionmachining.com/rss/news", kw: true, who: "Precision machining publication", a: "Production Machining", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
-  { url: "https://www.manufacturingdive.com/feeds/news/", kw: true, who: "Manufacturing industry business news", a: "Manufacturing Dive", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
+  { w: 2, url: "https://www.manufacturingdive.com/feeds/news/", kw: true, who: "Manufacturing industry business news", a: "Manufacturing Dive", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
   { url: "https://iiot-world.com/feed/", who: "Industrial IoT & AI publication", a: "IIoT World", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
-  { url: "https://www.therobotreport.com/feed/", who: "Robotics business & engineering news", a: "The Robot Report", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
+  { domain: true, url: "https://www.therobotreport.com/feed/", who: "Robotics business & engineering news", a: "The Robot Report", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
   { url: "https://compositesmanufacturingmagazine.com/feed/", who: "American Composites Manufacturers Association magazine", a: "Composites Manufacturing", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
   { url: "https://www.aerospacemanufacturinganddesign.com/rss/", a: "Aerospace Mfg & Design", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
   { url: "https://changelog.com/practicalai/feed", a: "Practical AI", av: "auto", t: "voice", tags: ["Developers"], topic: "Tools" },
@@ -113,11 +113,11 @@ const FEEDS = [
   { url: "https://github.blog/changelog/feed/", a: "GitHub Changelog", av: "auto", t: "official", tags: ["Developers"], topic: "Tools" },
   { url: "https://feed.infoq.com/ai-ml-data-eng/", a: "InfoQ AI/ML", av: "auto", t: "industry", tags: ["Developers", "Database Engineers"], topic: "Tools" },
   { url: "https://thenewstack.io/feed/", kw: "title", a: "The New Stack", av: "auto", t: "industry", tags: ["Developers"], topic: "Tools" },
-  { url: "https://semiengineering.com/feed/", kw: "title", who: "Semiconductor & industrial electronics", a: "Semiconductor Engineering", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
+  { domain: true, url: "https://semiengineering.com/feed/", kw: "title", who: "Semiconductor & industrial electronics", a: "Semiconductor Engineering", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
   { url: "https://www.quantamagazine.org/feed/", kw: "title", a: "Quanta Magazine", av: "auto", t: "industry", tags: ["Everyone"], topic: "Models" },
   { url: "https://hnrss.org/newest?q=AI+manufacturing", a: "Hacker News · AI x mfg", av: "auto", t: "voice", tags: ["Developers"], topic: "Industry AI" },
   { url: "https://www.reddit.com/r/MachineLearning/.rss", a: "r/MachineLearning", av: "auto", t: "voice", tags: ["Developers"], topic: "Models" },
-  { url: "https://www.eetimes.com/feed/", kw: "title", who: "Electronics industry news", a: "EE Times", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
+  { domain: true, url: "https://www.eetimes.com/feed/", kw: "title", who: "Electronics industry news", a: "EE Times", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
   /* Magestic-industry topical news (Google News RSS queries) */
   { url: "https://www.bing.com/news/search?q=AI%20%22sheet%20metal%22%20fabrication&format=rss", a: "AI in Sheet Metal", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Developers"], topic: "Industry AI", max: 3 },
   { url: "https://www.bing.com/news/search?q=AI%20CNC%20machining&format=rss", a: "AI in CNC & Machining", av: "auto", t: "industry", tags: ["Developers", "Application Specialists"], topic: "Industry AI", max: 3 },
@@ -138,7 +138,7 @@ const FEEDS = [
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCJ1cS4hALCDHPnygfv6VOhQ", a: "Airbus (video)", av: "auto", t: "industry", tags: ["C-Suite", "Marketing & Sales"], topic: "Company Watch", vid: true, kw: true, max: 2 },
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCD98uquOUa1kKSdcHgCKEXA", a: "Autodesk (video)", av: "auto", t: "industry", tags: ["Developers", "Product Managers"], topic: "Industry AI", vid: true, kw: true, max: 2 },
   /* Magestic-niche industry press (verified Jul 17 2026) */
-  { url: "https://develop3d.com/feed/", a: "Develop3D", who: "CAD/CAM & product development magazine", av: "auto", t: "industry", tags: ["Developers", "Product Managers"], topic: "Industry AI", kw: true, max: 2 },
+  { w: 2, url: "https://develop3d.com/feed/", a: "Develop3D", who: "CAD/CAM & product development magazine", av: "auto", t: "industry", tags: ["Developers", "Product Managers"], topic: "Industry AI", kw: true, max: 2 },
   { url: "https://www.engineering.com/feed/", a: "Engineering.com", who: "Engineering technology news", av: "auto", t: "industry", tags: ["Developers", "Application Specialists"], topic: "Industry AI", kw: true, max: 2 },
   { url: "https://breakingdefense.com/feed/", a: "Breaking Defense", who: "Defense industry & procurement news", av: "auto", t: "industry", tags: ["C-Suite", "Marketing & Sales"], topic: "Industry AI", kw: true, max: 2 },
   { url: "https://spacenews.com/feed/", a: "SpaceNews", who: "Space industry business news", av: "auto", t: "industry", tags: ["C-Suite", "Marketing & Sales"], topic: "Industry AI", kw: true, max: 2 },
@@ -146,9 +146,9 @@ const FEEDS = [
   { url: "https://www.navalnews.com/feed/", a: "Naval News", who: "Naval shipbuilding & defense (Electric Boat's world)", av: "auto", t: "industry", tags: ["C-Suite", "Marketing & Sales"], topic: "Industry AI", kw: true, max: 2 },
   { url: "https://www.marinelog.com/feed/", a: "MarineLog", who: "Shipbuilding & marine industry news", av: "auto", t: "industry", tags: ["C-Suite"], topic: "Industry AI", kw: true, max: 1 },
   { url: "https://www.offshorewind.biz/feed/", a: "OffshoreWind.biz", who: "Wind energy industry (Vestas/TPI's world)", av: "auto", t: "industry", tags: ["C-Suite", "Marketing & Sales"], topic: "Industry AI", kw: true, max: 1 },
-  { url: "https://www.roboticstomorrow.com/rss/news.xml", a: "Robotics Tomorrow", who: "Industrial robotics & automation news", av: "auto", t: "industry", tags: ["Developers", "Application Specialists"], topic: "Industry AI", kw: true, max: 2 },
-  { url: "https://www.fabricatingandmetalworking.com/feed/", a: "Fabricating & Metalworking", who: "Metal fabrication industry magazine", av: "auto", t: "industry", tags: ["Application Specialists", "C-Suite"], topic: "Industry AI", kw: true, max: 2 },
-  { url: "https://www.jeccomposites.com/feed/", a: "JEC Composites", who: "The composites industry's global trade body", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI", kw: true, max: 2 },
+  { domain: true, url: "https://www.roboticstomorrow.com/rss/news.xml", a: "Robotics Tomorrow", who: "Industrial robotics & automation news", av: "auto", t: "industry", tags: ["Developers", "Application Specialists"], topic: "Industry AI", kw: true, max: 2 },
+  { w: 2, url: "https://www.fabricatingandmetalworking.com/feed/", a: "Fabricating & Metalworking", who: "Metal fabrication industry magazine", av: "auto", t: "industry", tags: ["Application Specialists", "C-Suite"], topic: "Industry AI", kw: true, max: 2 },
+  { w: 2, url: "https://www.jeccomposites.com/feed/", a: "JEC Composites", who: "The composites industry's global trade body", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI", kw: true, max: 2 },
   { url: "https://www.aerospacetestinginternational.com/feed", a: "Aerospace Testing Intl", who: "Aerospace test & certification tech", av: "auto", t: "industry", tags: ["Developers", "Application Specialists"], topic: "Industry AI", kw: true, max: 1 },
   { url: "https://www.etmm-online.com/rss/news.xml", a: "ETMM", who: "European toolmaking & mould making", av: "auto", t: "industry", tags: ["Application Specialists"], topic: "Industry AI", kw: true, max: 1 },
   { url: "https://metrology.news/feed/", a: "Metrology News", who: "Precision measurement & inspection tech", av: "auto", t: "industry", tags: ["Developers", "Application Specialists"], topic: "Industry AI", kw: true, max: 1 },
@@ -199,6 +199,13 @@ function items(xml) {
   return out;
 }
 
+const MFG_KW = /\b(manufactur|fabricat|factor(?:y|ies)|CNC|machining|machine shop|machinist|composite|aerospace|aviation|defen[cs]e|naval|shipyard|ship building|sheet metal|plate|weld|cutting|nesting|CAM|CAD|PLM|toolpath|punch|laser|industrial|production line|shop floor|tooling|metalwork|automotive plant|wind blade|turbine|CNC router)\b/i;
+const companiesSrcEarly = readFileSync(join(dirname(fileURLToPath(import.meta.url)), "..", "data", "companies.js"), "utf8");
+const WATCHLIST = new Function(companiesSrcEarly + ";return COMPANIES;")();
+const COMPANY_RE = new RegExp("\\b(" + WATCHLIST.map(c => c.n.replace(/\s*\(.*?\)/g, "").trim()).filter(n => n.length > 3)
+  .map(n => n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|") + ")\\b", "i");
+const norm = (x) => (x || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+const FIN_NOISE = /\b(stocks?|shares?|share price|earnings|investors?|dividend|NYSE|NASDAQ|price target|analyst|market cap|sell-?off|valuation|hedge fund|portfolio|52-week|buy rating|hold rating)\b|simplywall|motley fool|seekingalpha|zacks|benzinga|marketbeat|barchart|insidermonkey|investing\.com|investor's business daily/i;
 const AI_KW = /\b(AI|A\.I\.|artificial intelligence|machine[- ]learning|deep learning|computer vision|digital twin|generative|GenAI|copilot|smart factory|neural|LLM|large language|GPT-?\d*|Claude|Gemini|Codex|agentic|autonomous)\b/i;
 
 const posts = [];
@@ -210,13 +217,14 @@ for (const f of FEEDS) {
     let feedItems = items(xml);
     if (f.skip) feedItems = feedItems.filter(i => !f.skip.test(i.title));
     if (f.kw) feedItems = feedItems.filter(i => AI_KW.test(f.kw === "title" ? i.title : i.title + " " + i.desc));
+    if (f.domain) feedItems = feedItems.filter(i => MFG_KW.test(i.title + " " + i.desc) || COMPANY_RE.test(i.title + " " + i.desc));
     if (f.prefer) feedItems = [...feedItems.filter(i => f.prefer.test(i.title)), ...feedItems.filter(i => !f.prefer.test(i.title))];
     for (const it of feedItems.slice(0, f.max || DEFAULT_PER_FEED)) {
       posts.push({
-        a: f.a, s: f.who || `via ${new URL(f.url).hostname}`, av: f.av, t: f.t,
+        a: f.a, s: f.who || `via ${new URL(f.url).hostname}`, av: f.av, t: f.t, ...(f.w ? { w: f.w } : {}),
         d: it.date.toISOString().slice(0, 10),
         when: it.date.toLocaleDateString("en-US", { month: "short", day: "numeric" }),
-        body: `${it.title}${it.desc ? "\n\n" + it.desc + "…" : ""}`,
+        body: `${it.title}${it.desc && !norm(it.desc).startsWith(norm(it.title).slice(0, 50)) ? "\n\n" + it.desc + "…" : ""}`,
         tags: f.tags, topic: f.topic,
         ...(it.img ? { img: it.img } : {}), ...(f.vid ? { vid: true } : {}),
         link: { u: it.link, b: it.title.slice(0, 90), s: new URL(it.link).hostname },
@@ -232,8 +240,7 @@ for (const f of FEEDS) {
 /* ---- Company Watch: hourly Google News pull for every company in data/companies.js ----
    Priority companies (p:1) are fetched every run; the rest rotate in slices of 30 per hour,
    so the full 265-company watchlist cycles roughly every 8 hours. */
-const companiesSrc = readFileSync(join(dirname(fileURLToPath(import.meta.url)), "..", "data", "companies.js"), "utf8");
-const COMPANIES = new Function(companiesSrc + ";return COMPANIES;")();
+const COMPANIES = WATCHLIST;
 const gnUrl = (n) => `https://news.google.com/rss/search?q=${encodeURIComponent('"' + n.replace(/\s*\(.*?\)/g, "") + '" AI')}&hl=en-US&gl=US&ceid=US:en`;
 const bingUrl = (n) => `https://www.bing.com/news/search?q=${encodeURIComponent('"' + n.replace(/\s*\(.*?\)/g, "") + '" AI')}&format=rss`;
 const prio = COMPANIES.filter(c => c.p);
@@ -254,7 +261,7 @@ async function pullCompany(c) {
       if (!res.ok) return;
       its = items(await res.text());
     }
-    its = its.filter(i => AI_KW.test(i.title + " " + i.desc));
+    its = its.filter(i => AI_KW.test(i.title + " " + i.desc) && !FIN_NOISE.test(i.title + " " + i.desc + " " + i.link));
     const cutoff = Date.now() - 14 * 86400000; // only news from the last 2 weeks
     for (const it of its.filter(i => i.date.getTime() > cutoff).slice(0, c.p ? 3 : 1)) {
       companyPosts.push({
@@ -262,7 +269,7 @@ async function pullCompany(c) {
         av: "auto", t: "industry",
         d: it.date.toISOString().slice(0, 10),
         when: it.date.toLocaleDateString("en-US", { month: "short", day: "numeric" }),
-        body: it.title + (it.desc ? "\n\n" + it.desc + "…" : ""), tags: ["C-Suite", "Marketing & Sales", "Product Managers"], topic: "Company Watch",
+        body: it.title + (it.desc && !norm(it.desc).startsWith(norm(it.title).slice(0, 50)) ? "\n\n" + it.desc + "…" : ""), tags: ["C-Suite", "Marketing & Sales", "Product Managers"], topic: "Company Watch",
         ...(it.img ? { img: it.img } : {}),
         link: { u: it.link, b: it.title.slice(0, 90), s: (()=>{try{return new URL(it.link).hostname}catch{return "news"}})() },
       });
@@ -278,7 +285,9 @@ console.log(`company watch: ${companyTop.length} items`);
 
 posts.sort((x, y) => y.d.localeCompare(x.d));
 /* ---- og:image enrichment: fetch article pages for posts still missing media ---- */
-const allPosts = [...posts.slice(0, MAX_TOTAL), ...companyTop];
+const generalTop = posts.slice(0, MAX_TOTAL);
+const vidPosts = posts.filter(p => p.vid && !generalTop.includes(p));
+const allPosts = [...generalTop, ...vidPosts, ...companyTop];
 const needImg = allPosts.filter(p => !p.img && p.link && !/news\.google/.test(p.link.u)).slice(0, 100);
 async function enrich(p) {
   try {
@@ -297,7 +306,7 @@ for (let i = 0; i < needImg.length; i += 12) {
 /* ---- enforce media-rich feed: imageless posts capped at ~20% ---- */
 const withImg = allPosts.filter(p => p.img);
 const noImg = allPosts.filter(p => !p.img);
-const keepNoImg = noImg.slice(0, Math.max(8, Math.ceil(withImg.length * 0.25)));
+const keepNoImg = noImg.filter(p => p.t === "internal"); // every live post carries an image or video
 const finalPosts = [...withImg, ...keepNoImg].sort((x, y) => y.d.localeCompare(x.d));
 console.log(`media coverage: ${withImg.length}/${finalPosts.length} posts have image or video (${Math.round(100*withImg.length/finalPosts.length)}%)`);
 const top = finalPosts;

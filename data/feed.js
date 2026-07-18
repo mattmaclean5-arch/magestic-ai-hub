@@ -27,7 +27,7 @@ const POSTS_CURATED = [
  link:{u:"https://www.youtube.com/watch?v=lmGX79cumyw",b:"The ULTIMATE Beginner's Guide to OpenAI Codex",s:"youtube.com"}},
 {a:"Codex Training",s:"Pinned instructional · official video library",av:"openai",t:"official",d:"2026-07-18",when:"Pinned",
  body:"OpenAI's official Codex video library — short, focused videos on every Codex workflow, maintained by OpenAI's developer relations team.",
- tags:["Developers"],topic:"Tools",
+ tags:["Developers"],topic:"Tools",img:"https://learn.chatgpt.com/og/videos.png",
  link:{u:"https://developers.openai.com/codex/videos",b:"Videos – Codex | OpenAI Developers",s:"developers.openai.com"}},
 
 ];

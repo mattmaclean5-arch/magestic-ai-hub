@@ -54,13 +54,15 @@ function renderFeed(){
     posts=[...spec,...gen];
   }else if(!q && feedFilter==="All"){
     // industry-first default view: Magestic's world leads, general AI follows
+    const isEdu=p=>p.topic==="Tools"&&(p.vid||p.tags.includes("Developers"));
     const isInd=p=>p.topic==="Industry AI"||p.topic==="Company Watch";
-    const ind=posts.filter(isInd);
-    const gen=posts.filter(p=>!isInd(p));
+    const edu=posts.filter(isEdu).sort((x,y)=>((y.when==="Pinned")-(x.when==="Pinned"))||((!!y.vid)-(!!x.vid))||y.d.localeCompare(x.d));
+    const ind=posts.filter(p=>!isEdu(p)&&isInd(p)).sort((x,y)=>(y.w||0)-(x.w||0)||y.d.localeCompare(x.d));
+    const gen=posts.filter(p=>!isEdu(p)&&!isInd(p));
     const pinIdx=gen.findIndex(p=>p.t==="internal");
     if(pinIdx>0){const [pin]=gen.splice(pinIdx,1);gen.unshift(pin);}
-    sections=[["Magestic's industry: AI in manufacturing & our companies",ind],["The broader AI landscape: models, tools & voices",gen]];
-    posts=[...ind,...gen];
+    sections=[["Learn: AI for developers & builders",edu],["Our industry: customers, competitors & peers",ind],["The broader AI landscape",gen]];
+    posts=[...edu,...ind,...gen];
   }
   document.getElementById("feedCount").textContent=
     `${posts.length} post${posts.length===1?"":"s"}`+(activeRole!=="Everyone"?` · filtered for ${activeRole}`:"")+(q?` · matching "${q}"`:"");
