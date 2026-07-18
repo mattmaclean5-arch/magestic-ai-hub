@@ -205,7 +205,7 @@ const WATCHLIST = new Function(companiesSrcEarly + ";return COMPANIES;")();
 const COMPANY_RE = new RegExp("\\b(" + WATCHLIST.map(c => c.n.replace(/\s*\(.*?\)/g, "").trim()).filter(n => n.length > 3)
   .map(n => n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|") + ")\\b", "i");
 const norm = (x) => (x || "").toLowerCase().replace(/[^a-z0-9]/g, "");
-const FIN_NOISE = /\b(stocks?|shares?|share price|earnings|investors?|dividend|NYSE|NASDAQ|price target|analyst|market cap|sell-?off|valuation|hedge fund|portfolio|52-week|buy rating|hold rating)\b|simplywall|motley fool|seekingalpha|zacks|benzinga|marketbeat|barchart|insidermonkey|investing\.com|investor's business daily/i;
+const FIN_NOISE = /\b(stocks?|shares?|share price|earnings|dividend|NYSE|NASDAQ|price target|analyst rating|analysts? (?:say|rate|expect)|market cap|sell-?off|hedge fund|portfolio|52-week|strong buy|strong sell|buy rating|hold rating|undervalued|overvalued|bargain|too cheap|bullish|bearish|rall(?:y|ies)|upgraded?|downgraded?|top \d+ (?:AI )?stocks?|trading|traders?|IPO|ticker)\b|seeking ?alpha|motley ?fool|zacks|benzinga|marketbeat|barchart|insider ?monkey|investing\.com|investor.s business daily|simplywall|thestreet|barron|yahoo finance|24.7 ?wall ?st|cramer|\(NASDAQ|\(NYSE|\(ENXT|stock analysis/i;
 const AI_KW = /\b(AI|A\.I\.|artificial intelligence|machine[- ]learning|deep learning|computer vision|digital twin|generative|GenAI|copilot|smart factory|neural|LLM|large language|GPT-?\d*|Claude|Gemini|Codex|agentic|autonomous)\b/i;
 
 const posts = [];
@@ -218,6 +218,7 @@ for (const f of FEEDS) {
     if (f.skip) feedItems = feedItems.filter(i => !f.skip.test(i.title));
     if (f.kw) feedItems = feedItems.filter(i => AI_KW.test(f.kw === "title" ? i.title : i.title + " " + i.desc));
     if (f.domain) feedItems = feedItems.filter(i => MFG_KW.test(i.title + " " + i.desc) || COMPANY_RE.test(i.title + " " + i.desc));
+    if (/bing\.com|news\.google/.test(f.url)) feedItems = feedItems.filter(i => !FIN_NOISE.test(i.title + " " + i.desc + " " + i.link));
     if (f.prefer) feedItems = [...feedItems.filter(i => f.prefer.test(i.title)), ...feedItems.filter(i => !f.prefer.test(i.title))];
     for (const it of feedItems.slice(0, f.max || DEFAULT_PER_FEED)) {
       posts.push({
