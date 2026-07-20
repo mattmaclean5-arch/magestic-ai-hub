@@ -249,7 +249,7 @@ for (const f of FEEDS) {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const xml = await res.text();
     let feedItems = items(xml);
-    if (f.topic === "Industry AI" && !f.kw) f.kw = true; // industry sources are ALWAYS AI-filtered
+    if (f.t === "industry" && !f.kw) f.kw = true; // ALL publication-type sources are AI-filtered, any topic
     if (f.skip) feedItems = feedItems.filter(i => !f.skip.test(i.title));
     if (f.kw) feedItems = feedItems.filter(i => AI_KW.test(f.kw === "title" ? i.title : i.title + " " + i.desc));
     if (f.domain) feedItems = feedItems.filter(i => MFG_KW.test(i.title + " " + i.desc) || COMPANY_RE.test(i.title + " " + i.desc));
