@@ -74,18 +74,18 @@ const FEEDS = [
   { url: "https://thegradient.pub/rss/", a: "The Gradient", av: "auto", t: "voice", tags: ["Developers"], topic: "Models" },
   { url: "https://www.lesswrong.com/feed.xml", a: "LessWrong", av: "auto", t: "voice", tags: ["Developers"], topic: "Adoption" },
   { url: "https://artificialintelligenceact.eu/feed/", a: "EU AI Act Newsletter", av: "auto", t: "voice", tags: ["C-Suite", "Product Managers"], topic: "Adoption" },
-  { url: "https://www.technologyreview.com/feed/", kw: "title", skip: /^The Download/i, a: "MIT Technology Review", av: "auto", t: "industry", tags: ["Everyone"], topic: "Industry AI", max: 1 },
+  { w: -2, url: "https://www.technologyreview.com/feed/", kw: "title", skip: /^The Download/i, a: "MIT Technology Review", av: "auto", t: "industry", tags: ["Everyone"], topic: "Industry AI", max: 1 },
   { domain: true, url: "https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss", a: "IEEE Spectrum AI", av: "auto", t: "industry", tags: ["Developers"], topic: "Models" },
-  { url: "https://www.marktechpost.com/feed/", a: "MarkTechPost", av: "auto", t: "industry", tags: ["Developers"], topic: "Models", max: 1 },
-  { url: "https://syncedreview.com/feed/", a: "Synced", av: "auto", t: "industry", tags: ["Developers"], topic: "Models", max: 1 },
+  { w: -2, url: "https://www.marktechpost.com/feed/", a: "MarkTechPost", av: "auto", t: "industry", tags: ["Developers"], topic: "Models", max: 1 },
+  { w: -2, url: "https://syncedreview.com/feed/", a: "Synced", av: "auto", t: "industry", tags: ["Developers"], topic: "Models", max: 1 },
   { url: "https://bdtechtalks.com/feed/", a: "Ben Dickson · TechTalks", av: "auto", t: "voice", tags: ["Everyone"], topic: "Adoption" },
-  { url: "https://the-decoder.com/feed/", a: "The Decoder", av: "auto", t: "industry", tags: ["Everyone"], topic: "Models", max: 1 },
+  { w: -2, url: "https://the-decoder.com/feed/", a: "The Decoder", av: "auto", t: "industry", tags: ["Everyone"], topic: "Models", max: 1 },
   { url: "https://towardsdatascience.com/feed", a: "Towards Data Science", av: "auto", t: "industry", tags: ["Developers", "Database Engineers"], topic: "Tools" },
-  { url: "https://www.oreilly.com/radar/feed/index.xml", kw: "title", a: "O'Reilly Radar", av: "auto", t: "industry", tags: ["Developers"], topic: "Adoption" },
+  { w: -2, url: "https://www.oreilly.com/radar/feed/index.xml", kw: "title", a: "O'Reilly Radar", av: "auto", t: "industry", tags: ["Developers"], topic: "Adoption" },
   { url: "https://flowingdata.com/feed", kw: "title", a: "FlowingData", av: "auto", t: "voice", tags: ["Database Engineers"], topic: "Tools" },
-  { url: "https://sloanreview.mit.edu/feed/", kw: "title", a: "MIT Sloan Mgmt Review", av: "auto", t: "industry", tags: ["C-Suite", "Product Managers"], topic: "Adoption" },
-  { url: "https://knowledge.wharton.upenn.edu/feed/", kw: "title", a: "Knowledge at Wharton", av: "auto", t: "industry", tags: ["C-Suite", "Product Managers"], topic: "Adoption" },
-  { url: "https://www.mckinsey.com/insights/rss", kw: "title", a: "McKinsey Insights", av: "auto", t: "industry", tags: ["C-Suite", "Product Managers"], topic: "Adoption" },
+  { w: -2, url: "https://sloanreview.mit.edu/feed/", kw: "title", a: "MIT Sloan Mgmt Review", av: "auto", t: "industry", tags: ["C-Suite", "Product Managers"], topic: "Adoption" },
+  { w: -2, url: "https://knowledge.wharton.upenn.edu/feed/", kw: "title", a: "Knowledge at Wharton", av: "auto", t: "industry", tags: ["C-Suite", "Product Managers"], topic: "Adoption" },
+  { w: -2, url: "https://www.mckinsey.com/insights/rss", kw: "title", a: "McKinsey Insights", av: "auto", t: "industry", tags: ["C-Suite", "Product Managers"], topic: "Adoption" },
   { w: 2, url: "https://www.mmsonline.com/rss/news", kw: true, who: "Modern Machine Shop · machining technology", a: "Modern Machine Shop", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
   { url: "https://www.additivemanufacturing.media/rss/news", kw: true, who: "Industrial 3D printing publication", a: "Additive Manufacturing Media", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
   { url: "https://www.productionmachining.com/rss/news", kw: true, who: "Precision machining publication", a: "Production Machining", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
@@ -114,7 +114,7 @@ const FEEDS = [
   { url: "https://feed.infoq.com/ai-ml-data-eng/", a: "InfoQ AI/ML", av: "auto", t: "industry", tags: ["Developers", "Database Engineers"], topic: "Tools" },
   { url: "https://thenewstack.io/feed/", kw: "title", a: "The New Stack", av: "auto", t: "industry", tags: ["Developers"], topic: "Tools" },
   { domain: true, url: "https://semiengineering.com/feed/", kw: "title", who: "Semiconductor & industrial electronics", a: "Semiconductor Engineering", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
-  { url: "https://www.quantamagazine.org/feed/", kw: "title", a: "Quanta Magazine", av: "auto", t: "industry", tags: ["Everyone"], topic: "Models" },
+  { w: -2, url: "https://www.quantamagazine.org/feed/", kw: "title", a: "Quanta Magazine", av: "auto", t: "industry", tags: ["Everyone"], topic: "Models" },
   { url: "https://hnrss.org/newest?q=AI+manufacturing", a: "Hacker News · AI x mfg", av: "auto", t: "voice", tags: ["Developers"], topic: "Industry AI" },
   { url: "https://www.reddit.com/r/MachineLearning/.rss", a: "r/MachineLearning", av: "auto", t: "voice", tags: ["Developers"], topic: "Models" },
   { domain: true, url: "https://www.eetimes.com/feed/", kw: "title", who: "Electronics industry news", a: "EE Times", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
@@ -256,9 +256,11 @@ for (const f of FEEDS) {
     if (/bing\.com|news\.google/.test(f.url)) feedItems = feedItems.filter(i => !FIN_NOISE.test(i.title + " " + i.desc + " " + i.link));
     if (f.prefer) feedItems = [...feedItems.filter(i => f.prefer.test(i.title)), ...feedItems.filter(i => !f.prefer.test(i.title))];
     for (const it of feedItems.slice(0, f.max || DEFAULT_PER_FEED)) {
+      const wt = (f.w || 0) + (CORE_KW.test(it.title + " " + it.desc) ? 3 : 0)
+        + ((f.topic === "Tools" && (f.vid || (f.tags || []).includes("Developers"))) ? 2 : 0) + (f.vid ? 1 : 0);
       posts.push({
         a: f.a, s: f.who || `via ${new URL(f.url).hostname}`, av: f.av, t: f.t,
-        ...(((f.w || 0) + (CORE_KW.test(it.title + " " + it.desc) ? 3 : 0)) ? { w: (f.w || 0) + (CORE_KW.test(it.title + " " + it.desc) ? 3 : 0) } : {}),
+        ...(wt ? { w: wt } : {}),
         d: it.date.toISOString().slice(0, 10),
         when: it.date.toLocaleDateString("en-US", { month: "short", day: "numeric" }),
         body: `${it.title}${it.desc && !norm(it.desc).startsWith(norm(it.title).slice(0, 50)) ? "\n\n" + it.desc + "…" : ""}`,
