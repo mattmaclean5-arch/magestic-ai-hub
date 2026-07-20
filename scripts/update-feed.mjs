@@ -249,6 +249,7 @@ for (const f of FEEDS) {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const xml = await res.text();
     let feedItems = items(xml);
+    if (f.topic === "Industry AI" && !f.kw) f.kw = true; // industry sources are ALWAYS AI-filtered
     if (f.skip) feedItems = feedItems.filter(i => !f.skip.test(i.title));
     if (f.kw) feedItems = feedItems.filter(i => AI_KW.test(f.kw === "title" ? i.title : i.title + " " + i.desc));
     if (f.domain) feedItems = feedItems.filter(i => MFG_KW.test(i.title + " " + i.desc) || COMPANY_RE.test(i.title + " " + i.desc));
@@ -367,7 +368,9 @@ let previous = [];
 try { previous = new Function(readFileSync(OUT, "utf8") + ";return POSTS_LIVE;")(); } catch {}
 const keyOf = (p) => (p.link && p.link.u) || p.body.slice(0, 80);
 const seenKeys = new Set(finalPosts.map(keyOf));
-const carried = previous.filter(p => !seenKeys.has(keyOf(p)));
+const carried = previous.filter(p => !seenKeys.has(keyOf(p)))
+  .filter(p => p.t === "internal" || p.vid || AI_KW.test(p.a + " " + p.body))
+  .filter(p => !FIN_NOISE.test(p.body) && (!OFFTOPIC.test(p.body) || CORE_KW.test(p.body)));
 const merged = [...finalPosts, ...carried].sort((x, y) => y.d.localeCompare(x.d)).slice(0, 400);
 console.log(`archive: ${finalPosts.length} fresh + ${carried.length} carried = ${merged.length} total`);
 
