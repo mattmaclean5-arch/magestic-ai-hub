@@ -97,6 +97,18 @@ const FEEDS = [
   { url: "https://interestingengineering.com/feed", kw: "title", who: "Engineering & industrial technology news", a: "Interesting Engineering", av: "auto", t: "industry", tags: ["Everyone"], topic: "Industry AI", max: 2 },
   { url: "https://www.bing.com/news/search?q=AI%20%22quality%20inspection%22%20OR%20%22machine%20vision%22%20manufacturing&format=rss", a: "AI Inspection & Machine Vision", av: "auto", t: "industry", tags: ["Application Specialists", "Developers"], topic: "Industry AI", max: 3 },
   { url: "https://www.bing.com/news/search?q=AI%20%22press%20brake%22%20OR%20%22punching%22%20OR%20%22laser%20cutting%22&format=rss", a: "AI in Fabrication Equipment", av: "auto", t: "industry", tags: ["Application Specialists", "Marketing & Sales"], topic: "Industry AI", max: 3 },
+  /* AI Regulatory & Compliance bucket (added Jul 21 2026): US/EU regulation, export controls, ITAR,
+     Chinese-model scrutiny, data sovereignty, AI governance frameworks. w:2 so it ranks with premium trade press. */
+  { w: 2, url: "https://www.bing.com/news/search?q=AI%20(regulation%20OR%20legislation%20OR%20%22executive%20order%22)&format=rss", a: "AI Regulation Watch", who: "US & EU AI regulation news", av: "auto", t: "official", tags: ["C-Suite", "Product Managers", "Everyone"], topic: "Regulatory", max: 3 },
+  { w: 2, url: "https://www.bing.com/news/search?q=AI%20(ITAR%20OR%20%22export%20control%22%20OR%20%22export%20controls%22%20OR%20%22export%20restrictions%22)&format=rss", a: "AI Export Controls & ITAR", who: "Export control, ITAR, and trade-restriction news touching AI", av: "auto", t: "official", tags: ["C-Suite", "Product Managers"], topic: "Regulatory", max: 3 },
+  { w: 2, url: "https://www.bing.com/news/search?q=%22Chinese%20AI%22%20(ban%20OR%20security%20OR%20restrictions%20OR%20%22national%20security%22)&format=rss", a: "Chinese AI Models · Security & Policy", who: "Security, privacy, and policy scrutiny of Chinese AI models", av: "auto", t: "official", tags: ["C-Suite", "Developers", "Everyone"], topic: "Regulatory", max: 3 },
+  { w: 2, url: "https://www.bing.com/news/search?q=DeepSeek%20(ban%20OR%20security%20OR%20restriction%20OR%20privacy%20OR%20ITAR)&format=rss", a: "Chinese Open Models · Risk Watch", who: "DeepSeek and Chinese open-model security & policy scrutiny", av: "auto", t: "official", tags: ["C-Suite", "Developers"], topic: "Regulatory", max: 2 },
+  { w: 2, url: "https://www.bing.com/news/search?q=%22AI%20Act%22%20(compliance%20OR%20enforcement%20OR%20implementation)&format=rss", a: "AI Act Enforcement Watch", who: "EU AI Act compliance and enforcement news", av: "auto", t: "official", tags: ["C-Suite", "Product Managers"], topic: "Regulatory", max: 2 },
+  { w: 2, url: "https://www.bing.com/news/search?q=%22AI%20governance%22&format=rss", a: "AI Governance & Compliance", who: "AI governance frameworks, NIST, ISO/IEC 42001, compliance", av: "auto", t: "official", tags: ["C-Suite", "Product Managers"], topic: "Regulatory", max: 3 },
+  { w: 2, url: "https://www.bing.com/news/search?q=AI%20(%22data%20sovereignty%22%20OR%20CMMC%20OR%20DFARS%20OR%20%22defense%20contractor%22%20compliance)&format=rss", a: "AI in Defense Compliance", who: "Data sovereignty, CMMC, DFARS, and defense-supplier AI compliance", av: "auto", t: "official", tags: ["C-Suite", "Product Managers"], topic: "Regulatory", max: 2 },
+  { w: 2, url: "https://artificialintelligenceact.eu/feed/", a: "EU AI Act Newsletter", who: "Tracking the EU AI Act's implementation", av: "auto", t: "official", tags: ["C-Suite", "Product Managers"], topic: "Regulatory", max: 2 },
+  { url: "https://cset.georgetown.edu/feed/", a: "CSET Georgetown", who: "Center for Security and Emerging Technology · AI policy research", av: "auto", t: "voice", tags: ["C-Suite", "Product Managers"], topic: "Regulatory", max: 2 },
+  { url: "https://fedscoop.com/feed/", kw: "title", a: "FedScoop", who: "Federal government technology & AI policy news", av: "auto", t: "industry", tags: ["C-Suite", "Product Managers"], topic: "Regulatory", max: 2 },
   { url: "https://changelog.com/practicalai/feed", a: "Practical AI", av: "auto", t: "voice", tags: ["Developers"], topic: "Tools" },
   { url: "https://lexfridman.com/feed/podcast/", kw: "title", a: "Lex Fridman Podcast", av: "auto", t: "voice", tags: ["Everyone"], topic: "Adoption" },
   { url: "https://blogs.nvidia.com/feed/", a: "NVIDIA Blog", av: "auto", t: "official", tags: ["Developers"], topic: "Industry AI" },
@@ -352,7 +364,7 @@ for (let i = 0; i < needImg.length; i += 12) {
 }
 /* ---- enforce media-rich feed: imageless posts capped at ~20% ---- */
 /* enforce ~50/50 split: industry news vs AI training/news */
-const isIndPost = (p) => p.topic === "Industry AI" || p.topic === "Company Watch";
+const isIndPost = (p) => p.topic === "Industry AI" || p.topic === "Company Watch" || p.topic === "Regulatory";
 let indSide = allPosts.filter(isIndPost);
 let aiSide = allPosts.filter(p => !isIndPost(p));
 /* favor industry ~60/40: industry keeps up to 1.6x the base, AI side up to 1.1x */
@@ -373,7 +385,7 @@ try { previous = new Function(readFileSync(OUT, "utf8") + ";return POSTS_LIVE;")
 const keyOf = (p) => (p.link && p.link.u) || p.body.slice(0, 80);
 const seenKeys = new Set(finalPosts.map(keyOf));
 const carried = previous.filter(p => !seenKeys.has(keyOf(p)))
-  .filter(p => p.t === "internal" || p.vid || AI_KW.test(p.a + " " + p.body))
+  .filter(p => p.t === "internal" || p.vid || p.topic === "Regulatory" || AI_KW.test(p.a + " " + p.body))
   .filter(p => !FIN_NOISE.test(p.body) && (!OFFTOPIC.test(p.body) || CORE_KW.test(p.body)));
 const merged = [...finalPosts, ...carried].sort((x, y) => y.d.localeCompare(x.d)).slice(0, 400);
 console.log(`archive: ${finalPosts.length} fresh + ${carried.length} carried = ${merged.length} total`);

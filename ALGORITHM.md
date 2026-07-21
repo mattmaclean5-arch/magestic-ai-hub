@@ -18,7 +18,9 @@ The hub is a static site on GitHub Pages. A GitHub Actions workflow is scheduled
 
 **Topical lanes** — Bing News queries for Magestic-specific themes: sheet metal AI, CNC & machining AI, composites AI, CAM/nesting software, smart factory aero & defense, generative design, quality inspection & machine vision, fabrication equipment (press brake / punching / laser), JEC World, FABTECH, IMTS.
 
-**Company Watch** — all 265 watchlist companies from the AI Landscape workbook. The 38 priority companies (Boeing, Lockheed Martin, Leonardo, GKN, Dassault, Autodesk, Siemens, Northrop Grumman, RTX, Electric Boat, Wabtec, GE, SigmaTEK, Greenheck Fan, …) are queried every run and may land 4 stories each; the remaining 227 rotate 70 per run, so the full list cycles roughly every 3–4 hours, 2 stories each.
+**AI Regulatory & Compliance** (added July 21) — a dedicated bucket so regulation news surfaces on equal footing with model news: US and EU AI regulation (AI Act, executive orders), export controls and ITAR as they touch AI, security/privacy scrutiny of Chinese open models (bans, restrictions, national-security reviews), AI governance frameworks (NIST AI RMF, ISO/IEC 42001), and defense-supplier compliance (data sovereignty, CMMC, DFARS). Sources: five Bing News lanes plus the EU AI Act Newsletter, CSET Georgetown, and FedScoop (AI-titled items only). These carry topic "Regulatory", have their own feed filter pill, count on the industry side of the mix, and persist in the archive without needing an AI keyword match (the lanes are already AI-scoped).
+
+**Company Watch** — all 305 watchlist companies: the original 265 from the AI Landscape workbook plus a July 21 expansion covering machine-tool builders (Mazak, DMG Mori, Haas, Okuma, TRUMPF peers), CAD/CAE vendors (PTC, Ansys, Altair, ESI), additive manufacturing (Stratasys, EOS, Velo3D, Nikon SLM), metrology and machine vision (Renishaw, Zeiss, Cognex), robotics (FANUC, KUKA, ABB), and aero OEMs (Bombardier, Embraer, Gulfstream, Bell, Joby, Archer). The 38 priority companies (Boeing, Lockheed Martin, Leonardo, GKN, Dassault, Autodesk, Siemens, Northrop Grumman, RTX, Electric Boat, Wabtec, GE, SigmaTEK, Greenheck Fan, …) are queried every run and may land 4 stories each; the remaining 267 rotate 70 per run, so the full list cycles roughly every 4 hours, 2 stories each.
 
 ## 3. Filter gates (closed by default)
 
@@ -45,6 +47,7 @@ Weights break ties within a publication day — the feed sorts newest-first, the
 | Developer education (Tools topic + video or Developers tag) | +2 | Hands-on Claude Code / Codex instruction ranks above news. |
 | Premium trade press (CompositesWorld, Modern Machine Shop, MTDCNC, MoldMaking Technology, Manufacturing Dive) | +2 (source) | Highest-signal industry outlets. |
 | Claude Code / Codex news lanes | +2 (source) | Tool-specific coverage of the two flagship coding agents. |
+| AI Regulatory & Compliance lanes | +2 (source) | Regulation, export control, ITAR, and compliance news ranks with premium trade press — employees seeing Chinese-model progress must equally see the regulatory response. |
 | Any video | +1 | Video preferred at equal relevance. |
 | General AI media (MIT Tech Review, Synced, MarkTechPost, The Decoder, O'Reilly, McKinsey, …) | −2 (source) | Allowed through the gates but always ranked beneath industry-specific coverage. |
 

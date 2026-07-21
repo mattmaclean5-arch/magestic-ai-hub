@@ -11,6 +11,7 @@ const FEED_FILTERS = {
   "Developers": p=>p.tags.includes("Developers"),
   "Instructional": p=>p.topic==="Tools"&&(p.vid||p.tags.includes("Developers")),
   "Videos": p=>!!p.vid,
+  "Regulatory": p=>p.topic==="Regulatory",
   "Saved": p=>!!(window.HUB&&HUB.isSaved(postKey(p)))
 };
 function postKey(p){const s=p.link&&p.link.u?p.link.u:(p.a+"|"+p.d+"|"+(p.body||"").slice(0,80));let h=5381;for(let i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return "k"+(h>>>0).toString(36);}
