@@ -66,6 +66,7 @@ function renderFeed(){
       <div class="post-foot">
         ${p.link?`<a href="${p.link.u}" target="_blank" rel="noopener">Read source</a>`:""}
         <a href="#" class="act-save" data-key="${k}" onclick="return window.HUB?HUB.toggleSave('${k}',this):false;">☆ Save</a>
+        <a href="#" class="act-share" data-key="${k}" onclick="return window.HUB?HUB.toggleShare('${k}'):false;">↗ Share with team</a>
         <a href="#" class="act-comment" data-key="${k}" onclick="return window.HUB?HUB.toggleComments('${k}'):false;">💬 Comment</a>
       </div>
       <div class="comments-panel" id="cp-${k}" hidden></div>

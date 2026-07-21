@@ -12,6 +12,9 @@
   let user = null;
   let saves = new Set();
   let counts = {};           // post_key -> comment count
+  let profiles = [];         // team members
+  let shares = [];           // recent team shares
+  let myShares = new Set();
 
   const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const nameFromEmail = e => e.split("@")[0].split(/[._-]+/).map(w => w.charAt(0).toUpperCase()+w.slice(1)).join(" ");
@@ -54,15 +57,45 @@
 
   /* ---------- data ---------- */
   async function refreshData(){
-    if (!user) { saves = new Set(); counts = {}; decorate(); return; }
-    const [sv, cm] = await Promise.all([
+    if (!user) { saves = new Set(); counts = {}; profiles = []; shares = []; myShares = new Set(); decorate(); renderTeam(); return; }
+    const [sv, cm, pf, sh] = await Promise.all([
       sb.from("saves").select("post_key"),
-      sb.from("comments").select("post_key")
+      sb.from("comments").select("post_key"),
+      sb.from("profiles").select("id,display_name,email").order("display_name"),
+      sb.from("shares").select("user_id,author_name,post_key,post_title,post_url,created_at").order("created_at", { ascending: false }).limit(15)
     ]);
     saves = new Set((sv.data || []).map(r => r.post_key));
     counts = {};
     (cm.data || []).forEach(r => { counts[r.post_key] = (counts[r.post_key] || 0) + 1; });
+    profiles = pf.data || [];
+    shares = sh.data || [];
+    myShares = new Set(shares.filter(s => s.user_id === user.id).map(s => s.post_key));
     decorate();
+    renderTeam();
+  }
+
+  function renderTeam(){
+    const list = document.getElementById("teamList");
+    const shr = document.getElementById("teamShares");
+    if (list) {
+      if (!user) list.innerHTML = `<div class="comment-hint">Sign in to see who's on the hub.</div>`;
+      else if (!profiles.length) list.innerHTML = `<div class="comment-hint">No members yet.</div>`;
+      else list.innerHTML = profiles.map(m => `
+        <div class="team-row">
+          <span class="avatar-xs">${initialsOf(m.display_name)}</span>
+          <span class="team-name">${esc(m.display_name)}${user && m.id === user.id ? ' <span class="team-you">· you</span>' : ""}</span>
+        </div>`).join("");
+    }
+    if (shr) {
+      if (!user) shr.innerHTML = `<div class="comment-hint">Articles teammates share appear here.</div>`;
+      else if (!shares.length) shr.innerHTML = `<div class="comment-hint">Nothing shared yet — use "Share with team" on any post.</div>`;
+      else shr.innerHTML = shares.map(s => `
+        <div class="share-row">
+          <b>${esc(s.author_name)}</b> shared
+          <div>${s.post_url ? `<a href="${esc(s.post_url)}" target="_blank" rel="noopener">${esc(s.post_title)}</a>` : esc(s.post_title)}</div>
+          <span class="comment-when">${new Date(s.created_at).toLocaleDateString("en-US",{month:"short",day:"numeric"})}</span>
+        </div>`).join("");
+    }
   }
 
   function decorate(){
@@ -75,6 +108,11 @@
     document.querySelectorAll(".act-comment").forEach(el => {
       const c = counts[el.dataset.key] || 0;
       el.textContent = c ? `💬 ${c} comment${c === 1 ? "" : "s"}` : "💬 Comment";
+    });
+    document.querySelectorAll(".act-share").forEach(el => {
+      const on = myShares.has(el.dataset.key);
+      el.textContent = on ? "✓ Shared" : "↗ Share with team";
+      el.classList.toggle("saved", on);
     });
   }
 
@@ -132,6 +170,25 @@
       else { saves.add(k); sb.from("saves").insert({ user_id: user.id, post_key: k }).then(()=>{}); }
       decorate();
       if (typeof feedFilter !== "undefined" && feedFilter === "Saved") renderFeed();
+      return false;
+    },
+    async toggleShare(k){
+      if (!user) { HUB.openModal(); return false; }
+      if (myShares.has(k)) {
+        myShares.delete(k);
+        shares = shares.filter(s => !(s.user_id === user.id && s.post_key === k));
+        decorate(); renderTeam();
+        await sb.from("shares").delete().eq("post_key", k).eq("user_id", user.id);
+      } else {
+        const p = (typeof POSTS !== "undefined" ? POSTS : []).find(x => postKey(x) === k);
+        const title = p ? (p.link && p.link.b ? p.link.b : (p.body || "").split("\n")[0].slice(0, 120)) : "a post";
+        const url = p && p.link ? p.link.u : null;
+        const row = { user_id: user.id, author_name: nameFromEmail(user.email), post_key: k, post_title: title, post_url: url, created_at: new Date().toISOString() };
+        myShares.add(k);
+        shares.unshift(row);
+        decorate(); renderTeam();
+        await sb.from("shares").insert({ user_id: row.user_id, author_name: row.author_name, post_key: k, post_title: title, post_url: url });
+      }
       return false;
     },
     toggleComments(k){
