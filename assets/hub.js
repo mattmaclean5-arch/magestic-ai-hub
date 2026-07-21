@@ -75,6 +75,7 @@
     inbox = (ib.data || []).filter(r => r.to_user === user.id).slice(0, 10);
     decorate();
     renderTeam();
+    renderInbox();
   }
 
   function renderInbox(){
@@ -211,7 +212,13 @@
         myShares.add(k);
         shares.unshift(row);
         decorate(); renderTeam();
-        await sb.from("shares").insert({ user_id: row.user_id, author_name: row.author_name, post_key: k, post_title: title, post_url: url });
+        const { error } = await sb.from("shares").insert({ user_id: row.user_id, author_name: row.author_name, post_key: k, post_title: title, post_url: url });
+        if (error) { // revert optimistic UI so failures are visible, not silent
+          console.error("share failed:", error.message);
+          myShares.delete(k);
+          shares = shares.filter(s => !(s.user_id === user.id && s.post_key === k));
+          decorate(); renderTeam();
+        }
       }
       return false;
     },

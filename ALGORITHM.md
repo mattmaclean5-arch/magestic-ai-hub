@@ -47,7 +47,7 @@ Weights break ties within a publication day — the feed sorts newest-first, the
 | Developer education (Tools topic + video or Developers tag) | +2 | Hands-on Claude Code / Codex instruction ranks above news. |
 | Premium trade press (CompositesWorld, Modern Machine Shop, MTDCNC, MoldMaking Technology, Manufacturing Dive) | +2 (source) | Highest-signal industry outlets. |
 | Claude Code / Codex news lanes | +2 (source) | Tool-specific coverage of the two flagship coding agents. |
-| AI Regulatory & Compliance lanes | +2 (source) | Regulation, export control, ITAR, and compliance news ranks with premium trade press — employees seeing Chinese-model progress must equally see the regulatory response. |
+| AI Regulatory & Compliance lanes | +3 (source) | Regulation, export control, ITAR, and compliance news ranks at the top tier alongside core Magestic relevance — employees seeing Chinese-model progress must equally see the regulatory response. |
 | Any video | +1 | Video preferred at equal relevance. |
 | General AI media (MIT Tech Review, Synced, MarkTechPost, The Decoder, O'Reilly, McKinsey, …) | −2 (source) | Allowed through the gates but always ranked beneath industry-specific coverage. |
 
