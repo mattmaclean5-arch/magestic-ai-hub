@@ -2,7 +2,7 @@ name: Refresh live feed
 
 on:
   schedule:
-    - cron: "*/15 * * * *"   # every 15 minutes (see README note on Actions minutes)
+        - cron: "*/5 * * * *"   # every 5 minutes (GitHub batches runs as capacity allows)
   workflow_dispatch: {}    # manual "Run workflow" button
 
 permissions:
