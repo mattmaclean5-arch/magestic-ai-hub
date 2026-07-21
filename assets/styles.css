@@ -266,3 +266,29 @@
 .logo-word small{display:block;font-weight:600;font-size:11px;color:var(--ink-3);letter-spacing:.3px}
 .profile-logo{width:150px;height:64px;object-fit:contain;background:#fff;border:3px solid #fff;
   box-shadow:var(--shadow);border-radius:12px;margin:-32px auto 6px;padding:5px 10px;display:block}
+
+/* ---------- team accounts, saves, comments ---------- */
+.auth-box{display:flex;align-items:center;gap:10px;margin-left:10px}
+.auth-btn{background:var(--accent,#0a66c2);color:#fff;border:none;border-radius:18px;padding:7px 14px;font-weight:600;font-size:13px;cursor:pointer}
+.auth-btn:hover{filter:brightness(1.08)}
+.auth-user{display:flex;align-items:center;gap:6px;font-weight:600;font-size:13px}
+.auth-link{font-size:12px;color:var(--muted,#666);text-decoration:none}
+.auth-link:hover{text-decoration:underline}
+.avatar-xs{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#0a66c2;color:#fff;font-size:10px;font-weight:700;flex:none}
+.hub-modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:200}
+.hub-modal-card{background:#fff;border-radius:12px;padding:24px;width:min(400px,92vw);box-shadow:0 12px 40px rgba(0,0,0,.25)}
+.hub-modal-card h3{margin:0 0 6px}
+.hub-modal-sub{font-size:13px;color:var(--muted,#666);margin:0 0 14px}
+.hub-modal-card input{width:100%;box-sizing:border-box;margin:5px 0;padding:10px 12px;border:1px solid var(--border,#ddd);border-radius:8px;font-size:14px}
+.hub-modal-actions{display:flex;align-items:center;gap:14px;margin-top:12px}
+.hub-msg{font-size:12.5px;min-height:16px;margin-top:6px}
+.hub-msg.err{color:#b3261e}
+.hub-msg.ok{color:#2f9e44}
+.act-save.saved{color:#b8860b;font-weight:700}
+.comments-panel{border-top:1px solid var(--border,#e5e5e5);margin-top:8px;padding-top:10px}
+.comment-row{display:flex;gap:8px;margin-bottom:10px}
+.comment-body{font-size:13px;line-height:1.4}
+.comment-when{color:var(--muted,#888);font-size:11px}
+.comment-hint{font-size:12.5px;color:var(--muted,#777);padding:4px 0}
+.comment-form{display:flex;gap:8px;margin-top:4px}
+.comment-form input{flex:1;padding:8px 12px;border:1px solid var(--border,#ddd);border-radius:18px;font-size:13px}

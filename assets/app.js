@@ -10,8 +10,10 @@ const FEED_FILTERS = {
   "AI News": p=>["Models","Agents","Tools","Adoption"].includes(p.topic),
   "Developers": p=>p.tags.includes("Developers"),
   "Instructional": p=>p.topic==="Tools"&&(p.vid||p.tags.includes("Developers")),
-  "Videos": p=>!!p.vid
+  "Videos": p=>!!p.vid,
+  "Saved": p=>!!(window.HUB&&HUB.isSaved(postKey(p)))
 };
+function postKey(p){const s=p.link&&p.link.u?p.link.u:(p.a+"|"+p.d+"|"+(p.body||"").slice(0,80));let h=5381;for(let i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return "k"+(h>>>0).toString(36);}
 
 /* ---------- helpers ---------- */
 const AV_PALETTE = ["#1264a3","#0b7285","#5f3dc4","#c2255c","#e8590c","#2f9e44","#875a2c","#3b5bdb","#b5540a","#087f5b"];
@@ -29,11 +31,6 @@ function liSearch(name){return `https://www.linkedin.com/search/results/all/?key
 function newsLink(name){return `https://news.google.com/search?q=${encodeURIComponent('"'+name.replace(/\s*\(.*?\)/g,"")+'" AI')}`;}
 
 /* ---------- roles ---------- */
-function renderRoles(){
-  document.getElementById("roleButtons").innerHTML = ROLES.map(r=>
-    `<button class="role-btn ${r===activeRole?'active':''}" onclick="setRole('${r}')">${r==="Everyone"?"Everyone (all posts)":r}</button>`).join("");
-}
-function setRole(r){activeRole=r;renderRoles();renderFeed();renderLearning();renderToolsGrid();renderDirectory();}
 
 /* ---------- feed ---------- */
 function renderFeedPills(){
@@ -49,8 +46,8 @@ function renderFeed(){
   // single unified feed, newest first; role/pill/search are pure filters
   document.getElementById("feedCount").textContent=
     `${posts.length} post${posts.length===1?"":"s"}`+(activeRole!=="Everyone"?` · filtered for ${activeRole}`:"")+(q?` · matching "${q}"`:"");
-  const postHTML=p=>`
-    <article class="card post">
+  const postHTML=p=>{const k=postKey(p);return `
+    <article class="card post" data-key="${k}">
       <div class="post-head">
         <div class="avatar" style="background:${avFor(p).bg}">${avFor(p).txt}</div>
         <div class="post-who">
@@ -68,12 +65,14 @@ function renderFeed(){
       </div>
       <div class="post-foot">
         ${p.link?`<a href="${p.link.u}" target="_blank" rel="noopener">Read source</a>`:""}
-        <a href="#" onclick="return false;">Share with team</a>
-        <a href="#" onclick="return false;">Save</a>
+        <a href="#" class="act-save" data-key="${k}" onclick="return window.HUB?HUB.toggleSave('${k}',this):false;">☆ Save</a>
+        <a href="#" class="act-comment" data-key="${k}" onclick="return window.HUB?HUB.toggleComments('${k}'):false;">💬 Comment</a>
       </div>
-    </article>`;
+      <div class="comments-panel" id="cp-${k}" hidden></div>
+    </article>`;};
   document.getElementById("feedList").innerHTML=posts.length?posts.map(postHTML).join(""):
     `<div class="card empty">No posts match. Try clearing the search or switching the role filter.</div>`;
+  if(window.HUB)HUB.decorate();
 }
 
 /* ---------- right rail ---------- */
@@ -203,13 +202,24 @@ function showView(v){
 }
 
 /* ---------- stats + init ---------- */
+function renderUpdated(){
+  const el=document.getElementById("lastUpdated");
+  if(!el)return;
+  let d=null;
+  if(typeof FEED_GENERATED!=="undefined")d=new Date(FEED_GENERATED);
+  else if(typeof POSTS_LIVE!=="undefined"&&POSTS_LIVE.length)d=new Date(POSTS_LIVE[0].d+"T12:00:00Z");
+  if(!d||isNaN(d))return;
+  const day=d.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
+  const time=(typeof FEED_GENERATED!=="undefined")?" · "+d.toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit"}):"";
+  el.textContent="Updated "+day+time;
+}
 function renderStats(){
   document.getElementById("statPosts").textContent=POSTS.length;
   document.getElementById("statLearning").textContent=LEARNING.length;
   document.getElementById("statCompanies").textContent=COMPANIES.length;
   document.getElementById("statExperts").textContent=DIRECTORY.length;
 }
-renderRoles();renderFeedPills();renderFeed();renderWire();renderExpertRail();
+renderUpdated();renderFeedPills();renderFeed();renderWire();renderExpertRail();
 renderPriority();renderCoPills();renderCompanies();
 renderLearnPills();renderLearning();renderToolsGrid();
 renderDirPills();renderDirectory();renderStats();

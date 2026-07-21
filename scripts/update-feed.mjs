@@ -30,19 +30,15 @@ const FEEDS = [
   { url: "https://www.interconnects.ai/feed", a: "Nathan Lambert", av: "auto", t: "voice", tags: ["Developers"], topic: "Models" },
   { url: "https://www.platformer.news/rss", kw: "title", a: "Casey Newton", av: "auto", t: "voice", tags: ["Everyone"], topic: "Industry AI" },
   { url: "https://www.thealgorithmicbridge.com/feed", a: "Alberto Romero", av: "auto", t: "voice", tags: ["Everyone"], topic: "Adoption" },
-  { url: "https://stratechery.com/feed", kw: "title", a: "Ben Thompson", av: "auto", t: "voice", tags: ["C-Suite", "Marketing & Sales"], topic: "Industry AI" },
   { url: "https://huyenchip.com/feed.xml", a: "Chip Huyen", av: "auto", t: "voice", tags: ["Developers", "Database Engineers"], topic: "Tools" },
-  { url: "https://tomtunguz.com/index.xml", a: "Tomasz Tunguz", av: "auto", t: "voice", tags: ["C-Suite", "Marketing & Sales"], topic: "Industry AI" },
   { url: "https://magazine.sebastianraschka.com/feed", a: "Sebastian Raschka", av: "auto", t: "voice", tags: ["Developers"], topic: "Models" },
   { url: "https://www.exponentialview.co/feed", a: "Azeem Azhar", av: "auto", t: "voice", tags: ["C-Suite"], topic: "Adoption" },
   { url: "https://www.dwarkesh.com/feed", a: "Dwarkesh Patel", av: "auto", t: "voice", tags: ["Everyone"], topic: "Adoption" },
   { url: "https://www.aisnakeoil.com/feed", a: "AI Snake Oil (Narayanan & Kapoor)", av: "auto", t: "voice", tags: ["C-Suite", "Everyone"], topic: "Adoption" },
   { url: "https://joereis.substack.com/feed", a: "Joe Reis", av: "auto", t: "voice", tags: ["Database Engineers"], topic: "Tools" },
-  { url: "https://blog.eladgil.com/feed", a: "Elad Gil", av: "auto", t: "voice", tags: ["C-Suite"], topic: "Industry AI" },
   { url: "https://kozyrkov.medium.com/feed", a: "Cassie Kozyrkov", av: "auto", t: "voice", tags: ["C-Suite", "Product Managers"], topic: "Adoption" },
   { url: "https://www.latent.space/feed", a: "swyx · Latent Space", av: "auto", t: "voice", tags: ["Developers"], topic: "Tools" },
   { url: "https://hamel.dev/index.xml", a: "Hamel Husain", av: "auto", t: "voice", tags: ["Developers"], topic: "Tools" },
-  { url: "https://www.ben-evans.com/benedictevans?format=rss", a: "Benedict Evans", av: "auto", t: "voice", tags: ["C-Suite", "Marketing & Sales"], topic: "Industry AI" },
   /* auto-verified expansion: 83 additional working feeds (Jul 17, 2026) */
   { url: "https://newsletter.pragmaticengineer.com/feed", a: "Gergely Orosz", av: "auto", t: "voice", tags: ["Developers"], topic: "Tools" },
   { url: "https://aiweirdness.com/rss/", a: "Janelle Shane", av: "auto", t: "voice", tags: ["Everyone"], topic: "Adoption" },
@@ -94,6 +90,13 @@ const FEEDS = [
   { domain: true, url: "https://www.therobotreport.com/feed/", who: "Robotics business & engineering news", a: "The Robot Report", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
   { url: "https://compositesmanufacturingmagazine.com/feed/", who: "American Composites Manufacturers Association magazine", a: "Composites Manufacturing", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
   { url: "https://www.aerospacemanufacturinganddesign.com/rss/", a: "Aerospace Mfg & Design", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI" },
+  { w: 2, url: "https://www.moldmakingtechnology.com/rss/news", kw: true, who: "Mold & tooling manufacturing technology", a: "MoldMaking Technology", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI", max: 3 },
+  { url: "https://www.ptonline.com/rss/news", kw: true, who: "Plastics Technology · processing & molding", a: "Plastics Technology", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI", max: 3 },
+  { url: "https://www.tctmagazine.com/rss/", kw: true, who: "Additive manufacturing & 3D printing intelligence", a: "TCT Magazine", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI", max: 3 },
+  { url: "https://3dprintingindustry.com/feed/", kw: true, who: "Additive manufacturing industry news", a: "3D Printing Industry", av: "auto", t: "industry", tags: ["C-Suite", "Application Specialists", "Marketing & Sales"], topic: "Industry AI", max: 3 },
+  { url: "https://interestingengineering.com/feed", kw: "title", who: "Engineering & industrial technology news", a: "Interesting Engineering", av: "auto", t: "industry", tags: ["Everyone"], topic: "Industry AI", max: 2 },
+  { url: "https://www.bing.com/news/search?q=AI%20%22quality%20inspection%22%20OR%20%22machine%20vision%22%20manufacturing&format=rss", a: "AI Inspection & Machine Vision", av: "auto", t: "industry", tags: ["Application Specialists", "Developers"], topic: "Industry AI", max: 3 },
+  { url: "https://www.bing.com/news/search?q=AI%20%22press%20brake%22%20OR%20%22punching%22%20OR%20%22laser%20cutting%22&format=rss", a: "AI in Fabrication Equipment", av: "auto", t: "industry", tags: ["Application Specialists", "Marketing & Sales"], topic: "Industry AI", max: 3 },
   { url: "https://changelog.com/practicalai/feed", a: "Practical AI", av: "auto", t: "voice", tags: ["Developers"], topic: "Tools" },
   { url: "https://lexfridman.com/feed/podcast/", kw: "title", a: "Lex Fridman Podcast", av: "auto", t: "voice", tags: ["Everyone"], topic: "Adoption" },
   { url: "https://blogs.nvidia.com/feed/", a: "NVIDIA Blog", av: "auto", t: "official", tags: ["Developers"], topic: "Industry AI" },
@@ -127,8 +130,8 @@ const FEEDS = [
   { url: "https://www.bing.com/news/search?q=%22generative%20design%22%20OR%20%22AI%20toolpath%22%20manufacturing&format=rss", a: "Generative Design & AI CAM", av: "auto", t: "industry", tags: ["Developers", "Product Managers"], topic: "Industry AI", max: 3 },
   { url: "https://www.bing.com/news/search?q=%22material%20utilization%22%20OR%20%22material%20yield%22%20manufacturing&format=rss", a: "Material Yield & Optimization", av: "auto", t: "industry", tags: ["C-Suite", "Marketing & Sales"], topic: "Industry AI", max: 2 },
   /* Company video channels (YouTube RSS; thumbnails render in the feed) */
-  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCrDwWp7EBBv4NwvScIpBDOA", a: "Anthropic (video)", who: "Official Anthropic channel · agent & Claude Code deep dives", av: "anthropic", t: "official", tags: ["Everyone", "Developers"], topic: "Models", vid: true, prefer: /code|codex|context|agent|harness|prompt|how|build|engineer|tool|develop/i, max: 3 },
-  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCXZCJLdBC09xxGZ6gcdrc6A", a: "OpenAI (video)", who: "Official OpenAI channel · developer sessions & demos", av: "openai", t: "official", tags: ["Everyone", "Developers"], topic: "Models", vid: true, prefer: /code|codex|context|agent|harness|prompt|how|build|engineer|tool|develop/i, max: 3 },
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCrDwWp7EBBv4NwvScIpBDOA", a: "Anthropic (video)", who: "Official Anthropic channel · agent & Claude Code deep dives", av: "anthropic", t: "official", tags: ["Everyone", "Developers"], topic: "Tools", vid: true, prefer: /code|codex|context|agent|harness|prompt|how|build|engineer|tool|develop/i, max: 5, w: 3 },
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCXZCJLdBC09xxGZ6gcdrc6A", a: "OpenAI (video)", who: "Official OpenAI channel · developer sessions & demos", av: "openai", t: "official", tags: ["Everyone", "Developers"], topic: "Tools", vid: true, prefer: /code|codex|context|agent|harness|prompt|how|build|engineer|tool|develop/i, max: 5, w: 3 },
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCP7jMXSY2xbc3KCAE0MHQ-A", a: "Google DeepMind (video)", who: "Official DeepMind channel · research explainers", av: "google", t: "official", tags: ["Everyone"], topic: "Models", vid: true, prefer: /code|codex|context|agent|harness|prompt|how|build|engineer|tool|develop/i, max: 2 },
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC9IEkprr46ScglWU79HF5qQ", a: "Boeing (video)", av: "auto", t: "industry", tags: ["C-Suite", "Marketing & Sales"], topic: "Company Watch", vid: true, kw: true, max: 2 },
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCJWcF0ex7_doPdIQGbVpDsQ", a: "Lockheed Martin (video)", av: "auto", t: "industry", tags: ["C-Suite", "Marketing & Sales"], topic: "Company Watch", vid: true, kw: true, max: 2 },
@@ -376,5 +379,5 @@ console.log(`archive: ${finalPosts.length} fresh + ${carried.length} carried = $
 
 const banner = `/* AUTO-GENERATED by scripts/update-feed.mjs — do not edit by hand.
    Generated: ${new Date().toISOString()} · ${merged.length} items (rolling archive) from ${FEEDS.length} feeds. */\n`;
-writeFileSync(OUT, banner + "const POSTS_LIVE = " + JSON.stringify(merged, null, 1) + ";\n");
+writeFileSync(OUT, banner + "const POSTS_LIVE = " + JSON.stringify(merged, null, 1) + ";\nconst FEED_GENERATED = " + JSON.stringify(new Date().toISOString()) + ";\n");
 console.log(`wrote ${merged.length} live posts -> data/feed-live.js`);
