@@ -31,6 +31,7 @@
         <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3m-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3m0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5m8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5"/></svg>Experts</button>
     </nav>
     <div class="live-pill"><span class="live-dot"></span><span id="lastUpdated">Updated Jul 17, 2026</span></div>
+    <button id="themeBtn" class="theme-btn" onclick="toggleTheme()" title="Switch light / dark mode">☾</button>
     <div id="authBox" class="auth-box"></div>
   </div>
 </header>
@@ -67,9 +68,70 @@
           <li><a href="#" onclick="showView('industry');return false;">Industry Watch: 300+ companies</a></li>
           <li><a href="#" onclick="showView('tools');return false;">Approved tooling</a></li>
           <li><a href="#" onclick="showView('learning');return false;">Learning Center: study at your own pace</a></li>
+          <li><a href="https://anthropic.skilljar.com" target="_blank" rel="noopener">Anthropic Academy ↗</a></li>
+        </ul>
+      </div>
+      <div class="rail-section" style="border-top:1px solid var(--border)">
+        <h3>US AI Labs · Closed-Weight</h3>
+        <ul class="quick-links compact">
+          <li><a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic (Claude) ↗</a></li>
+          <li><a href="https://openai.com" target="_blank" rel="noopener">OpenAI (GPT) ↗</a></li>
+          <li><a href="https://deepmind.google" target="_blank" rel="noopener">Google DeepMind (Gemini) ↗</a></li>
+          <li><a href="https://x.ai" target="_blank" rel="noopener">xAI (Grok) ↗</a></li>
+          <li><a href="https://www.amazon.science" target="_blank" rel="noopener">Amazon (Nova) ↗</a></li>
+          <li><a href="https://www.microsoft.com/en-us/ai" target="_blank" rel="noopener">Microsoft (Copilot) ↗</a></li>
+          <li><a href="https://www.perplexity.ai" target="_blank" rel="noopener">Perplexity (Sonar) ↗</a></li>
+          <li><a href="https://inflection.ai" target="_blank" rel="noopener">Inflection AI ↗</a></li>
+          <li><a href="https://reka.ai" target="_blank" rel="noopener">Reka AI ↗</a></li>
+          <li><a href="https://writer.com" target="_blank" rel="noopener">Writer (Palmyra) ↗</a></li>
+          <li><a href="https://runwayml.com" target="_blank" rel="noopener">Runway ↗</a></li>
+          <li><a href="https://lumalabs.ai" target="_blank" rel="noopener">Luma AI ↗</a></li>
+          <li><a href="https://www.midjourney.com" target="_blank" rel="noopener">Midjourney ↗</a></li>
+          <li><a href="https://elevenlabs.io" target="_blank" rel="noopener">ElevenLabs ↗</a></li>
+          <li><a href="https://character.ai" target="_blank" rel="noopener">Character.AI ↗</a></li>
+          <li><a href="https://ssi.inc" target="_blank" rel="noopener">Safe Superintelligence ↗</a></li>
+          <li><a href="https://magic.dev" target="_blank" rel="noopener">Magic ↗</a></li>
+        </ul>
+      </div>
+      <div class="rail-section" style="border-top:1px solid var(--border)">
+        <h3>US Open-Weight Models</h3>
+        <ul class="quick-links compact">
+          <li><a href="https://www.llama.com" target="_blank" rel="noopener">Meta (Llama) ↗</a></li>
+          <li><a href="https://ai.google.dev/gemma" target="_blank" rel="noopener">Google (Gemma) ↗</a></li>
+          <li><a href="https://huggingface.co/openai" target="_blank" rel="noopener">OpenAI (gpt-oss) ↗</a></li>
+          <li><a href="https://huggingface.co/microsoft" target="_blank" rel="noopener">Microsoft (Phi) ↗</a></li>
+          <li><a href="https://build.nvidia.com" target="_blank" rel="noopener">NVIDIA (Nemotron) ↗</a></li>
+          <li><a href="https://allenai.org" target="_blank" rel="noopener">Allen Institute (OLMo) ↗</a></li>
+          <li><a href="https://www.ibm.com/granite" target="_blank" rel="noopener">IBM (Granite) ↗</a></li>
+          <li><a href="https://www.databricks.com" target="_blank" rel="noopener">Databricks (DBRX) ↗</a></li>
+          <li><a href="https://www.snowflake.com" target="_blank" rel="noopener">Snowflake (Arctic) ↗</a></li>
+          <li><a href="https://thinkingmachines.ai" target="_blank" rel="noopener">Thinking Machines (Inkling) ↗</a></li>
+          <li><a href="https://www.liquid.ai" target="_blank" rel="noopener">Liquid AI (LFM) ↗</a></li>
+          <li><a href="https://www.together.ai" target="_blank" rel="noopener">Together AI ↗</a></li>
+          <li><a href="https://nousresearch.com" target="_blank" rel="noopener">Nous Research (Hermes) ↗</a></li>
+          <li><a href="https://www.arcee.ai" target="_blank" rel="noopener">Arcee AI ↗</a></li>
+          <li><a href="https://www.zyphra.com" target="_blank" rel="noopener">Zyphra (Zamba) ↗</a></li>
+          <li><a href="https://www.eleuther.ai" target="_blank" rel="noopener">EleutherAI ↗</a></li>
+          <li><a href="https://huggingface.co" target="_blank" rel="noopener">Hugging Face ↗</a></li>
+        </ul>
+      </div>
+      <div class="rail-section" style="border-top:1px solid var(--border)">
+        <h3>AI Coding Tools</h3>
+        <ul class="quick-links compact">
           <li><a href="https://docs.claude.com/en/docs/claude-code/overview" target="_blank" rel="noopener">Claude Code docs ↗</a></li>
           <li><a href="https://developers.openai.com/codex/" target="_blank" rel="noopener">OpenAI Codex docs ↗</a></li>
-          <li><a href="https://anthropic.skilljar.com" target="_blank" rel="noopener">Anthropic Academy ↗</a></li>
+          <li><a href="https://github.com/features/copilot" target="_blank" rel="noopener">GitHub Copilot ↗</a></li>
+          <li><a href="https://cursor.com" target="_blank" rel="noopener">Cursor ↗</a></li>
+          <li><a href="https://windsurf.com" target="_blank" rel="noopener">Windsurf ↗</a></li>
+          <li><a href="https://replit.com" target="_blank" rel="noopener">Replit ↗</a></li>
+          <li><a href="https://cognition.ai" target="_blank" rel="noopener">Cognition (Devin) ↗</a></li>
+          <li><a href="https://ampcode.com" target="_blank" rel="noopener">Sourcegraph Amp ↗</a></li>
+          <li><a href="https://www.augmentcode.com" target="_blank" rel="noopener">Augment Code ↗</a></li>
+          <li><a href="https://www.warp.dev" target="_blank" rel="noopener">Warp ↗</a></li>
+          <li><a href="https://aider.chat" target="_blank" rel="noopener">Aider ↗</a></li>
+          <li><a href="https://cline.bot" target="_blank" rel="noopener">Cline ↗</a></li>
+          <li><a href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">Gemini CLI ↗</a></li>
+          <li><a href="https://www.jetbrains.com/ai/" target="_blank" rel="noopener">JetBrains AI ↗</a></li>
         </ul>
       </div>
     </div>

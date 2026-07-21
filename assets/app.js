@@ -7,13 +7,31 @@ let feedFilter = "All";
 const FEED_FILTERS = {
   "All": p=>true,
   "Industry News": p=>p.topic==="Industry AI"||p.topic==="Company Watch",
-  "AI News": p=>["Models","Agents","Tools","Adoption"].includes(p.topic),
-  "Developers": p=>p.tags.includes("Developers"),
-  "Instructional": p=>p.topic==="Tools"&&(p.vid||p.tags.includes("Developers")),
+  "AI News": p=>["Models","Agents","Adoption"].includes(p.topic)&&!p.vid,
+  "Developers": p=>(p.topic==="Tools"||p.tags.includes("Developers"))&&!p.vid,
+  "Instructional": p=>!!p.vid&&(p.topic==="Tools"||p.tags.includes("Developers")),
   "Videos": p=>!!p.vid,
   "Regulatory": p=>p.topic==="Regulatory",
   "Saved": p=>!!(window.HUB&&HUB.isSaved(postKey(p)))
 };
+/* ---------- theme ---------- */
+function setTheme(t){
+  document.documentElement.setAttribute("data-theme",t);
+  const b=document.getElementById("themeBtn");if(b)b.textContent=t==="dark"?"☀":"☾";
+  try{localStorage.setItem("hubTheme",t);}catch(e){}
+}
+function toggleTheme(){setTheme(document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark");}
+function initTheme(){
+  let t=null;try{t=localStorage.getItem("hubTheme");}catch(e){}
+  if(!t)t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";
+  setTheme(t);
+}
+function interleaveByAuthor(posts){
+  const by={};posts.forEach(p=>{(by[p.a]=by[p.a]||[]).push(p);});
+  const qs=Object.values(by),out=[];let added=true;
+  while(added){added=false;for(const q of qs){if(q.length){out.push(q.shift());added=true;}}}
+  return out;
+}
 function postKey(p){const s=p.link&&p.link.u?p.link.u:(p.a+"|"+p.d+"|"+(p.body||"").slice(0,80));let h=5381;for(let i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return "k"+(h>>>0).toString(36);}
 
 /* ---------- helpers ---------- */
@@ -44,6 +62,11 @@ function renderFeed(){
   let posts=POSTS.filter(p=>matchesRole(p.tags)).filter(FEED_FILTERS[feedFilter]);
   if(q)posts=posts.filter(p=>(p.a+" "+p.body+" "+p.topic+" "+p.tags.join(" ")).toLowerCase().includes(q));
   posts=[...posts].sort((x,y)=>sort==="topic"?x.topic.localeCompare(y.topic)||y.d.localeCompare(x.d):y.d.localeCompare(x.d)||(y.w||0)-(x.w||0));
+  // per-pill differentiation: Instructional surfaces the best tutorials first; Videos rotates authors for variety
+  if(sort!=="topic"){
+    if(feedFilter==="Instructional")posts.sort((x,y)=>(y.w||0)-(x.w||0)||y.d.localeCompare(x.d));
+    else if(feedFilter==="Videos")posts=interleaveByAuthor(posts);
+  }
   // single unified feed, newest first; role/pill/search are pure filters
   document.getElementById("feedCount").textContent=
     `${posts.length} post${posts.length===1?"":"s"}`+(activeRole!=="Everyone"?` · filtered for ${activeRole}`:"")+(q?` · matching "${q}"`:"");
@@ -221,7 +244,7 @@ function renderStats(){
   document.getElementById("statCompanies").textContent=COMPANIES.length;
   document.getElementById("statExperts").textContent=DIRECTORY.length;
 }
-renderUpdated();renderFeedPills();renderFeed();renderWire();renderExpertRail();
+initTheme();renderUpdated();renderFeedPills();renderFeed();renderWire();renderExpertRail();
 renderPriority();renderCoPills();renderCompanies();
 renderLearnPills();renderLearning();renderToolsGrid();
 renderDirPills();renderDirectory();renderStats();
