@@ -81,7 +81,7 @@ function renderFeed(){
         </div>
       </div>
       <div class="post-body">${p.body}</div>
-      ${p.img?`<a class="post-media" href="${p.link?p.link.u:"#"}" target="_blank" rel="noopener"><img src="${p.img}" loading="lazy" alt="">${p.vid?'<span class="play-badge">▶</span>':''}</a>`:""}
+      ${p.img?`<a class="post-media" href="${p.link?p.link.u:"#"}" target="_blank" rel="noopener"><img src="${p.img}" loading="lazy" alt=""${/maxresdefault/.test(p.img)?` onerror="this.onerror=null;this.src='${p.img.replace("maxresdefault","hqdefault")}'"`:""}>${p.vid?'<span class="play-badge">▶</span>':''}</a>`:""}
       ${p.link?`<a class="post-link" href="${p.link.u}" target="_blank" rel="noopener"><b>${p.link.b} ↗</b><span>${p.link.s}</span></a>`:""}
       <div class="tags">
         <span class="tag topic">${p.topic}</span>
@@ -91,6 +91,7 @@ function renderFeed(){
         ${p.link?`<a href="${p.link.u}" target="_blank" rel="noopener">Read source</a>`:""}
         <a href="#" class="act-save" data-key="${k}" onclick="return window.HUB?HUB.toggleSave('${k}',this):false;">☆ Save</a>
         <a href="#" class="act-share" data-key="${k}" onclick="return window.HUB?HUB.toggleShare('${k}'):false;">↗ Share with team</a>
+        <a href="#" class="act-send" data-key="${k}" onclick="return window.HUB?HUB.openSend('${k}'):false;">➤ Send to…</a>
         <a href="#" class="act-comment" data-key="${k}" onclick="return window.HUB?HUB.toggleComments('${k}'):false;">💬 Comment</a>
       </div>
       <div class="comments-panel" id="cp-${k}" hidden></div>

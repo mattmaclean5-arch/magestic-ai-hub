@@ -15,6 +15,7 @@
   let profiles = [];         // team members
   let shares = [];           // recent team shares
   let myShares = new Set();
+  let inbox = [];            // posts sent directly to me
 
   const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const nameFromEmail = e => e.split("@")[0].split(/[._-]+/).map(w => w.charAt(0).toUpperCase()+w.slice(1)).join(" ");
@@ -57,12 +58,13 @@
 
   /* ---------- data ---------- */
   async function refreshData(){
-    if (!user) { saves = new Set(); counts = {}; profiles = []; shares = []; myShares = new Set(); decorate(); renderTeam(); return; }
-    const [sv, cm, pf, sh] = await Promise.all([
+    if (!user) { saves = new Set(); counts = {}; profiles = []; shares = []; myShares = new Set(); inbox = []; decorate(); renderTeam(); renderInbox(); return; }
+    const [sv, cm, pf, sh, ib] = await Promise.all([
       sb.from("saves").select("post_key"),
       sb.from("comments").select("post_key"),
       sb.from("profiles").select("id,display_name,email").order("display_name"),
-      sb.from("shares").select("user_id,author_name,post_key,post_title,post_url,created_at").order("created_at", { ascending: false }).limit(15)
+      sb.from("shares").select("user_id,author_name,post_key,post_title,post_url,created_at").order("created_at", { ascending: false }).limit(15),
+      sb.from("direct_shares").select("id,from_user,from_name,to_user,post_title,post_url,note,read,created_at").order("created_at", { ascending: false }).limit(30)
     ]);
     saves = new Set((sv.data || []).map(r => r.post_key));
     counts = {};
@@ -70,8 +72,32 @@
     profiles = pf.data || [];
     shares = sh.data || [];
     myShares = new Set(shares.filter(s => s.user_id === user.id).map(s => s.post_key));
+    inbox = (ib.data || []).filter(r => r.to_user === user.id).slice(0, 10);
     decorate();
     renderTeam();
+  }
+
+  function renderInbox(){
+    const el = document.getElementById("inboxList");
+    if (!el) return;
+    if (!user) { el.innerHTML = `<div class="comment-hint">Sign in to receive posts sent to you.</div>`; return; }
+    if (!inbox.length) { el.innerHTML = `<div class="comment-hint">Nothing yet — teammates can send you posts with "Send to…".</div>`; return; }
+    el.innerHTML = inbox.map(s => `
+      <div class="share-row${s.read ? "" : " unread"}">
+        <b>${esc(s.from_name)}</b> sent you
+        <div>${s.post_url ? `<a href="${esc(s.post_url)}" target="_blank" rel="noopener" onclick="HUB.markRead(${s.id})">${esc(s.post_title)}</a>` : esc(s.post_title)}</div>
+        ${s.note ? `<div class="share-note">“${esc(s.note)}”</div>` : ""}
+        <span class="comment-when">${new Date(s.created_at).toLocaleDateString("en-US",{month:"short",day:"numeric"})}</span>
+        · <a href="#" class="auth-link" onclick="HUB.dismissShare(${s.id});return false;">dismiss</a>
+      </div>`).join("");
+  }
+
+  function postMeta(k){
+    const p = (typeof POSTS !== "undefined" ? POSTS : []).find(x => postKey(x) === k);
+    return {
+      title: p ? (p.link && p.link.b ? p.link.b : (p.body || "").split("\n")[0].slice(0, 120)) : "a post",
+      url: p && p.link ? p.link.u : null
+    };
   }
 
   function renderTeam(){
@@ -180,9 +206,7 @@
         decorate(); renderTeam();
         await sb.from("shares").delete().eq("post_key", k).eq("user_id", user.id);
       } else {
-        const p = (typeof POSTS !== "undefined" ? POSTS : []).find(x => postKey(x) === k);
-        const title = p ? (p.link && p.link.b ? p.link.b : (p.body || "").split("\n")[0].slice(0, 120)) : "a post";
-        const url = p && p.link ? p.link.u : null;
+        const { title, url } = postMeta(k);
         const row = { user_id: user.id, author_name: nameFromEmail(user.email), post_key: k, post_title: title, post_url: url, created_at: new Date().toISOString() };
         myShares.add(k);
         shares.unshift(row);
@@ -190,6 +214,55 @@
         await sb.from("shares").insert({ user_id: row.user_id, author_name: row.author_name, post_key: k, post_title: title, post_url: url });
       }
       return false;
+    },
+    openSend(k){
+      if (!user) { HUB.openModal(); return false; }
+      const others = profiles.filter(m => m.id !== user.id);
+      let old = document.getElementById("sendModal"); if (old) old.remove();
+      const div = document.createElement("div");
+      div.id = "sendModal"; div.className = "hub-modal";
+      div.innerHTML = `
+        <div class="hub-modal-card">
+          <h3>Send this post to a teammate</h3>
+          <p class="hub-modal-sub">${esc(postMeta(k).title)}</p>
+          ${others.length ? `
+          <select id="sendWho">${others.map(m => `<option value="${m.id}">${esc(m.display_name)}</option>`).join("")}</select>
+          <input id="sendNote" type="text" maxlength="500" placeholder="Add a note (optional)">
+          <div id="sendMsg" class="hub-msg"></div>
+          <div class="hub-modal-actions">
+            <button class="auth-btn" onclick="HUB.sendTo('${k}')">Send</button>
+            <a href="#" class="auth-link" onclick="document.getElementById('sendModal').remove();return false;">Cancel</a>
+          </div>` : `<div class="comment-hint">No other team members have joined yet.</div>
+          <div class="hub-modal-actions"><a href="#" class="auth-link" onclick="document.getElementById('sendModal').remove();return false;">Close</a></div>`}
+        </div>`;
+      div.addEventListener("click", e => { if (e.target === div) div.remove(); });
+      document.body.appendChild(div);
+      return false;
+    },
+    async sendTo(k){
+      const who = document.getElementById("sendWho");
+      const note = (document.getElementById("sendNote") || {}).value || "";
+      if (!who || !user) return;
+      const to = profiles.find(m => m.id === who.value);
+      const { title, url } = postMeta(k);
+      const { error } = await sb.from("direct_shares").insert({
+        from_user: user.id, from_name: nameFromEmail(user.email),
+        to_user: who.value, post_key: k, post_title: title, post_url: url,
+        note: note.trim() || null
+      });
+      const m = document.getElementById("sendMsg");
+      if (error) { if (m) { m.textContent = "Could not send — try again."; m.className = "hub-msg err"; } return; }
+      const sm = document.getElementById("sendModal");
+      if (sm) sm.querySelector(".hub-modal-card").innerHTML = `<h3>Sent</h3><p class="hub-modal-sub">${esc(to ? to.display_name : "They")} will see it in "Shared with you" next time they're on the hub.</p><div class="hub-modal-actions"><a href="#" class="auth-link" onclick="document.getElementById('sendModal').remove();return false;">Close</a></div>`;
+    },
+    async markRead(id){
+      await sb.from("direct_shares").update({ read: true }).eq("id", id);
+      const it = inbox.find(s => s.id === id); if (it) it.read = true;
+      renderInbox();
+    },
+    async dismissShare(id){
+      inbox = inbox.filter(s => s.id !== id); renderInbox();
+      await sb.from("direct_shares").delete().eq("id", id);
     },
     toggleComments(k){
       const panel = document.getElementById("cp-" + k);

@@ -327,3 +327,7 @@
 [data-theme="dark"] .hub-modal-card{background:var(--card);color:var(--ink)}
 [data-theme="dark"] .hub-modal-card input{background:#262b31;color:var(--ink)}
 [data-theme="dark"] .profile-card .avatar-lg,[data-theme="dark"] .avatar-lg{border-color:var(--card)}
+.share-row.unread b{color:var(--accent)}
+.share-row.unread{border-left:2px solid var(--accent);padding-left:7px}
+.share-note{font-style:italic;color:var(--ink-2);font-size:12px}
+#sendModal select,#sendModal input{width:100%;box-sizing:border-box;margin:5px 0;padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--card);color:var(--ink)}
