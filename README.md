@@ -24,6 +24,7 @@ data/feed.js                  curated feed posts (hand-written, edit freely)
 data/feed-live.js             AUTO-GENERATED live feed items (do not edit)
 data/directory.js             featured experts + full vendor-neutral directory
 data/companies.js             Industry Watch: 265 companies w/ AI-leadership scores (from the AI Landscape workbook)
+assets/hub.js                 team accounts, saved posts, and comments (Supabase-backed)
 scripts/update-feed.mjs       regenerates data/feed-live.js from public RSS feeds
 .github/workflows/update-feed.yml   hourly feed refresh (GitHub Actions)
 .github/workflows/pages.yml         GitHub Pages deploy on every push
@@ -46,6 +47,15 @@ To refresh the feed manually at any time: Actions → "Refresh live feed" → Ru
 - **Companies**: edit `data/companies.js` (regenerated from Magestic_AI_Landscape_Competitors_and_Customers_1.xlsx). Set `p:1` to promote a company into Priority Watch and the every-run news pull. Note: social platforms (LinkedIn/X) block programmatic pulling of posts, so company tracking runs on press releases and news coverage via Google News RSS, which includes conference and industry announcements.
 - **Experts**: edit `data/directory.js`. `EXPERTS` are the featured cards; `DIRECTORY` is the full list. Vendor-neutral only, by policy: no employees of AI model or tool vendors.
 - **News sources for the live feed**: edit the `FEEDS` array in `scripts/update-feed.mjs`.
+
+## Team accounts, saves, and comments
+
+Signing in, saving posts, and commenting are backed by a Supabase project (`magestic-ai-hub`). How it works:
+
+- Anyone with a `@magestictech.com` email can create an account from the "Team sign in" button using the shared team password. The domain restriction is enforced in the database (a trigger on `auth.users`), so accounts cannot be created with outside addresses even by calling the API directly.
+- New accounts get a confirmation email and must click the link once before signing in.
+- Saved posts are private to each user (row-level security); comments are visible to all signed-in team members. Nothing is visible to anonymous visitors.
+- The site only ships Supabase's publishable key, which is safe to expose; all access control happens server-side via row-level security.
 
 ## Notes
 
