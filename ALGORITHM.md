@@ -1,29 +1,63 @@
-# Magestic AI Hub · Feed Algorithm
+# Magestic AI Hub — Feed Algorithm & Weighting Reference
 
-How the self-updating feed decides what Magestic employees see. All knobs live in `scripts/update-feed.mjs`.
+Prepared by Matt MacLean, Director of AI · July 21, 2026 (supersedes the July 17 one-pager). Source of truth: the `FEEDS` array and gate definitions in `scripts/update-feed.mjs`.
 
-## 1. Sourcing (every refresh)
-170+ sources: official AI labs, 15+ AI dev-tool vendors (Cursor, Windsurf, Replit, Cognition, Mistral, xAI, Perplexity…), Magestic-industry trade press, independent thought leaders, YouTube channels (labs, tool vendors, industry OEMs like TRUMPF and Machina Labs), topical craft queries (AI nesting, CAM, composites, sheet metal), JEC World / FABTECH conference watch, and the 265-company watchlist (38 priority companies every run; the rest rotate, full cycle ≈ 8h). Company queries target how firms use AI in manufacturing/production/engineering.
+## 1. Pipeline overview
 
-## 2. Hard gates (drop unless ALL pass)
-- **AI relevance** — every publication-type source and every aggregator/company item must mention real AI terms (AI, machine learning, generative, copilot, LLM, Claude, GPT, Codex, agentic…). "Automation"/"robot" alone don't count.
-- **Magestic-domain relevance** — broad industrial sources must match manufacturing/craft vocabulary or name a watchlist company.
-- **Banned genres** — stock/investment analysis; weapons-product news (unless about production itself); supply chain/logistics; webinar promos — unless core-craft.
-- **Quality** — deduplicated bodies, digest roundups skipped, and 100% of posts must carry an image or video.
+The hub is a static site on GitHub Pages. A GitHub Actions workflow is scheduled every 5 minutes (GitHub batches scheduled runs as capacity allows, so real cadence is typically 10–20 minutes). Each run executes `scripts/update-feed.mjs` on GitHub's servers: it pulls roughly 175 public RSS/Atom feeds plus per-company news queries, filters and scores every item, rewrites `data/feed-live.js`, and commits. That commit triggers a Pages redeploy, so the site anyone loads is already fresh. No human or AI is in the loop.
 
-## 3. Weights (ranking within each day)
-| Signal | Weight | Captures |
-|---|---|---|
-| Core craft match | **+3** | nesting, punching, nibbling, bin-packing, composites (prepreg/ply/layup/AFP/ATL), sheet metal, TruLaser/TruTops, laser projection (LPT), waterjet, plasma, press brake, turret, CAM/CAD, toolpaths, post processors, material yield |
-| Developer education | **+2** | tutorials/how-to for developers (Claude Code, Codex, agents) |
-| Premium trade press | **+2** | CompositesWorld, MTDCNC, Fabricating & Metalworking, JEC, Manufacturing Dive, Develop3D, Modern Machine Shop |
-| Video | **+1** | any post with playable video |
-| General tech media | **−2** | MIT Tech Review, Quanta, Synced, MarkTechPost, The Decoder, O'Reilly, McKinsey, Sloan, Wharton |
+## 2. Source classes
 
-Weights stack (an AI-nesting tutorial video from trade press = +6). Order: newest day first, then weight within the day — so each day reads craft-AI → dev education/video → company & trade news → general AI press.
+**AI vendors** — official channels and blogs: Anthropic, OpenAI, Google, GitHub, Microsoft, and the leading agentic-coding alternatives (Cursor, Windsurf, Replit, Cognition/Devin, Mistral, xAI, Perplexity, AWS, JetBrains).
 
-## 4. Mix, archive, cadence
-- **50/50 balance**: industry news vs AI training/news trimmed to within 15% each refresh.
-- **Per-source caps**: labs 2–3, alternative tool vendors 1, thought leaders 2, trade press up to 4.
-- **Rolling archive**: 400 posts, ~25–80 added/day; every refresh re-screens old posts against current rules (filter upgrades clean history retroactively).
-- **Cadence**: scheduled `*/15`; GitHub throttles free-tier schedules, so delivery is at-least-hourly. Manual: Actions → "Refresh live feed" → Run workflow.
+**Trade press** — CompositesWorld, The Fabricator, Modern Machine Shop, MTDCNC, Aerospace Manufacturing & Design, Additive Manufacturing Media, Production Machining, Manufacturing Dive, MoldMaking Technology, Plastics Technology, TCT Magazine, 3D Printing Industry, Interesting Engineering, and peers. Every industry publication passes through the AI keyword gate before anything reaches the feed.
+
+**Expert voices** — vendor-neutral SMEs with open blogs/newsletters (Simon Willison, Ethan Mollick, Chip Huyen, …). Same rules as everyone else; nobody is pinned.
+
+**YouTube** — official Anthropic and OpenAI channels (up to 8 videos each per run, weight +3) plus vetted instructional channels (AI Engineer, IndyDevDan, machining/fabrication vendor channels). A video slot guarantee prevents text items from crowding videos out.
+
+**Topical lanes** — Bing News queries for Magestic-specific themes: sheet metal AI, CNC & machining AI, composites AI, CAM/nesting software, smart factory aero & defense, generative design, quality inspection & machine vision, fabrication equipment (press brake / punching / laser), JEC World, FABTECH, IMTS.
+
+**Company Watch** — all 265 watchlist companies from the AI Landscape workbook. The 38 priority companies (Boeing, Lockheed Martin, Leonardo, GKN, Dassault, Autodesk, Siemens, Northrop Grumman, RTX, Electric Boat, Wabtec, GE, SigmaTEK, Greenheck Fan, …) are queried every run and may land 4 stories each; the remaining 227 rotate 70 per run, so the full list cycles roughly every 3–4 hours, 2 stories each.
+
+## 3. Filter gates (closed by default)
+
+An item must clear every applicable gate to enter the feed. The design principle: nothing gets in unless a rule affirmatively admits it.
+
+| Gate | What it does |
+| --- | --- |
+| AI keyword gate | Every trade-press item and every aggregator/company item must match AI vocabulary (AI, machine learning, generative, LLM, copilot, Claude, GPT, Codex, agentic, …) in the title or body. Applies structurally to all industry-class sources. |
+| Manufacturing context | Magestic-domain vocabulary (nesting, punching, AFP/ATL, prepreg, laser projection, TruLaser, waterjet, press brake, CAM/CAD/PLM, toolpath, genetic algorithm, material yield, …) qualifies items for the core-relevance boost and rescues defense stories with a manufacturing angle. |
+| Financial noise ban | Stock/analyst genre blocked outright: price targets, ratings, "Seeking Alpha"-style coverage, earnings chatter. Applied to aggregator results, company news, and the carried archive. |
+| Weapons-product ban | Weapons-system product news is excluded unless the story is about manufacturing technology itself. |
+| Off-topic ban | Supply-chain/logistics commentary and webinar/promo content excluded unless core manufacturing vocabulary is present. |
+| Recency & dedupe | Company news older than 14 days is dropped; duplicates removed by link and normalized title-vs-body overlap. |
+| 100% media | Live items without an image or video thumbnail are dropped after og:image enrichment (up to 100 article pages fetched per run). |
+
+## 4. Weighting
+
+Weights break ties within a publication day — the feed sorts newest-first, then by weight. Weights accumulate per item.
+
+| Signal | Weight | Rationale |
+| --- | --- | --- |
+| Core Magestic relevance (nesting, composites, CAM, fabrication vocabulary) | +3 | The reason the hub exists; these must surface first. |
+| Anthropic / OpenAI official video channels | +3 (channel) | Requested emphasis: developer how-to content from the two primary vendors. |
+| Developer education (Tools topic + video or Developers tag) | +2 | Hands-on Claude Code / Codex instruction ranks above news. |
+| Premium trade press (CompositesWorld, Modern Machine Shop, MTDCNC, MoldMaking Technology, Manufacturing Dive) | +2 (source) | Highest-signal industry outlets. |
+| Claude Code / Codex news lanes | +2 (source) | Tool-specific coverage of the two flagship coding agents. |
+| Any video | +1 | Video preferred at equal relevance. |
+| General AI media (MIT Tech Review, Synced, MarkTechPost, The Decoder, O'Reilly, McKinsey, …) | −2 (source) | Allowed through the gates but always ranked beneath industry-specific coverage. |
+
+## 5. Mix balancing — industry-weighted
+
+After filtering, items split into an industry side (Industry AI + Company Watch) and an AI side (models, tools, training, adoption). The industry side keeps up to 1.6× the smaller side's count and the AI side up to 1.1×, targeting roughly a 60/40 industry-to-AI mix (updated July 21 from the earlier 50/50). Caps per run: 150 general items, 90 company items, with guaranteed video slots.
+
+## 6. Rolling archive
+
+Fresh items merge into the previous feed rather than replacing it. Carried items are re-screened against the current rules on every run — a rule added today also purges yesterday's archive — then everything is deduplicated and capped at 400 posts, newest first. The "Updated" badge in the header reads the archive's real generation timestamp.
+
+## 7. What the algorithm never does
+
+- No engagement optimization: nothing is ranked by clicks, and there is no personalization — every team member sees the same feed (saves and comments are personal; the ranking is not).
+- No financial content, no stock analysis, no weapons-product promotion, no non-AI content.
+- No LinkedIn scraping (platform terms prohibit it); LinkedIn-only voices are linked from the Experts page instead.
