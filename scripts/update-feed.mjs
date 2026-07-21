@@ -384,12 +384,32 @@ const top = finalPosts;
 /* ---- accumulate: merge with previous feed so the archive grows ~25-50 posts/day ---- */
 let previous = [];
 try { previous = new Function(readFileSync(OUT, "utf8") + ";return POSTS_LIVE;")(); } catch {}
+/* normalize archive links BEFORE dedupe so old bing-redirect URLs match their unwrapped versions */
+const unwrapLink = (p) => {
+  if (p.link && /bing\.com\/news\/apiclick/.test(p.link.u)) {
+    const bm = p.link.u.match(/[?&]url=([^&]+)/);
+    if (bm) { try { p.link.u = decodeURIComponent(bm[1]); p.link.s = new URL(p.link.u).hostname; } catch {} }
+  }
+};
+previous.forEach(unwrapLink);
 const keyOf = (p) => (p.link && p.link.u) || p.body.slice(0, 80);
+const titleOf = (p) => norm((p.link && p.link.b) || p.body.split("\n")[0]).slice(0, 60);
 const seenKeys = new Set(finalPosts.map(keyOf));
-const carried = previous.filter(p => !seenKeys.has(keyOf(p)))
+const seenTitles = new Set(finalPosts.map(titleOf));
+const carried = previous.filter(p => !seenKeys.has(keyOf(p)) && !seenTitles.has(titleOf(p)))
   .filter(p => p.t === "internal" || p.vid || p.topic === "Regulatory" || AI_KW.test(p.a + " " + p.body))
   .filter(p => !FIN_NOISE.test(p.body) && (!OFFTOPIC.test(p.body) || CORE_KW.test(p.body)));
-const merged = [...finalPosts, ...carried].sort((x, y) => y.d.localeCompare(x.d)).slice(0, 400);
+/* final dedupe by URL and by normalized title — the same story syndicated at two URLs
+   (e.g. msn.com vs the original publisher) collapses to one post */
+const mergedAll = [...finalPosts, ...carried].sort((x, y) => y.d.localeCompare(x.d));
+const dedupSeen = new Set(), dedupTitles = new Set(), mergedDedup = [];
+for (const p of mergedAll) {
+  const k = keyOf(p), t = titleOf(p);
+  if (dedupSeen.has(k) || (t && t.length > 10 && dedupTitles.has(t))) continue;
+  dedupSeen.add(k); if (t) dedupTitles.add(t);
+  mergedDedup.push(p);
+}
+const merged = mergedDedup.slice(0, 400);
 /* upgrade thumbnail resolution everywhere (including carried archive items):
    Bing th endpoint honors w/qlt params; YouTube maxresdefault is 1280x720 (frontend falls back if missing) */
 const upImg = (u) => {
