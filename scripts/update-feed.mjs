@@ -10,8 +10,8 @@ import { dirname, join } from "node:path";
 
 const OUT = join(dirname(fileURLToPath(import.meta.url)), "..", "data", "feed-live.js");
 const DEFAULT_PER_FEED = 2;
-const MAX_TOTAL = 100;
-const MAX_COMPANY_ITEMS = 50;
+const MAX_TOTAL = 150;
+const MAX_COMPANY_ITEMS = 90;
 
 /* Public feeds. Each entry: url, display name, avatar key (from data/content.js AV), post type, role tags, topic. */
 const FEEDS = [
@@ -130,8 +130,8 @@ const FEEDS = [
   { url: "https://www.bing.com/news/search?q=%22generative%20design%22%20OR%20%22AI%20toolpath%22%20manufacturing&format=rss", a: "Generative Design & AI CAM", av: "auto", t: "industry", tags: ["Developers", "Product Managers"], topic: "Industry AI", max: 3 },
   { url: "https://www.bing.com/news/search?q=%22material%20utilization%22%20OR%20%22material%20yield%22%20manufacturing&format=rss", a: "Material Yield & Optimization", av: "auto", t: "industry", tags: ["C-Suite", "Marketing & Sales"], topic: "Industry AI", max: 2 },
   /* Company video channels (YouTube RSS; thumbnails render in the feed) */
-  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCrDwWp7EBBv4NwvScIpBDOA", a: "Anthropic (video)", who: "Official Anthropic channel · agent & Claude Code deep dives", av: "anthropic", t: "official", tags: ["Everyone", "Developers"], topic: "Tools", vid: true, prefer: /code|codex|context|agent|harness|prompt|how|build|engineer|tool|develop/i, max: 5, w: 3 },
-  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCXZCJLdBC09xxGZ6gcdrc6A", a: "OpenAI (video)", who: "Official OpenAI channel · developer sessions & demos", av: "openai", t: "official", tags: ["Everyone", "Developers"], topic: "Tools", vid: true, prefer: /code|codex|context|agent|harness|prompt|how|build|engineer|tool|develop/i, max: 5, w: 3 },
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCrDwWp7EBBv4NwvScIpBDOA", a: "Anthropic (video)", who: "Official Anthropic channel · agent & Claude Code deep dives", av: "anthropic", t: "official", tags: ["Everyone", "Developers"], topic: "Tools", vid: true, prefer: /code|codex|context|agent|harness|prompt|how|build|engineer|tool|develop/i, max: 8, w: 3 },
+  { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCXZCJLdBC09xxGZ6gcdrc6A", a: "OpenAI (video)", who: "Official OpenAI channel · developer sessions & demos", av: "openai", t: "official", tags: ["Everyone", "Developers"], topic: "Tools", vid: true, prefer: /code|codex|context|agent|harness|prompt|how|build|engineer|tool|develop/i, max: 8, w: 3 },
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCP7jMXSY2xbc3KCAE0MHQ-A", a: "Google DeepMind (video)", who: "Official DeepMind channel · research explainers", av: "google", t: "official", tags: ["Everyone"], topic: "Models", vid: true, prefer: /code|codex|context|agent|harness|prompt|how|build|engineer|tool|develop/i, max: 2 },
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC9IEkprr46ScglWU79HF5qQ", a: "Boeing (video)", av: "auto", t: "industry", tags: ["C-Suite", "Marketing & Sales"], topic: "Company Watch", vid: true, kw: true, max: 2 },
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCJWcF0ex7_doPdIQGbVpDsQ", a: "Lockheed Martin (video)", av: "auto", t: "industry", tags: ["C-Suite", "Marketing & Sales"], topic: "Company Watch", vid: true, kw: true, max: 2 },
@@ -185,8 +185,8 @@ const FEEDS = [
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCT-nPlVzJI-ccQXlxjSvJmw", a: "AWS Developers (video)", who: "Official AWS dev channel · Q/Kiro", av: "auto", t: "official", tags: ["Developers"], topic: "Tools", vid: true, kw: true, max: 1 },
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCGp4UBwpTNegd_4nCpuBcow", a: "JetBrains (video)", who: "Official JetBrains channel · Junie/AI Assistant", av: "auto", t: "official", tags: ["Developers"], topic: "Tools", vid: true, kw: true, max: 1 },
   /* AI dev-tool news lane (Bing News; direct links + thumbnails) */
-  { url: "https://www.bing.com/news/search?q=%22Claude%20Code%22&format=rss", a: "Claude Code News", who: "News about Claude Code", av: "anthropic", t: "official", tags: ["Developers"], topic: "Tools", max: 2 },
-  { url: "https://www.bing.com/news/search?q=%22OpenAI%20Codex%22&format=rss", a: "Codex News", who: "News about OpenAI Codex", av: "openai", t: "official", tags: ["Developers"], topic: "Tools", max: 2 },
+  { url: "https://www.bing.com/news/search?q=%22Claude%20Code%22&format=rss", a: "Claude Code News", who: "News about Claude Code", av: "anthropic", t: "official", tags: ["Developers"], topic: "Tools", max: 3, w: 2 },
+  { url: "https://www.bing.com/news/search?q=%22OpenAI%20Codex%22&format=rss", a: "Codex News", who: "News about OpenAI Codex", av: "openai", t: "official", tags: ["Developers"], topic: "Tools", max: 3, w: 2 },
   { url: "https://www.bing.com/news/search?q=%22Cursor%22%20AI%20editor&format=rss", a: "Cursor News", who: "News about the Cursor IDE", av: "auto", t: "industry", tags: ["Developers"], topic: "Tools", max: 1 },
   { url: "https://www.bing.com/news/search?q=%22GitHub%20Copilot%22&format=rss", a: "Copilot News", who: "News about GitHub Copilot", av: "github", t: "official", tags: ["Developers"], topic: "Tools", max: 1 },
   { url: "https://www.bing.com/news/search?q=%22Gemini%20CLI%22%20OR%20%22Gemini%20Code%20Assist%22&format=rss", a: "Gemini Dev News", who: "News about Google's coding tools", av: "google", t: "official", tags: ["Developers"], topic: "Tools", max: 1 },
@@ -289,8 +289,8 @@ const gnUrl = (n) => `https://news.google.com/rss/search?q=${encodeURIComponent(
 const bingUrl = (n) => `https://www.bing.com/news/search?q=${encodeURIComponent(coQ(n))}&format=rss`;
 const prio = COMPANIES.filter(c => c.p);
 const rest = COMPANIES.filter(c => !c.p);
-const slice = Math.floor(new Date().getUTCHours() / 1) % Math.ceil(rest.length / 40);
-const batch = [...prio, ...rest.slice(slice * 40, slice * 40 + 40)];
+const slice = Math.floor(new Date().getUTCHours() / 1) % Math.ceil(rest.length / 70);
+const batch = [...prio, ...rest.slice(slice * 70, slice * 70 + 70)];
 console.log(`company watch: ${prio.length} priority + ${batch.length - prio.length} rotating (slice ${slice})`);
 const companyPosts = [];
 async function pullCompany(c) {
@@ -309,7 +309,7 @@ async function pullCompany(c) {
       && (!WAR_NOISE.test(i.title + " " + i.desc) || MFG_KW.test(i.title + " " + i.desc))
       && (!OFFTOPIC.test(i.title + " " + i.desc) || CORE_KW.test(i.title + " " + i.desc)));
     const cutoff = Date.now() - 14 * 86400000; // only news from the last 2 weeks
-    for (const it of its.filter(i => i.date.getTime() > cutoff).slice(0, c.p ? 3 : 1)) {
+    for (const it of its.filter(i => i.date.getTime() > cutoff).slice(0, c.p ? 4 : 2)) {
       companyPosts.push({
         a: c.n, s: `Company Watch · ${c.side === "s" ? "competitor/supplier" : "customer/market"}${c.score != null ? ` · AI ${c.score}/10` : ""}`,
         av: "auto", t: "industry",
@@ -355,8 +355,9 @@ for (let i = 0; i < needImg.length; i += 12) {
 const isIndPost = (p) => p.topic === "Industry AI" || p.topic === "Company Watch";
 let indSide = allPosts.filter(isIndPost);
 let aiSide = allPosts.filter(p => !isIndPost(p));
-const cap = Math.ceil(Math.min(indSide.length, aiSide.length) * 1.15);
-indSide = indSide.slice(0, cap); aiSide = aiSide.slice(0, cap);
+/* favor industry ~60/40: industry keeps up to 1.6x the base, AI side up to 1.1x */
+const base = Math.min(indSide.length, aiSide.length);
+indSide = indSide.slice(0, Math.ceil(base * 1.6)); aiSide = aiSide.slice(0, Math.ceil(base * 1.1));
 console.log(`mix: ${indSide.length} industry vs ${aiSide.length} AI training/news`);
 const balanced = [...indSide, ...aiSide];
 const withImg = balanced.filter(p => p.img);

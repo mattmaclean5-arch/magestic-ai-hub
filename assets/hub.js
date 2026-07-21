@@ -217,7 +217,9 @@
   sb.auth.onAuthStateChange((_evt, session) => {
     user = session ? session.user : null;
     renderAuthBox();
-    refreshData();
+    // Defer: making Supabase calls inside onAuthStateChange deadlocks the auth lock
+    setTimeout(refreshData, 0);
+    if (user) { const m = document.getElementById("hubModal"); if (m) m.hidden = true; }
   });
   sb.auth.getSession().then(({ data }) => {
     user = data.session ? data.session.user : null;
