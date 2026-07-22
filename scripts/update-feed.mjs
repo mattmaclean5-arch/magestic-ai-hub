@@ -197,8 +197,8 @@ const FEEDS = [
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCT-nPlVzJI-ccQXlxjSvJmw", a: "AWS Developers (video)", who: "Official AWS dev channel · Q/Kiro", av: "auto", t: "official", tags: ["Developers"], topic: "Tools", vid: true, kw: true, max: 1 },
   { url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCGp4UBwpTNegd_4nCpuBcow", a: "JetBrains (video)", who: "Official JetBrains channel · Junie/AI Assistant", av: "auto", t: "official", tags: ["Developers"], topic: "Tools", vid: true, kw: true, max: 1 },
   /* AI dev-tool news lane (Bing News; direct links + thumbnails) */
-  { url: "https://www.bing.com/news/search?q=%22Claude%20Code%22&format=rss", a: "Claude Code News", who: "News about Claude Code", av: "anthropic", t: "official", tags: ["Developers"], topic: "Tools", max: 3, w: 2 },
-  { url: "https://www.bing.com/news/search?q=%22OpenAI%20Codex%22&format=rss", a: "Codex News", who: "News about OpenAI Codex", av: "openai", t: "official", tags: ["Developers"], topic: "Tools", max: 3, w: 2 },
+  { url: "https://www.bing.com/news/search?q=%22Claude%20Code%22&format=rss", a: "Claude Code News", who: "News about Claude Code", av: "anthropic", t: "official", tags: ["Developers"], topic: "Tools", max: 3, w: 5 },
+  { url: "https://www.bing.com/news/search?q=%22OpenAI%20Codex%22&format=rss", a: "Codex News", who: "News about OpenAI Codex", av: "openai", t: "official", tags: ["Developers"], topic: "Tools", max: 3, w: 5 },
   { url: "https://www.bing.com/news/search?q=%22Cursor%22%20AI%20editor&format=rss", a: "Cursor News", who: "News about the Cursor IDE", av: "auto", t: "industry", tags: ["Developers"], topic: "Tools", max: 1 },
   { url: "https://www.bing.com/news/search?q=%22GitHub%20Copilot%22&format=rss", a: "Copilot News", who: "News about GitHub Copilot", av: "github", t: "official", tags: ["Developers"], topic: "Tools", max: 1 },
   { url: "https://www.bing.com/news/search?q=%22Gemini%20CLI%22%20OR%20%22Gemini%20Code%20Assist%22&format=rss", a: "Gemini Dev News", who: "News about Google's coding tools", av: "google", t: "official", tags: ["Developers"], topic: "Tools", max: 1 },
@@ -335,7 +335,7 @@ async function pullCompany(c) {
         body: it.title + (it.desc && !norm(it.desc).startsWith(norm(it.title).slice(0, 50)) ? "\n\n" + it.desc + "…" : ""), tags: ["Marketing & Sales", "Product Managers"], topic: "Company Watch",
         /* Company Watch outranks everything else that day: watchlist companies (customers, partners,
            competitors) are the highest-value news class. Priority accounts get the strongest boost. */
-        w: (c.p ? 7 : 6) + (CORE_KW.test(it.title + " " + it.desc) ? 2 : 0),
+        w: (c.p ? 7 : 6) + (c.side === "s" ? 1 : 0) + ((c.score || 0) / 10) + (CORE_KW.test(it.title + " " + it.desc) ? 2 : 0),
         ...(it.img ? { img: it.img } : {}),
         link: { u: it.link, b: it.title.slice(0, 90), s: (()=>{try{return new URL(it.link).hostname}catch{return "news"}})() },
       });
@@ -433,7 +433,7 @@ merged.forEach(p => {
   /* retro-apply the company-watch boost to carried archive items */
   if (p.topic === "Company Watch") {
     const c = WATCHLIST.find(x => x.n === p.a);
-    p.w = Math.max(p.w || 0, (c && c.p ? 7 : 6) + (CORE_KW.test(p.body || "") ? 2 : 0));
+    p.w = Math.max(p.w || 0, (c && c.p ? 7 : 6) + (c && c.side === "s" ? 1 : 0) + ((c && c.score || 0) / 10) + (CORE_KW.test(p.body || "") ? 2 : 0));
   }
 });
 /* Bing thumbnails are upscaled from tiny sources — replace with the article's full-res og:image.

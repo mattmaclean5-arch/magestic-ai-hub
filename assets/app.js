@@ -69,10 +69,12 @@ function renderFeed(){
   const sort=document.getElementById("sortSel").value;
   let posts=POSTS.filter(p=>matchesRole(p.tags)).filter(FEED_FILTERS[feedFilter]);
   if(q)posts=posts.filter(p=>(p.a+" "+p.body+" "+p.topic+" "+p.tags.join(" ")).toLowerCase().includes(q));
-  // heavyweight posts (w>=4: company-watch and core-relevance stories) stay in the top bucket ~24h longer
+  // heavyweight posts (w>=4: company-watch and core-relevance stories) stay in the top bucket ~24h longer;
+  // in the Developers feed, how-to and instructional videos get an extra boost so education leads
+  const wOf=p=>(p.w||0)+((feedFilter==="Developers"&&p.vid)?3:0);
   const today=new Date().toISOString().slice(0,10);
-  const rankDay=p=>{if((p.w||0)>=4){const dt=new Date(p.d+"T00:00:00Z");dt.setUTCDate(dt.getUTCDate()+1);const s=dt.toISOString().slice(0,10);return s>today?today:s;}return p.d;};
-  posts=[...posts].sort((x,y)=>sort==="topic"?x.topic.localeCompare(y.topic)||y.d.localeCompare(x.d):rankDay(y).localeCompare(rankDay(x))||(y.w||0)-(x.w||0)||y.d.localeCompare(x.d));
+  const rankDay=p=>{if(wOf(p)>=4){const dt=new Date(p.d+"T00:00:00Z");dt.setUTCDate(dt.getUTCDate()+1);const s=dt.toISOString().slice(0,10);return s>today?today:s;}return p.d;};
+  posts=[...posts].sort((x,y)=>sort==="topic"?x.topic.localeCompare(y.topic)||y.d.localeCompare(x.d):rankDay(y).localeCompare(rankDay(x))||wOf(y)-wOf(x)||y.d.localeCompare(x.d));
   if(sort!=="topic")posts=spreadAuthors(posts); // never two consecutive posts from the same source
   // single unified feed, newest first; role/pill/search are pure filters
   document.getElementById("feedCount").textContent=
@@ -247,10 +249,9 @@ function renderUpdated(){
   el.textContent="Updated "+day+time;
 }
 function renderStats(){
-  document.getElementById("statPosts").textContent=POSTS.length;
-  document.getElementById("statLearning").textContent=LEARNING.length;
-  document.getElementById("statCompanies").textContent=COMPANIES.length;
-  document.getElementById("statExperts").textContent=DIRECTORY.length;
+  const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+  set("statPosts",POSTS.length);set("statLearning",LEARNING.length);
+  set("statCompanies",COMPANIES.length);set("statExperts",DIRECTORY.length);
 }
 initTheme();renderUpdated();renderFeedPills();renderFeed();renderWire();renderExpertRail();
 renderPriority();renderCoPills();renderCompanies();
