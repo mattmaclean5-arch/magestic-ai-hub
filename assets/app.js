@@ -236,6 +236,40 @@ function showView(v){
   window.scrollTo({top:0});
 }
 
+/* ---------- SWE-bench chart (Tools page) ---------- */
+const SWE_CLOSED=[["2024-06",49,"Claude 3.5 Sonnet"],["2025-02",62.3,"Claude 3.7 Sonnet"],["2025-05",72.5,"Claude Opus 4"],["2025-08",74.9,"GPT-5"],["2025-11",80.9,"Claude Opus 4.5"],["2026-07",80.3,"Claude Fable 5 · SWE-bench Pro"]];
+const SWE_OPEN=[["2024-07",33,"Llama 3.1 405B"],["2024-12",42,"DeepSeek V3"],["2025-01",49,"DeepSeek R1"],["2025-07",65.8,"Kimi K2"],["2025-11",71.3,"Kimi K2 Thinking"],["2026-06",77.6,"Thinking Machines Inkling"],["2026-07",79,"DeepSeek V4 Flash"]];
+function buildSweSvg(){
+  const W=760,H=340,L=46,R=120,T=18,B=44;
+  const mIdx=d=>{const[y,m]=d.split("-").map(Number);return (y-2024)*12+(m-6);}; // Jun 2024 = 0
+  const xMax=mIdx("2026-07"),yMin=20,yMax=90;
+  const X=d=>L+(W-L-R)*(mIdx(d)/xMax), Y=v=>T+(H-T-B)*(1-(v-yMin)/(yMax-yMin));
+  const line=pts=>pts.map((p,i)=>(i?"L":"M")+X(p[0]).toFixed(1)+","+Y(p[1]).toFixed(1)).join(" ");
+  const grid=[],ylab=[];
+  for(let v=30;v<=80;v+=10){grid.push(`<line x1="${L}" y1="${Y(v)}" x2="${W-R}" y2="${Y(v)}" class="sw-grid"/>`);ylab.push(`<text x="${L-8}" y="${Y(v)+4}" class="sw-lab" text-anchor="end">${v}</text>`);}
+  const xt=[["2024-06","Jun '24"],["2025-01","Jan '25"],["2025-07","Jul '25"],["2026-01","Jan '26"],["2026-07","Jul '26"]]
+    .map(([d,l])=>`<text x="${X(d)}" y="${H-B+18}" class="sw-lab" text-anchor="middle">${l}</text>`).join("");
+  const dots=(pts,cls)=>pts.map(p=>`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="4.5" class="sw-dot ${cls}"><title>${p[2]} — ${p[1]}% (${p[0]})</title></circle>`).join("");
+  const plab=(d,v,txt,cls,dy,anchor)=>`<text x="${X(d)}" y="${Y(v)+dy}" class="sw-plab" text-anchor="${anchor||"middle"}">${txt}</text>`;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="SWE-bench coding scores over time: best closed-weight vs best open-weight model" style="width:100%;height:auto">
+    ${grid.join("")}${ylab.join("")}${xt}
+    <line x1="${L}" y1="${Y(yMin)}" x2="${W-R}" y2="${Y(yMin)}" class="sw-axis"/>
+    <path d="${line(SWE_CLOSED)}" class="sw-line sw-closed"/>
+    <path d="${line(SWE_OPEN)}" class="sw-line sw-open"/>
+    ${dots(SWE_CLOSED,"sw-closed")}${dots(SWE_OPEN,"sw-open")}
+    <text x="${X("2026-07")+10}" y="${Y(80.3)+4}" class="sw-plab sw-closed-t">Closed-weight best</text>
+    <text x="${X("2026-07")+10}" y="${Y(79)+16}" class="sw-plab sw-open-t">Open-weight best</text>
+    ${plab("2024-06",49,"Claude 3.5 Sonnet · 49","sw-closed-t",-14,"start")}
+    ${plab("2025-11",80.9,"Opus 4.5 · 80.9","sw-closed-t",-10)}
+    ${plab("2024-07",33,"Llama 3.1 · 33","sw-open-t",20,"start")}
+    ${plab("2026-06",77.6,"Inkling · 77.6","sw-open-t",22)}
+    ${plab("2026-07",79,"DeepSeek V4 · 79","sw-open-t",-12,"end")}
+  </svg>`;
+}
+function renderSweChart(){
+  const el=document.getElementById("sweChart");
+  if(el)el.innerHTML=buildSweSvg();
+}
 /* ---------- stats + init ---------- */
 function renderUpdated(){
   const el=document.getElementById("lastUpdated");
@@ -255,5 +289,5 @@ function renderStats(){
 }
 initTheme();renderUpdated();renderFeedPills();renderFeed();renderWire();renderExpertRail();
 renderPriority();renderCoPills();renderCompanies();
-renderLearnPills();renderLearning();renderToolsGrid();
+renderLearnPills();renderLearning();renderToolsGrid();renderSweChart();
 renderDirPills();renderDirectory();renderStats();

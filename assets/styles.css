@@ -344,3 +344,20 @@
 .hub-beta{font-family:'Rajdhani','Segoe UI',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.5px;color:#1264a3;-webkit-text-fill-color:#1264a3;vertical-align:super}
 [data-theme="dark"] .hub-beta{color:#6cb0e4;-webkit-text-fill-color:#6cb0e4}
 .tools-sec{grid-column:1/-1;margin:18px 2px 2px;font-size:17px;letter-spacing:.3px;color:var(--accent);border-bottom:2px solid var(--border);padding-bottom:6px}
+
+/* ---------- SWE-bench chart ---------- */
+:root{--chart-closed:#1264a3;--chart-open:#a4660e}
+[data-theme="dark"]{--chart-closed:#4a97d4;--chart-open:#c1832a}
+.sw-grid{stroke:var(--border);stroke-width:1}
+.sw-axis{stroke:var(--ink-3);stroke-width:1.2}
+.sw-lab{fill:var(--ink-3);font-size:11px}
+.sw-plab{fill:var(--ink-2);font-size:11px;font-weight:600}
+.sw-line{fill:none;stroke-width:2.5;stroke-linejoin:round}
+.sw-line.sw-closed{stroke:var(--chart-closed)}
+.sw-line.sw-open{stroke:var(--chart-open)}
+.sw-dot{stroke:var(--card);stroke-width:2}
+.sw-dot.sw-closed{fill:var(--chart-closed)}
+.sw-dot.sw-open{fill:var(--chart-open)}
+.sw-closed-t{color:var(--chart-closed);fill:var(--chart-closed)}
+.sw-open-t{color:var(--chart-open);fill:var(--chart-open)}
+.sw-key{font-weight:700;font-size:12px}
