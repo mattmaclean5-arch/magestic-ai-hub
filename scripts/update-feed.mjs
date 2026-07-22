@@ -275,7 +275,8 @@ for (const f of FEEDS) {
     if (f.prefer) feedItems = [...feedItems.filter(i => f.prefer.test(i.title)), ...feedItems.filter(i => !f.prefer.test(i.title))];
     for (const it of feedItems.slice(0, f.max || DEFAULT_PER_FEED)) {
       const wt = (f.w || 0) + (CORE_KW.test(it.title + " " + it.desc) ? 3 : 0)
-        + ((f.topic === "Tools" && (f.vid || (f.tags || []).includes("Developers"))) ? 2 : 0) + (f.vid ? 1 : 0);
+        + ((f.topic === "Tools" && (f.vid || (f.tags || []).includes("Developers"))) ? 2 : 0) + (f.vid ? 1 : 0)
+        + (f.topic === "Industry AI" ? 1 : 0);
       posts.push({
         a: f.a, s: f.who || `via ${new URL(f.url).hostname}`, av: f.av, t: f.t,
         ...(wt ? { w: wt } : {}),
@@ -371,7 +372,7 @@ let indSide = allPosts.filter(isIndPost);
 let aiSide = allPosts.filter(p => !isIndPost(p));
 /* favor industry ~60/40: industry keeps up to 1.6x the base, AI side up to 1.1x */
 const base = Math.min(indSide.length, aiSide.length);
-indSide = indSide.slice(0, Math.ceil(base * 1.6)); aiSide = aiSide.slice(0, Math.ceil(base * 1.1));
+indSide = indSide.slice(0, Math.ceil(base * 1.8)); aiSide = aiSide.slice(0, Math.ceil(base * 1.1));
 console.log(`mix: ${indSide.length} industry vs ${aiSide.length} AI training/news`);
 const balanced = [...indSide, ...aiSide];
 const withImg = balanced.filter(p => p.img);

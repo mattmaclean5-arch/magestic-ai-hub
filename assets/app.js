@@ -26,6 +26,17 @@ function initTheme(){
   if(!t)t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";
   setTheme(t);
 }
+function spreadAuthors(list){
+  const out=[...list];
+  for(let i=1;i<out.length;i++){
+    if(out[i].a===out[i-1].a){
+      let j=i+1;
+      while(j<out.length&&out[j].a===out[i-1].a)j++;
+      if(j<out.length){const [x]=out.splice(j,1);out.splice(i,0,x);}
+    }
+  }
+  return out;
+}
 function interleaveByAuthor(posts){
   const by={};posts.forEach(p=>{(by[p.a]=by[p.a]||[]).push(p);});
   const qs=Object.values(by),out=[];let added=true;
@@ -66,6 +77,7 @@ function renderFeed(){
   if(sort!=="topic"){
     if(feedFilter==="Instructional")posts.sort((x,y)=>(y.w||0)-(x.w||0)||y.d.localeCompare(x.d));
     else if(feedFilter==="Videos")posts=interleaveByAuthor(posts);
+    posts=spreadAuthors(posts); // never two consecutive posts from the same source
   }
   // single unified feed, newest first; role/pill/search are pure filters
   document.getElementById("feedCount").textContent=
