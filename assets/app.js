@@ -6,11 +6,8 @@ let activeRole = "Everyone";
 let feedFilter = "All";
 const FEED_FILTERS = {
   "All": p=>true,
-  "Industry News": p=>p.topic==="Industry AI"||p.topic==="Company Watch",
-  "AI News": p=>["Models","Agents","Adoption"].includes(p.topic)&&!p.vid,
-  "Developers": p=>(p.topic==="Tools"||p.tags.includes("Developers"))&&!p.vid,
-  "Instructional": p=>!!p.vid&&(p.topic==="Tools"||p.tags.includes("Developers")),
-  "Videos": p=>!!p.vid,
+  "Marketing": p=>p.tags.includes("Marketing & Sales")||p.topic==="Company Watch",
+  "Developers": p=>p.topic==="Tools"||p.tags.includes("Developers"),
   "Regulatory": p=>p.topic==="Regulatory",
   "Saved": p=>!!(window.HUB&&HUB.isSaved(postKey(p)))
 };
@@ -73,12 +70,7 @@ function renderFeed(){
   let posts=POSTS.filter(p=>matchesRole(p.tags)).filter(FEED_FILTERS[feedFilter]);
   if(q)posts=posts.filter(p=>(p.a+" "+p.body+" "+p.topic+" "+p.tags.join(" ")).toLowerCase().includes(q));
   posts=[...posts].sort((x,y)=>sort==="topic"?x.topic.localeCompare(y.topic)||y.d.localeCompare(x.d):y.d.localeCompare(x.d)||(y.w||0)-(x.w||0));
-  // per-pill differentiation: Instructional surfaces the best tutorials first; Videos rotates authors for variety
-  if(sort!=="topic"){
-    if(feedFilter==="Instructional")posts.sort((x,y)=>(y.w||0)-(x.w||0)||y.d.localeCompare(x.d));
-    else if(feedFilter==="Videos")posts=interleaveByAuthor(posts);
-    posts=spreadAuthors(posts); // never two consecutive posts from the same source
-  }
+  if(sort!=="topic")posts=spreadAuthors(posts); // never two consecutive posts from the same source
   // single unified feed, newest first; role/pill/search are pure filters
   document.getElementById("feedCount").textContent=
     `${posts.length} post${posts.length===1?"":"s"}`+(activeRole!=="Everyone"?` · filtered for ${activeRole}`:"")+(q?` · matching "${q}"`:"");
