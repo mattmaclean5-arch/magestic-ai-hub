@@ -361,3 +361,5 @@
 .sw-closed-t{color:var(--chart-closed);fill:var(--chart-closed)}
 .sw-open-t{color:var(--chart-open);fill:var(--chart-open)}
 .sw-key{font-weight:700;font-size:12px}
+.cost-bar.sw-closed{fill:var(--chart-closed)}
+.cost-bar.sw-open{fill:var(--chart-open)}

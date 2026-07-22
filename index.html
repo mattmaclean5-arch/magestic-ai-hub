@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;600&display=swap" rel="stylesheet">
 <title>Magestic AI Hub · Research &amp; Learning Platform</title>
-<link rel="stylesheet" href="assets/styles.css?v=13">
+<link rel="stylesheet" href="assets/styles.css?v=14">
 </head>
 <body>
 
@@ -250,10 +250,14 @@
     <h1>AI Tooling</h1>
     <p>AI Tooling To Research.</p>
     <div class="card" style="margin:14px 0 18px;padding:16px 18px">
-      <h3 style="margin-bottom:2px">The closing gap: coding capability, closed vs. open weight</h3>
-      <p style="font-size:12.5px;color:var(--ink-2);margin-bottom:10px">Best available SWE-bench score by model class at each release. <span class="sw-key sw-closed-t">&#9632; Closed-weight</span>&nbsp;&nbsp;<span class="sw-key sw-open-t">&#9632; Open-weight</span></p>
+      <h3 style="margin-bottom:2px">Coding capability by model family — SWE-bench over time</h3>
+      <p style="font-size:12.5px;color:var(--ink-2);margin-bottom:10px">One line per model family. <b>Solid = closed-weight</b> · <b>Dashed = open-weight</b>. Hover any point for the exact model and score.</p>
       <div id="sweChart"></div>
-      <p style="font-size:11.5px;color:var(--ink-3);margin-top:8px">SWE-bench Verified (% of real GitHub issues fixed autonomously); the Jul 2026 closed point is Claude Fable 5 on the harder SWE-bench Pro edition. Hover any point for the model. Sources: vendor reports and third-party trackers, July 2026 — figures drift monthly. The 16-point gap of mid-2024 is now 1–3 points.</p>
+      <p style="font-size:11.5px;color:var(--ink-3);margin:8px 0 18px">SWE-bench Verified (% of real GitHub issues fixed autonomously); the Jul 2026 Claude point is Fable 5 on the harder SWE-bench Pro edition. Sources: vendor reports and third-party trackers, July 2026 — figures drift monthly.</p>
+      <h3 style="margin-bottom:2px">What they cost — price per 1M output tokens</h3>
+      <p style="font-size:12.5px;color:var(--ink-2);margin-bottom:10px"><span class="sw-key sw-closed-t">&#9632; Closed-weight API</span>&nbsp;&nbsp;<span class="sw-key sw-open-t">&#9632; Open-weight (hosted)</span></p>
+      <div id="costChart"></div>
+      <p style="font-size:11.5px;color:var(--ink-3);margin-top:8px">Representative list prices, July 2026; hosted open-weight prices vary by provider. Note the pattern: near-frontier capability now exists at every price point.</p>
     </div>
   </div>
   <div class="grid-2" id="toolsGrid"></div>
@@ -283,8 +287,8 @@
 <script src="data/feed-live.js"></script>
 <script src="data/directory.js"></script>
 <script src="data/companies.js"></script>
-<script src="assets/app.js?v=13"></script>
+<script src="assets/app.js?v=14"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-<script src="assets/hub.js?v=13"></script>
+<script src="assets/hub.js?v=14"></script>
 </body>
 </html>

@@ -236,39 +236,65 @@ function showView(v){
   window.scrollTo({top:0});
 }
 
-/* ---------- SWE-bench chart (Tools page) ---------- */
-const SWE_CLOSED=[["2024-06",49,"Claude 3.5 Sonnet"],["2025-02",62.3,"Claude 3.7 Sonnet"],["2025-05",72.5,"Claude Opus 4"],["2025-08",74.9,"GPT-5"],["2025-11",80.9,"Claude Opus 4.5"],["2026-07",80.3,"Claude Fable 5 · SWE-bench Pro"]];
-const SWE_OPEN=[["2024-07",33,"Llama 3.1 405B"],["2024-12",42,"DeepSeek V3"],["2025-01",49,"DeepSeek R1"],["2025-07",65.8,"Kimi K2"],["2025-11",71.3,"Kimi K2 Thinking"],["2026-06",77.6,"Thinking Machines Inkling"],["2026-07",79,"DeepSeek V4 Flash"]];
+/* ---------- benchmark & cost charts (Tools page) ---------- */
+const SWE_SERIES=[
+ {n:"Claude",c:"#1264a3",closed:true,pts:[["2024-06",49,"Claude 3.5 Sonnet"],["2025-02",62.3,"Claude 3.7 Sonnet"],["2025-05",72.5,"Claude Opus 4"],["2025-11",80.9,"Claude Opus 4.5"],["2026-07",80.3,"Claude Fable 5 · SWE-bench Pro"]]},
+ {n:"GPT",c:"#5f3dc4",closed:true,pts:[["2024-05",33,"GPT-4o"],["2024-12",48.9,"OpenAI o1"],["2025-08",74.9,"GPT-5"]]},
+ {n:"Gemini",c:"#0891b2",closed:true,pts:[["2025-03",63.8,"Gemini 2.5 Pro"],["2025-11",76.2,"Gemini 3 Pro"]]},
+ {n:"Grok",c:"#c2255c",closed:true,pts:[["2025-07",72.8,"Grok 4"]]},
+ {n:"DeepSeek",c:"#e8590c",closed:false,pts:[["2024-12",42,"DeepSeek V3"],["2025-01",49,"DeepSeek R1"],["2025-09",67,"DeepSeek V3.2"],["2026-07",79,"DeepSeek V4 Flash"]]},
+ {n:"Kimi",c:"#2f9e44",closed:false,pts:[["2025-07",65.8,"Kimi K2"],["2025-11",71.3,"Kimi K2 Thinking"]]},
+ {n:"Qwen",c:"#9c5f1d",closed:false,pts:[["2025-07",69.6,"Qwen3-Coder"]]},
+ {n:"gpt-oss",c:"#b02e8c",closed:false,pts:[["2025-08",62.4,"gpt-oss-120b"]]},
+ {n:"Inkling",c:"#4f9e0f",closed:false,pts:[["2026-07",77.6,"Thinking Machines Inkling"]]}
+];
 function buildSweSvg(){
-  const W=760,H=340,L=46,R=120,T=18,B=44;
-  const mIdx=d=>{const[y,m]=d.split("-").map(Number);return (y-2024)*12+(m-6);}; // Jun 2024 = 0
-  const xMax=mIdx("2026-07"),yMin=20,yMax=90;
+  const W=780,H=360,L=44,R=112,T=16,B=42;
+  const mIdx=d=>{const[y,m]=d.split("-").map(Number);return (y-2024)*12+(m-5);}; // May 2024 = 0
+  const xMax=mIdx("2026-07"),yMin=25,yMax=88;
   const X=d=>L+(W-L-R)*(mIdx(d)/xMax), Y=v=>T+(H-T-B)*(1-(v-yMin)/(yMax-yMin));
-  const line=pts=>pts.map((p,i)=>(i?"L":"M")+X(p[0]).toFixed(1)+","+Y(p[1]).toFixed(1)).join(" ");
-  const grid=[],ylab=[];
-  for(let v=30;v<=80;v+=10){grid.push(`<line x1="${L}" y1="${Y(v)}" x2="${W-R}" y2="${Y(v)}" class="sw-grid"/>`);ylab.push(`<text x="${L-8}" y="${Y(v)+4}" class="sw-lab" text-anchor="end">${v}</text>`);}
-  const xt=[["2024-06","Jun '24"],["2025-01","Jan '25"],["2025-07","Jul '25"],["2026-01","Jan '26"],["2026-07","Jul '26"]]
-    .map(([d,l])=>`<text x="${X(d)}" y="${H-B+18}" class="sw-lab" text-anchor="middle">${l}</text>`).join("");
-  const dots=(pts,cls)=>pts.map(p=>`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="4.5" class="sw-dot ${cls}"><title>${p[2]} — ${p[1]}% (${p[0]})</title></circle>`).join("");
-  const plab=(d,v,txt,cls,dy,anchor)=>`<text x="${X(d)}" y="${Y(v)+dy}" class="sw-plab" text-anchor="${anchor||"middle"}">${txt}</text>`;
-  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="SWE-bench coding scores over time: best closed-weight vs best open-weight model" style="width:100%;height:auto">
-    ${grid.join("")}${ylab.join("")}${xt}
-    <line x1="${L}" y1="${Y(yMin)}" x2="${W-R}" y2="${Y(yMin)}" class="sw-axis"/>
-    <path d="${line(SWE_CLOSED)}" class="sw-line sw-closed"/>
-    <path d="${line(SWE_OPEN)}" class="sw-line sw-open"/>
-    ${dots(SWE_CLOSED,"sw-closed")}${dots(SWE_OPEN,"sw-open")}
-    <text x="${X("2026-07")+10}" y="${Y(80.3)+4}" class="sw-plab sw-closed-t">Closed-weight best</text>
-    <text x="${X("2026-07")+10}" y="${Y(79)+16}" class="sw-plab sw-open-t">Open-weight best</text>
-    ${plab("2024-06",49,"Claude 3.5 Sonnet · 49","sw-closed-t",-14,"start")}
-    ${plab("2025-11",80.9,"Opus 4.5 · 80.9","sw-closed-t",-10)}
-    ${plab("2024-07",33,"Llama 3.1 · 33","sw-open-t",20,"start")}
-    ${plab("2026-06",77.6,"Inkling · 77.6","sw-open-t",22)}
-    ${plab("2026-07",79,"DeepSeek V4 · 79","sw-open-t",-12,"end")}
-  </svg>`;
+  let out=[];
+  for(let v=30;v<=80;v+=10){out.push(`<line x1="${L}" y1="${Y(v)}" x2="${W-R}" y2="${Y(v)}" class="sw-grid"/><text x="${L-8}" y="${Y(v)+4}" class="sw-lab" text-anchor="end">${v}</text>`);}
+  [["2024-06","Jun '24"],["2025-01","Jan '25"],["2025-07","Jul '25"],["2026-01","Jan '26"],["2026-07","Jul '26"]]
+    .forEach(([d,l])=>out.push(`<text x="${X(d)}" y="${H-B+18}" class="sw-lab" text-anchor="middle">${l}</text>`));
+  out.push(`<line x1="${L}" y1="${Y(yMin)}" x2="${W-R}" y2="${Y(yMin)}" class="sw-axis"/>`);
+  // series lines + dots
+  for(const sr of SWE_SERIES){
+    if(sr.pts.length>1){
+      const d=sr.pts.map((p,i)=>(i?"L":"M")+X(p[0]).toFixed(1)+","+Y(p[1]).toFixed(1)).join(" ");
+      out.push(`<path d="${d}" class="sw-line" style="stroke:${sr.c}"${sr.closed?"":" stroke-dasharray=\'6 4\'"}/>`);
+    }
+    for(const p of sr.pts)out.push(`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="4.2" class="sw-dot" style="fill:${sr.c}"><title>${p[2]} — ${p[1]}% (${p[0]})</title></circle>`);
+  }
+  // right-edge direct labels with collision nudging
+  const labels=SWE_SERIES.map(sr=>{const last=sr.pts[sr.pts.length-1];return {n:sr.n,c:sr.c,y:Y(last[1])};}).sort((a,b)=>a.y-b.y);
+  for(let i=1;i<labels.length;i++)if(labels[i].y-labels[i-1].y<14)labels[i].y=labels[i-1].y+14;
+  for(const lb of labels)out.push(`<text x="${W-R+10}" y="${lb.y+4}" class="sw-plab" style="fill:${lb.c}">${lb.n}</text>`);
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="SWE-bench coding scores over time by model family; solid lines are closed-weight, dashed are open-weight" style="width:100%;height:auto">${out.join("")}</svg>`;
+}
+const COST_BARS=[
+ ["Claude Fable 5",50,true],["GPT-5.6 Sol",30,true],["Claude Opus 4.8",25,true],
+ ["Gemini 3.1 Pro",15,true],["GPT-5.6 Terra",15,true],["Claude Sonnet 5",10,true],
+ ["Gemini 3.5 Flash",9,true],["Qwen3.7 Max (hosted)",7.5,false],["Grok 4.5",6,true],
+ ["GPT-5.6 Luna",6,true],["Inkling (hosted)",4.68,false],["Muse Spark 1.1",4.25,true],
+ ["Kimi K2 (hosted)",3,false],["DeepSeek V4 (hosted)",1.7,false]
+];
+function buildCostSvg(){
+  const W=780,rowH=25,L=190,R=60,T=12,B=30,H=T+B+COST_BARS.length*rowH;
+  const max=52,X=v=>L+(W-L-R)*(v/max);
+  let out=[];
+  for(const g of [10,20,30,40,50])out.push(`<line x1="${X(g)}" y1="${T}" x2="${X(g)}" y2="${H-B}" class="sw-grid"/><text x="${X(g)}" y="${H-B+16}" class="sw-lab" text-anchor="middle">$${g}</text>`);
+  COST_BARS.forEach(([n,v,closed],i)=>{
+    const y=T+i*rowH;
+    out.push(`<text x="${L-8}" y="${y+rowH/2+4}" class="sw-lab" text-anchor="end">${n}</text>`);
+    out.push(`<rect x="${L}" y="${y+4}" width="${Math.max(X(v)-L,2)}" height="${rowH-9}" rx="4" class="cost-bar ${closed?"sw-closed":"sw-open"}"><title>${n} — $${v} per 1M output tokens (${closed?"closed-weight API":"open-weight, hosted"})</title></rect>`);
+    out.push(`<text x="${X(v)+6}" y="${y+rowH/2+4}" class="sw-plab">$${v}</text>`);
+  });
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Price per million output tokens by model" style="width:100%;height:auto">${out.join("")}</svg>`;
 }
 function renderSweChart(){
-  const el=document.getElementById("sweChart");
-  if(el)el.innerHTML=buildSweSvg();
+  const el=document.getElementById("sweChart");if(el)el.innerHTML=buildSweSvg();
+  const ce=document.getElementById("costChart");if(ce)ce.innerHTML=buildCostSvg();
 }
 /* ---------- stats + init ---------- */
 function renderUpdated(){
