@@ -2,9 +2,10 @@ name: Refresh live feed
 
 on:
   schedule:
-        - cron: "*/5 * * * *"   # every 5 minutes (GitHub batches runs as capacity allows)
+            - cron: "17 * * * *"   # hourly fallback; Supabase dispatches the every-15-min refresh
   workflow_dispatch: {}    # manual "Run workflow" button
 
+concurrency: {group: feed-refresh, cancel-in-progress: false}
 permissions:
   contents: write
 
@@ -25,7 +26,7 @@ jobs:
           if ! git diff --quiet data/feed-live.js; then
             git add data/feed-live.js
             git commit -m "chore: hourly feed refresh"
-            git push
+                      git push || (git pull --rebase -X theirs origin main && git push)
           else
             echo "No feed changes."
           fi
