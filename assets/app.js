@@ -266,6 +266,9 @@ function buildSweSvg(){
     }
     for(const p of sr.pts)out.push(`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="4.2" class="sw-dot" style="fill:${sr.c}"><title>${p[2]} — ${p[1]}% (${p[0]})</title></circle>`);
   }
+  // headline annotation: Fable 5 is the top published score, on the harder Pro edition
+  out.push(`<text x="${X("2026-07")-8}" y="${Y(80.3)-24}" class="sw-plab" style="fill:#1264a3" text-anchor="end">Fable 5 · 80.3</text>`);
+  out.push(`<text x="${X("2026-07")-8}" y="${Y(80.3)-11}" class="sw-lab" text-anchor="end">(harder SWE-bench Pro)</text>`);
   // right-edge direct labels with collision nudging
   const labels=SWE_SERIES.map(sr=>{const last=sr.pts[sr.pts.length-1];return {n:sr.n,c:sr.c,y:Y(last[1])};}).sort((a,b)=>a.y-b.y);
   for(let i=1;i<labels.length;i++)if(labels[i].y-labels[i-1].y<14)labels[i].y=labels[i-1].y+14;
