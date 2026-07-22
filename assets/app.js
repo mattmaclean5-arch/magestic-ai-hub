@@ -186,8 +186,8 @@ function renderLearning(){
 
 /* ---------- tools ---------- */
 function renderToolsGrid(){
-  const items=TOOLS.filter(t=>matchesRole(t.who));
-  document.getElementById("toolsGrid").innerHTML=items.map(t=>`
+  const items=TOOLS.filter(t=>t.sec||matchesRole(t.who));
+  document.getElementById("toolsGrid").innerHTML=items.map(t=>t.sec?`<h2 class="tools-sec">${t.sec}</h2>`:`
     <div class="card res-card">
       <h3>${t.h}</h3>
       <p>${t.p}</p>

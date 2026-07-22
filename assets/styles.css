@@ -343,3 +343,4 @@
 .hub-center .hub-sub{white-space:nowrap}
 .hub-beta{font-family:'Rajdhani','Segoe UI',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.5px;color:#1264a3;-webkit-text-fill-color:#1264a3;vertical-align:super}
 [data-theme="dark"] .hub-beta{color:#6cb0e4;-webkit-text-fill-color:#6cb0e4}
+.tools-sec{grid-column:1/-1;margin:18px 2px 2px;font-size:17px;letter-spacing:.3px;color:var(--accent);border-bottom:2px solid var(--border);padding-bottom:6px}

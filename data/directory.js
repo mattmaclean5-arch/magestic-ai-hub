@@ -3,11 +3,11 @@ const EXPERTS = [
  {n:"Ethan Mollick",r:"Wharton professor · AI adoption in organizations",av:"mollick",
   why:"The most-read voice on how organizations actually get value from AI. Pitched at leadership; zero hype tolerance.",
   links:[["One Useful Thing","https://www.oneusefulthing.org"],["LinkedIn","https://www.linkedin.com/in/emollick"]],
-  tags:["C-Suite","Product Managers","Marketing & Sales"]},
+  tags:["Marketing & Sales", "Product Managers"]},
  {n:"Simon Willison",r:"Independent researcher and blogger",av:"willison",
   why:"The field's most rigorous independent blogger. Reads every release so you don't have to; his agent-pattern writing is our recommended developer reading.",
   links:[["simonwillison.net","https://simonwillison.net"],["Newsletter","https://simonw.substack.com"]],
-  tags:["Developers","Database Engineers"]},
+  tags:["Developers", "Database Engineers"]},
  {n:"Kent Beck",r:"Creator of test-driven development",av:"beck",
   why:"AI and the craft of software, from the person who invented the testing discipline our QA conversations build on.",
   links:[["Newsletter","https://newsletter.kentbeck.com"]],
@@ -15,11 +15,11 @@ const EXPERTS = [
  {n:"Andrej Karpathy",r:"AI researcher and educator",av:"industry",
   why:"Former OpenAI/Tesla; his long-form explainers are the best deep technical education on how LLMs actually work.",
   links:[["karpathy.ai","https://karpathy.ai"],["YouTube","https://www.youtube.com/@AndrejKarpathy"]],
-  tags:["Developers","Database Engineers"]},
+  tags:["Developers", "Database Engineers"]},
  {n:"Andrew Ng",r:"DeepLearning.AI founder",av:"industry",
   why:"The Batch newsletter is a calm weekly digest of what mattered; his short courses are free and consistently good.",
   links:[["DeepLearning.AI","https://www.deeplearning.ai"],["LinkedIn","https://www.linkedin.com/in/andrewyng"]],
-  tags:["Everyone","Product Managers"]},
+  tags:["Everyone", "Product Managers"]},
  {n:"Matt Pocock",r:"AI Hero · developer education",av:"industry",
   why:"Hands-on AI engineering training for working developers; the practical complement to the vendor academies.",
   links:[["aihero.dev","https://www.aihero.dev"]],
@@ -27,11 +27,11 @@ const EXPERTS = [
  {n:"Arvind Narayanan",r:"Princeton professor · AI Snake Oil",av:"industry",
   why:"The sharpest vendor-neutral filter for AI claims. His book and newsletter AI Snake Oil separate what AI can actually do from what marketing says it can.",
   links:[["aisnakeoil.com","https://www.aisnakeoil.com"]],
-  tags:["Everyone","C-Suite"]},
+  tags:["Everyone", "Marketing & Sales"]},
  {n:"Cassie Kozyrkov",r:"Decision scientist · ex-Google Chief Decision Scientist",av:"industry",
   why:"Makes AI decision-making legible to non-technical leaders; her writing on when to trust models is required reading before any AI-assisted decision process.",
   links:[["kozyrkov.medium.com","https://kozyrkov.medium.com"],["LinkedIn","https://www.linkedin.com/in/kozyrkov"]],
-  tags:["C-Suite","Product Managers"]},
+  tags:["Marketing & Sales", "Product Managers"]},
  {n:"ThursdAI",r:"Weekly AI release tracking",av:"industry",
   why:"Tracks every model release week by week. When someone asks 'did something ship this week', this is the answer.",
   links:[["thursdai.news","https://thursdai.news"]],
@@ -39,18 +39,18 @@ const EXPERTS = [
  {n:"CompositesWorld + industry press",r:"Aerospace and composites manufacturing",av:"industry",
   why:"Where AI meets our customers' world: automation in aerostructures, thermoplastics programs, and shop-floor tech.",
   links:[["compositesworld.com","https://www.compositesworld.com"]],
-  tags:["Marketing & Sales","C-Suite","Application Specialists"]}
+  tags:["Marketing & Sales", "Application Specialists"]}
 ];
 
 /* Full directory. Vendor-neutral only: no employees of AI model vendors or tool vendors.
    Fields: n=name, r=role line, c=category. u=link (defaults to a LinkedIn people search on the name). */
 const DIR_CATS = {
-  "Research & Academia":["Developers","Database Engineers","C-Suite"],
-  "Adoption & Strategy":["C-Suite","Product Managers","Marketing & Sales"],
+  "Research & Academia":["Developers","Database Engineers","Marketing & Sales"],
+  "Adoption & Strategy":["Marketing & Sales","Product Managers","Marketing & Sales"],
   "Engineering & Education":["Developers","Database Engineers"],
-  "Safety & Critical Perspectives":["C-Suite","Product Managers"],
+  "Safety & Critical Perspectives":["Marketing & Sales","Product Managers"],
   "Media & Newsletters":["Everyone"],
-  "Industrial & Manufacturing":["C-Suite","Application Specialists","Product Managers","Marketing & Sales"],
+  "Industrial & Manufacturing":["Marketing & Sales","Application Specialists","Product Managers","Marketing & Sales"],
   "Data Engineering":["Database Engineers"]
 };
 const DIRECTORY = [

@@ -11,7 +11,7 @@ const POSTS_LIVE = [
   "when": "Jul 22",
   "body": "The US wants to contain China’s AI. Silicon Valley keeps using it\n\nAs Apple, Thinking Machines, and developers worldwide embrace Chinese AI models such as Kimi K3, U.S. policymakers are struggling to protect the AI lead.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -136,7 +136,6 @@ const POSTS_LIVE = [
   "when": "Jul 22",
   "body": "BAE Systems Unveils Brontanax: UK’s First Autonomous Combat Aircraft\n\nBAE Systems has unveiled Brontanax, the UK&#8217;s first uncrewed autonomous Collaborative Combat Aircraft (CCA), at the Farnborough International Airshow. It is designed to extend combat mass for armed forces by complementing existing and future crewed aircra…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales"
   ],
   "topic": "Industry AI",
@@ -157,7 +156,6 @@ const POSTS_LIVE = [
   "when": "Jul 22",
   "body": "Vattenfall, Dutch AI Infrastructure Company Explore Wind-Powered Offshore Data Centres\n\nVattenfall and Dutch AI infrastructure company Project Enki have joined forces on the potential [&#8230;]…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales"
   ],
   "topic": "Industry AI",
@@ -177,7 +175,6 @@ const POSTS_LIVE = [
   "when": "Jul 22",
   "body": "SpaceX Could Challenge AWS, Microsoft and Google in Pentagon AI Deal\n\nSpaceX is reportedly in talks with the Pentagon to provide AI data center capacity, potentially expanding its role in defense infrastructure strategy.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -524,7 +521,7 @@ const POSTS_LIVE = [
   "when": "Jul 22",
   "body": "AI reduces founders’ need for capital, says Revolut Business\n\nAI is reducing the amount of capital startups need to build global businesses, shifting the battle for founders away from funding and towards which countries offer the best environment to scale, ...…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers",
    "Everyone"
   ],
@@ -566,7 +563,7 @@ const POSTS_LIVE = [
   "when": "Jul 22",
   "body": "New rules of AI chip access: What Nvidia's whitelist means for India\n\nThe reported screening system is aimed at stopping chips from reaching China, but startups and smaller cloud providers in India could face delays and additional scrutiny.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -586,7 +583,6 @@ const POSTS_LIVE = [
   "when": "Jul 22",
   "body": "Nvidia Unveils Vera AI CPU, Taking Aim at AMD And Intel In The Battle For Data Centers\n\nAccording to Nvidia, the first Vera Rubin processors were delivered to customers in June, including AI companies like OpenAI, Anthropic and SpaceX.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -608,7 +604,7 @@ const POSTS_LIVE = [
   "when": "Jul 22",
   "body": "Why Anthropic doubled its AI policy funding to $40 million amid growing AI safety concerns\n\nAnthropic donates $40 million for AI safety and policy as Claude Mythos raises security concerns ahead of US midterms and calls for tougher AI rules.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers",
    "Everyone"
   ],
@@ -711,7 +707,7 @@ const POSTS_LIVE = [
   "when": "Jul 22",
   "body": "AI regulation scrutiny grows ahead of Sam Altman's meeting with US lawmakers\n\nA new and undisclosed OpenAI system that is currently referred to by many of those in the AI community as “GPT-6” is changing expectations among investors as CEO Sam Altman gets ready to brief U.S.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers",
    "Everyone"
   ],
@@ -793,9 +789,8 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "Industrial AI Events in September 2026: Global Conference Guide\n\nSeptember 2026 is the biggest month on the manufacturing calendar, anchored by IMTS 2026 in Chicago (September 14-19, 1,800+ exhibitors, 89,020 registrants in 2024). IIoT World&#8217;s Industrial AI Summit opens the month on September 9-10 as a free virtual co…",
   "tags": [
-   "C-Suite",
-   "Application Specialists",
-   "Marketing & Sales"
+   "Marketing & Sales",
+   "Application Specialists"
   ],
   "topic": "Industry AI",
   "link": {
@@ -815,9 +810,8 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "U.K.-based Humanoid secures $152M in Series A funding\n\nHumanoid said it has reached a $1.35 billion valuation as it scales its AI-driven industrial robots and expands commercial deployments. The post U.K.-based Humanoid secures $152M in Series A funding appeared first on The Robot Report .…",
   "tags": [
-   "C-Suite",
-   "Application Specialists",
-   "Marketing & Sales"
+   "Marketing & Sales",
+   "Application Specialists"
   ],
   "topic": "Industry AI",
   "link": {
@@ -837,9 +831,8 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "LightForce Orthodontics appoints Erica Rogers as new CEO\n\nRogers, a medtech industry veteran, will be tasked with scaling the company's 3D printing-enabled Generative Braces system beyond the 200,000 patients already treated.…",
   "tags": [
-   "C-Suite",
-   "Application Specialists",
-   "Marketing & Sales"
+   "Marketing & Sales",
+   "Application Specialists"
   ],
   "topic": "Industry AI",
   "img": "https://storage.ghost.io/c/f0/da/f0da4f6a-82b1-46cf-ab14-3cc5e6b2d473/content/images/2026/07/ERICA_ROGERS_CEO_LIGHTFORCE_JULY_2026-by_Jane_Lalonde.png",
@@ -859,7 +852,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "Weak AI Regulation Is Worse Than No Regulation, Researchers Claim\n\nGame theory says the best AI safety regulation is strict and targets everyone in the supply chain, according to the paper.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers",
    "Everyone"
   ],
@@ -881,7 +874,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "AI & Tech Brief: Blackburn’s AI meeting in the Oval Office\n\nWelcome to WP Intelligence’s AI & Tech Brief, where we examine the transformative technology of artificial intelligence at the intersection of innovation, policy and power. Get in touch at ...…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers",
    "Everyone"
   ],
@@ -903,7 +896,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "Responsible AI Is Becoming a Growth Strategy\n\nAs artificial intelligence becomes embedded in products, services, and decision making, trust is emerging as a critical competitive advantage. Corporate Digital Responsibility (CDR) must evolve from a ...…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -924,7 +917,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "European Commission publishes guideline on transparency obligations under AI Act\n\nThe European Commission on Monday published new guidelines to assist providers and deployers of artificial intelligence (AI) systems in fulfilling transparency obligations under the EU’s AI Act, ...…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -945,7 +938,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "More than 400 Austinites help shape community-led AI governance framework\n\nAs artificial intelligence becomes more integrated into everyday life, a group of Austin residents are working to ensure the technology develops with community input, not just decisions made by tech ...…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -966,7 +959,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "New Book Shows Leaders How to Operationalize AI Governance Before Regulators Force Them To\n\nLOS ANGELES, CA, UNITED STATES, July 21, 2026 /EINPresswire.com/ — Key obligations under the European Union’s AI Act become enforceable on August 2. U.S. courts and regulators are sharpening their ...…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -987,7 +980,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "The AI Strategy Roadmap: Five drivers of successful AI transformation\n\nExplore Microsoft’s AI Strategy Roadmap and learn how organizations can move beyond AI pilots to build trusted, measurable AI capabilities across the enterprise.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -1008,7 +1001,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "Why Do AI Systems Misbehave?\n\nAI systems are increasingly impressive, which makes their failures all the more baffling. This blog dives into the causes of AI misbehavior. The post Why Do AI Systems Misbehave? appeared first on Center for Security and Emerging Technology .…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -1093,7 +1086,6 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "US Marine Corps turns to AI-powered Bullfrog as drone threats expand\n\nAllen Control Systems announced Monday that the Marine Corps has chosen the Bullfrog autonomous weapon system to integrate into its airborne defenses.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales"
   ],
   "topic": "Industry AI",
@@ -1134,7 +1126,6 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "Glass substrates poised to be chip packaging's next battleground: Trumpf\n\nAI and high-performance computing are pushing chip packages beyond the limits of conventional materials, and German laser equipment maker Trumpf says that shift could accelerate demand for glass ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -1155,7 +1146,6 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "AI: the technology that just won’t wait\n\nIn the AEC sector AI is running up against a brick wall in the form of outdated practices and legacy technology ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -1176,7 +1166,6 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "Industrials Are Up 17% and Still Catching the Next Wave of AI Money\n\nXLI's 20% one-year gain reflects a shift from reshoring bets to AI infrastructure plays, specifically power, cooling, and grid equipment for hyperscalers. PAVE returned 28% over the past year by ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -1197,7 +1186,6 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "A Fighter Jet That Takes Off Without a Runway Is One Step Closer to Vertical Takeoff\n\nThe X-Bat is the first AI-piloted supersonic jet with the ability to take off and land vertically without a runway.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -1218,7 +1206,6 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "Tesla talked up AI. Wall Street wants to know where the money is\n\nAfter hearing Tesla Inc.’s seemingly countless promises about artificial intelligence, autonomous driving and robotics, Wall Street wants the company to start putting its money where its mouth is.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -1239,7 +1226,6 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "Tesla cash burn to test investor faith in AI bets\n\nBy Akash Sriram and Abhirup Roy July 21 (Reuters) - Tesla is expected to report its first quarterly cash burn in over two years on Wednesday, as its spending on AI and robotics soars, intensifying ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -1260,7 +1246,6 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "Prediction: Up 140% YTD, Does Bloom Energy Have More Room to Run?\n\nBloom Energy has turned into one of 2026's most explosive trades, but a short seller report and a 25% pullback in a single month have exposed a sharp divide between believers in the AI power thesis ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -1481,7 +1466,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "Creating Shared Prosperity With AI: Stanford Digital Economy Lab’s Erik Brynjolfsson\n\nErik Brynjolfsson has a challenge for anyone worried about artificial intelligence: Stop asking what AI will do to us, and start asking what we will do with AI. In this episode of Me, Myself, and AI, the Stanford University economist explains why technology is…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Adoption",
@@ -1967,7 +1952,6 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "John Deere CTO: AI is farming's 'inventor's dilemma' moment\n\nJohn Deere's CTO Jahmy Hindman draws a striking parallel: just as the company once had to decide whether to embrace tractors — technology that could disrupt its own business — the agriculture giant ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -1988,7 +1972,6 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "VetClaims.ai: The AI answer for veterans stuck in the disability claims process\n\nThe site staffs about 521 accredited claims agents available to 19 million veterans nationwide. VetClaims.ai is the culmination of a life-altering story from the founder, a Purple Heart recipient from ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -2009,7 +1992,6 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "F-16’s AVEN Thrust Vectoring Nozzle Integrated with X-BAT’s F110-GE-129 Engine\n\nIn a critical milestone towards the first flight later this year, Shield AI and GE Aerospace integrated the X-BAT with the AVEN thrust vectoring system ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -2031,7 +2013,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "China's AI U-Turn? Beijing Weighs Export Curbs on AI Models and Chips Within Days After Backing Open Source\n\nChina is weighing tighter export controls on AI models, chips and training data, signaling a potential policy shift despite President Xi Jinping's recent support for open AI.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -2051,7 +2033,6 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "Firmus AI Factory proposal for Bell Bay pushed back by council assessment\n\nThe Firmus AI factory development application for Bell Bay in Low Head has been delayed as George Town Council tackles its complex assessment.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -2094,7 +2075,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "A FINRA for AI? The idea from Google DeepMind CEO Demis Hassabis is gaining momentum. But is it any good?\n\nThe self-regulatory body for financial brokerages has been plagued by concerns about conflict of interest, raising questions about whether it's the right model for AI.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers",
    "Everyone"
   ],
@@ -2115,7 +2096,6 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "NVIDIA Launches Cosmos 3 Edge as Japan’s Industry Signs On\n\nNVIDIA launches Cosmos 3 Edge and pulls Japan's top robotics and manufacturing firms onto its physical AI platform.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -2158,7 +2138,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "They built AI. Now Silicon Valley workers protest its threat to jobs and humanity\n\nActivists, tech workers and more are sounding the alarm about AI's risks and proposing various solutions to curb technology's risks that include job displacement.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers",
    "Everyone"
   ],
@@ -2180,7 +2160,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "Can China’s AI governance experience travel?\n\nGlobal AI governance had a busy week. Days after the United Nations held its first Global Dialogue on AI Governance in Geneva, 29 countries signed the founding agreement of the World AI Cooperation ...…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -2200,7 +2180,6 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "Tesla Q2 Cash Burn: Elon Musk's AI Pivot Triggers Investor Scrutiny\n\nTesla is expected to report its first quarterly cash burn in over two years on Wednesday, 22 July 2026, as Chief Executive Officer Elon Musk pivots the company's focus from electric cars to physical ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -2222,7 +2201,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "China completes largest AI data center with domestic chips\n\nDespite U.S. export controls on advanced semiconductors, China has been expanding its own AI ecosystem by sequentially releasing high-performance AI models leveraging cost-effectiveness, developing ...…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -2242,7 +2221,6 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "AI infrastructure is an expensive pursuit\n\nEven so, SpaceX has demonstrated that it can compete credibly in the AI infrastructure arena. Should a Defense Department deal come to fruition, it would significantly strengthen the company's ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -2304,7 +2282,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "AI CEOs facing full-on revolt from employees\n\n\"All that research will have gone to waste if it doesn't translate to guardrails that hold private companies accountable.\" The post AI CEOs Facing Full-on Revolt From Employees appeared first on ...…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers",
    "Everyone"
   ],
@@ -2325,7 +2303,6 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "VW targets rollout of L3 capabilities in China in 2027\n\nVolkswagen is strengthening its AI-based automated driving capabilities through deeper cooperation with Horizon Robotics, targeting the delivery of Level 3 automated driving capabilities in the second ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -2406,7 +2383,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "US threatens sanctions against Chinese AI models over IP theft\n\nTreasury Secretary Scott Bessent said the U.S. could sanction Chinese open AI models over alleged IP theft, expanding the Trump administration's campaign to slow China's AI advances.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -2467,7 +2444,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "OpenAI says its AI technology acted on its own in an 'unprecedented' hack of another company\n\nChatGPT maker OpenAI said Tuesday that its artificial intelligence system hacked into another AI company on its own in what the company called an “unprecedented cyber incident.” “We had a significant ...…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers",
    "Everyone"
   ],
@@ -2489,7 +2466,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "Heidi Joins Digital Medicine Society's Operationalizing AI Governance Initiative\n\nHeidi, the AI Care Partner used in around 2.7 million patient interactions globally each week, today announced its participation in the Digital Medicine Society's (DiMe) new initiative, ...…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -2530,7 +2507,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "Treasury secretary says it's 'unacceptable' that Chinese open source AI models may have been built on 'IP theft'\n\nTreasury Secretary Scott Bessent said the Trump administration is looking into whether Chinese open source AI models were built on stolen IP.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers",
    "Everyone"
   ],
@@ -2552,7 +2529,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "China builds AI data center with domestic chips amid US sanctions\n\nDespite U.S. export controls on advanced semiconductors, China—leveraging cost-effectiveness as a weapon—has continuously released high-performance AI models. It is now expanding its own AI ecosystem ...…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -2595,7 +2572,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "The Open Source AI China Problem Just got Worse\n\nModel supremacy in a token-efficient macro environment plagued by HBM, energy and datacenter compute bottlenecks. The 2026 story of AI is getting geopolitical.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Industry AI",
@@ -2653,7 +2630,6 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "What construction of Elon Musk's Terafab would mean for Tesla, SpaceX\n\nElon Musk wants to build the largest semiconductor factory in the world to supply Tesla and SpaceX with AI chips.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -2735,7 +2711,7 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "Arctera State of AI Governance 2026 Finds More Than Three-Quarters (78%) of Organizations Using AI Expect Communications Risk to Rise, But Fewer Than One in Five Can Prove AI ...\n\nData commissioned from Hanover Research shows regulated organizations are moving from policy to proof as AI governance demands stronger logging, retention, oversight and reconstruction controlsSAN ...…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -2897,7 +2873,6 @@ const POSTS_LIVE = [
   "when": "Jul 21",
   "body": "AI Engineering Productivity is Anything But Normal\n\nAI engineering productivity outcomes cluster in three tiers: a mean of 20-46% from distributing an IDE, a frontier of 2.5-3x from companies building the operating layer around agents (Replit, NVIDIA, Amplitude, Anthropic), & a factory tier at 8x+ where agents …",
   "tags": [
-   "C-Suite",
    "Marketing & Sales"
   ],
   "topic": "Industry AI",
@@ -3236,9 +3211,8 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "AI Ransomware Hits Manufacturing Hardest\n\nManufacturing is the most targeted sector for ransomware, with attacks rising 56% year over year, according to OPSWAT. Verizon&#8217;s 2025 Data Breach Investigations Report recorded 1,607 confirmed breaches in manufacturing, an 89% increase. Up to 80% of new …",
   "tags": [
-   "C-Suite",
-   "Application Specialists",
-   "Marketing & Sales"
+   "Marketing & Sales",
+   "Application Specialists"
   ],
   "topic": "Industry AI",
   "link": {
@@ -3258,9 +3232,8 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "AGIBOT unveils four embodied AI products for real-world operations at WAIC\n\nAGIBOT said its demoes and industrial deployments show its progress in turning embodied AI capabilities into repeatable workflows. The post AGIBOT unveils four embodied AI products for real-world operations at WAIC appeared first on The Robot Report .…",
   "tags": [
-   "C-Suite",
-   "Application Specialists",
-   "Marketing & Sales"
+   "Marketing & Sales",
+   "Application Specialists"
   ],
   "topic": "Industry AI",
   "link": {
@@ -3280,7 +3253,7 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "Americans Want AI Controlled Before It Reshapes The Economy\n\nArtificial intelligence has moved from a futuristic concept to an everyday reality faster than almost any technology in history.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers",
    "Everyone"
   ],
@@ -3302,7 +3275,7 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "Chinese AI model rivals ChatGPT, jolting Silicon Valley\n\nAnother powerful new artificial intelligence model from China took the U.S. tech industry by surprise Friday, the latest sign that Chinese startups that publicly release their “open-source” AI ...…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Developers",
    "Everyone"
   ],
@@ -3324,7 +3297,7 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "The secret Trump administration battle to fight Chinese AI\n\nThe Trump administration is showing signs it could ban cutting-edge Chinese AI models — a momentous move that could lock in dominance by OpenAI and Anthropic.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Developers",
    "Everyone"
   ],
@@ -3346,7 +3319,7 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "The U.S. May Not Ban Chinese AI. Washington Has a Different Plan to Compete With Beijing\n\nAdministration officials have reportedly explored multiple strategies that would make it more difficult for U.S. companies to use Chinese AI technology without necessarily imposing an outright ban.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Developers",
    "Everyone"
   ],
@@ -3389,7 +3362,6 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "AI rocket engine startup LegendSpace raises $29.5 million angel round\n\nHELSINKI — A six-month-old Chinese startup aiming to use artificial intelligence to compress rocket engine development cycles has raised $29.5 million in angel funding. LegendSpace, full name Linjie Hangtian (Beijing) [&#8230;] The post AI rocket engine startu…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales"
   ],
   "topic": "Industry AI",
@@ -3410,7 +3382,6 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "US Air Force begins piloted flights, autonomy tests for modified F-16s\n\nPiloted flights and autonomy tests began recently for modified F-16s that allows artificial intelligence agents to fly the aircraft.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales"
   ],
   "topic": "Industry AI",
@@ -3492,7 +3463,6 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "GE completes key engine test for X-BAT aircraft that takes off without runways\n\nGE Aerospace and Shield AI have completed a key propulsion test that moves the X-BAT vertical takeoff strike aircraft closer to flight.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -3513,7 +3483,6 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "NVIDIA’s SIGGRAPH push brings AI agents deeper into creative workflows\n\nNVIDIA arrived at SIGGRAPH with a broad pitch for the future of AI-assisted creation, tying together new Omniverse libraries, agent-ready creative software, and newsroom verification tools.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -3592,7 +3561,7 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "📈 Data to start your week\n\nKimi codes &#11014; Lithium recovery &#11014; Confidence in tech &#11015;…",
   "tags": [
-   "C-Suite"
+   "Marketing & Sales"
   ],
   "topic": "Adoption",
   "img": "https://substackcdn.com/image/fetch/$s_!Q28X!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffe064f58-5e31-4087-9026-d3404c7d3de1_511x511.jpeg",
@@ -3709,7 +3678,7 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "How AI Is Reshaping Regulated Professional Workflows\n\nRegulated industries are adopting AI from a position most technology buyers never face: zero tolerance for error. Financial services, legal, tax, and audit functions operate under a standard where partial accuracy is not a rounding error — it is a compliance f…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Adoption",
@@ -3834,7 +3803,6 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "NVIDIA Agent Toolkit Expands With New Omniverse Libraries, Putting AI Agents to Work Building Simulation-Ready Worlds",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -3916,7 +3884,6 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "'This Is Fake News': Elon Musk Kills Viral $52 Billion SpaceX-Foxconn AI Deal Story\n\nElon Musk refuted a viral claim that SpaceX ordered $52 billion worth of AI servers from Foxconn, highlighting the rapid spread of unverified information on social media.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -3937,7 +3904,6 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "PTC launches Onshape Labs to embed AI in engineering workflows\n\nThe initiative includes \"early access\" to key AI capabilities for CAD users.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -3959,7 +3925,6 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "Kuka Launches AI-Powered Manufacturing Platform in Ohio\n\nKuka AMP open orchestration platform goes live at Toledo facility, connecting traditional automation with artificial intelligence.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -3980,7 +3945,6 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "Japan Bets Big on AI-Powered Robots\n\nJapan is backing a different vision for artificial intelligence. As countries race to build more powerful language models, Tokyo is investing in physical AI, ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -4002,7 +3966,7 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "WAIC ends with two incompatible AI governance orders locked in for enterprises\n\nWAIC 2026 closes in Shanghai with AI governance formally split in two: 29 nations signed the WAICO founding agreement, creating a rival to the EU AI Act and G7 Hiroshima Process. Huawei debuted the ...…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -4043,7 +4007,6 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "Next-gen helmets: How pilots will command AI drone wingmen\n\nPicture a fighter pilot rolling inverted at 30,000 feet, not just managing their own jet, but simultaneously directing a fleet of AI-powered drones executing strikes, jamming enemy radar, and ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -4065,7 +4028,7 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "Top American AI execs sound alarm on Chinese models\n\nThe White House is divided on how to respond to recent advances in Chinese AI and has weighed crackdown measures.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers",
    "Everyone"
   ],
@@ -4107,9 +4070,8 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "Saronic Technologies picks Texas for $3.2B autonomous shipyard\n\nThe manufacturing hub will be built at the Port of Brownsville, which is located in one of the largest foreign trade zones in the U.S.…",
   "tags": [
-   "C-Suite",
-   "Application Specialists",
-   "Marketing & Sales"
+   "Marketing & Sales",
+   "Application Specialists"
   ],
   "topic": "Industry AI",
   "link": {
@@ -4129,9 +4091,8 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "Beyond AI ambition: Turning intelligence into real impact\n\nDiscover how leading manufacturers are turning AI ambition into measurable operational impact.…",
   "tags": [
-   "C-Suite",
-   "Application Specialists",
-   "Marketing & Sales"
+   "Marketing & Sales",
+   "Application Specialists"
   ],
   "topic": "Industry AI",
   "link": {
@@ -4150,7 +4111,7 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "China has all but caught up. The US is not going to “win” the AI war. Here’s what we should do instead.\n\nSeven options, considered…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Everyone"
   ],
   "topic": "Adoption",
@@ -4189,7 +4150,6 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "Bringing physical AI to the battlefield: Q&A with Dr. Philip Perconti, Leonardo DRS CTO\n\nDefense News sat down with Senior Vice President and CTO at Leonardo DRS, who recently made the Defense News Index Tech Disruptors list.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -4232,7 +4192,6 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "Marine Corps selects new robotic weapon system for L-MADIS integration\n\nThe AI-powered robotic weapon, which weighs roughly 300 pounds and is capable of firing 850 rounds-a-minute, can detect and neutralize small unmanned aerial systems, Allen Control Systems said.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales"
   ],
   "topic": "Industry AI",
@@ -4252,7 +4211,6 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "Open Models Tack Toward the Frontier\n\nOpen-weight models have repeatedly reached equivalency with closed frontier models, first with DeepSeek R1, then GLM-4.6, GLM-5.2, & Kimi K3. But open source has not materially led; closed models such as GPT-5.2-class systems & Opus continue to create step-cha…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales"
   ],
   "topic": "Industry AI",
@@ -4353,7 +4311,6 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "Anduril reveals Thunder, a &#8216;loyal wingman&#8217; drone for helicopters\n\nThe company describes Thunder as a fully autonomous armed reconnaissance tiltrotor aircraft developed from lessons learned from the company’s Fury aircraft.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales"
   ],
   "topic": "Industry AI",
@@ -4574,7 +4531,6 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "Thunderstruck: Anduril unveils autonomous attack rotorcraft\n\nAnduril's autonomous attack rotorcraft, dubbed Thunder, is designed to operate with current and next-generation crewed attack helicopter platforms.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales"
   ],
   "topic": "Industry AI",
@@ -4812,7 +4768,6 @@ const POSTS_LIVE = [
   "when": "Jul 20",
   "body": "'Lords and peasants divide': Elon Musk calls out US AI firms as Chinese rivals close in\n\nThe Tesla CEO on Monday criticised the culture at US AI companies as Chinese companies continue to produce models that rival, and in some cases match, their Silicon Valley counterparts.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -5133,7 +5088,6 @@ const POSTS_LIVE = [
   "when": "Jul 19",
   "body": "Beyond rockets and satellites, SpaceX is quietly building an AI compute business that may become key to its eye-popping valuation\n\nDeals with Google and Anthropic to rent out computing capacity could generate $26 billion a year.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -5154,7 +5108,6 @@ const POSTS_LIVE = [
   "when": "Jul 19",
   "body": "South Korean IT firms develop sovereign defense AI\n\nDomestic AI companies in South Korea are actively entering the defense and aerospace AI sectors. The government is collaborating with IT firms to develop defense AI solutions, while IT and defense ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -5175,7 +5128,6 @@ const POSTS_LIVE = [
   "when": "Jul 19",
   "body": "Mitsubishi Heavy Industries (MHI): MHI Advances AI Infrastructure Commercialization with U.S. Deployment of 10MW-Class Chiller and MCP Development\n\nSupporting AI Infrastructure Through Modular Cooling and NVIDIA Ecosystem Collaboration --TOKYO, July 17, 2026 - (JCN Newswire) - Mitsubishi Heavy Industries, Ltd. (MHI) today announced deployment and ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -5196,7 +5148,7 @@ const POSTS_LIVE = [
   "when": "Jul 19",
   "body": "🔮 Kimi K3 surprise & AI economics; the solar paradox; AI's right to learn, cancer vaccine & junior jobs++\n\nPlus: Palantir&#8217;s power, cancer vaccines and AI on iPhones…",
   "tags": [
-   "C-Suite"
+   "Marketing & Sales"
   ],
   "topic": "Adoption",
   "img": "https://substackcdn.com/image/fetch/$s_!k3Fg!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F757b3f9e-a598-49b8-8859-08dc1b0b260b_1974x1208.png",
@@ -5257,7 +5209,7 @@ const POSTS_LIVE = [
   "when": "Jul 19",
   "body": "Middle East AI investments drive memory shortages, K3 demand surge\n\nMeritz Securities stated in a July 19 report, “The recent materialization of sovereign AI investment plans in the Middle East is intensifying supply shortages by 2027.” Sovereign AI refers to a ...…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -5298,7 +5250,6 @@ const POSTS_LIVE = [
   "when": "Jul 19",
   "body": "PTC introduces Onshape Labs for AI-driven product development\n\nPTC Introduces Onshape Labs to Accelerate AI Inside the Product Development Process Launches&#160;early-access program, with broader availability PTC says its Onshape Labs initiative gives customers early ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -5319,7 +5270,6 @@ const POSTS_LIVE = [
   "when": "Jul 19",
   "body": "Foxconn Wins First SpaceX AI Server Contract Worth Estimated $52 Billion\n\nTaiwans Hon Hai Precision Industry, better known as Foxconn, has reportedly secured its first contract to manufacture artificial intelligence (AI) servers for Elon Musks SpaceX, marking a major ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -5378,7 +5328,7 @@ const POSTS_LIVE = [
   "when": "Jul 19",
   "body": "Executive Briefing: How Microsoft, Bayer, and Discovery Use AI on the Data You Can't Upload\n\nWatch now | Bayer and Discovery Bank are teaching smaller models their private rules. LM Studio lets you test the first useful step on a laptop, and shows where the laptop stops being enough.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Adoption",
@@ -5398,7 +5348,6 @@ const POSTS_LIVE = [
   "when": "Jul 19",
   "body": "A Laptop for Everyday AI Work -- The Lenovo ThinkPad P16 Gen 3 21RRZD7UUS\n\nTom Fenton reviews the Lenovo ThinkPad P16 Gen 3 21RRZD7UUS as an everyday AI workstation, comparing its RTX PRO 3000 Blackwell GPU, memory, display and build against two other recent ThinkPads.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -5419,7 +5368,7 @@ const POSTS_LIVE = [
   "when": "Jul 19",
   "body": "Demis Hassabis on the New Coming Age\n\nGoogle CEO Demis Hassabis offered us a first rate second rate essay, A Framework for Frontier AI and the Dawning of a New Age. I&#8217;ll go over that essay and various responses to it in Part 1.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Adoption",
@@ -5540,7 +5489,6 @@ const POSTS_LIVE = [
   "when": "Jul 18",
   "body": "Google Gemini is coming to nine Honda and three Acura models—here's the full list\n\nNine Honda and three Acura models will get Google Gemini conversational AI. See the full confirmed list and find out which models are left out — and why.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -5599,7 +5547,7 @@ const POSTS_LIVE = [
   "when": "Jul 18",
   "body": "Turning Visual AI into Enterprise Business Impact\n\n​This article is sponsored by Roboflow and was written, edited, and published in alignment with our Emerj sponsored content guidelines. Learn more about our thought leadership and content creation services on our Emerj Media Services page. Computer vision syst…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Adoption",
@@ -5640,7 +5588,6 @@ const POSTS_LIVE = [
   "when": "Jul 18",
   "body": "Bloom Energy’s AI Data Center Growth Story Is Starting to Crack\n\nBloom Energy soared on the AI data center boom, but a high-profile project rejection in New Mexico and a spreading wave of community opposition are raising questions about whether the company's ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -5681,7 +5628,6 @@ const POSTS_LIVE = [
   "when": "Jul 18",
   "body": "AMD's 128GB AI mini PC runs models your RTX 5090 can't, but for everything else a used graphics card still wins\n\nIt can do great things, but there's a lot more to think about than VRAM.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -5724,7 +5670,7 @@ const POSTS_LIVE = [
   "when": "Jul 17",
   "body": "Homeland Security’s updated AI inventory raises more questions than it answers\n\nMonths past the deadline, the agency has generally filled in its risk management sections for high-impact use cases, but it also walked back some deployment statuses and sunset others. The post Homeland Security’s updated AI inventory raises more questions tha…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -5745,7 +5691,7 @@ const POSTS_LIVE = [
   "when": "Jul 17",
   "body": "Labor Department eyes AI curriculum akin to China’s teachings\n\nActing Secretary Keith Sonderling said the DOL, National Science Foundation and Education Department are working on developing the curriculum for U.S. students. The post Labor Department eyes AI curriculum akin to China’s teachings appeared first on FedScoop .…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -5767,7 +5713,7 @@ const POSTS_LIVE = [
   "body": "From Dashboards to Decisions: How AI Should Actually Work in Manufacturing\n\nForget predictive maintenance. The real AI opportunity lies in helping supervisors, planners, and operators act faster when reality diverges from the plan. The post From Dashboards to Decisions: How AI Should Actually Work in Manufacturing appeared first on Fa…",
   "tags": [
    "Application Specialists",
-   "C-Suite"
+   "Marketing & Sales"
   ],
   "topic": "Industry AI",
   "link": {
@@ -5788,7 +5734,7 @@ const POSTS_LIVE = [
   "body": "AI’s Biggest Impact in Manufacturing Isn’t Elimination — It’s Augmentation\n\nWorkers want better tools, clearer paths, and employers who are willing to invest in their growth. AI technology is a co-pilot. The worker is still the one flying the plane. The post AI’s Biggest Impact in Manufacturing Isn’t Elimination — It’s Augmentation ap…",
   "tags": [
    "Application Specialists",
-   "C-Suite"
+   "Marketing & Sales"
   ],
   "topic": "Industry AI",
   "link": {
@@ -5807,7 +5753,6 @@ const POSTS_LIVE = [
   "when": "Jul 17",
   "body": "SpaceX in talks to provide computing power for Pentagon’s AI push\n\nThe two sides are discussing an arrangement in which SpaceX would provide computing capacity to the department at a cost of up to several billion dollars, people familiar with the matter said.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -5828,7 +5773,6 @@ const POSTS_LIVE = [
   "when": "Jul 17",
   "body": "Cadence Launches AI Super Agent for PCB, Packaging Design\n\nCadence launches AuraStack AI Super Agent on Allegro AI Studio platform to automate PCB and advanced packaging design workflows.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -5849,7 +5793,6 @@ const POSTS_LIVE = [
   "when": "Jul 17",
   "body": "Brunswick’s AutoCaptain Takes Over Boat Docking With AI Help\n\nBrunswick Corp's Simrad AutoCaptain is taking the scare out of docking and undocking recreational boats by doing the task autonomously using AI and other technology.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -5870,7 +5813,6 @@ const POSTS_LIVE = [
   "when": "Jul 17",
   "body": "NVIDIA brings robot AI on-device as Japan's top manufacturers join Cosmos Coalition\n\nNVIDIA Cosmos 3 Edge brings factory-floor robot reasoning to Jetson edge hardware without cloud connectivity, as 22 Japanese industrial firms — including FANUC, Kawasaki, Yaskawa, and Fujitsu — join ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -5891,7 +5833,6 @@ const POSTS_LIVE = [
   "when": "Jul 17",
   "body": "Fujitsu to explore physical AI development and implementation across industries with FANUC, Yaskawa Electric, and Kawasaki Heavy Industries integrating NVIDIA technology\n\nFujitsu Limited today announced that it has begun exploring business opportunities in the field of physical AI with leading robotics companies FANUC CORPORATION, ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -6118,7 +6059,7 @@ const POSTS_LIVE = [
   "when": "Jul 17",
   "body": "Chinese AI has leveled up, and brought renewed focus on the open weight model shift\n\nChinese startup Moonshot AI has released a new model that it says closes the gap with leading U.S. systems. Kimi K3 still trails Anthropic's Claude Fable 5 and OpenAI's GPT 5.6 Sol on overall ...…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Developers",
    "Everyone"
   ],
@@ -6139,7 +6080,6 @@ const POSTS_LIVE = [
   "when": "Jul 17",
   "body": "Nvidia Broadens Physical AI Push With Robotics, Edge AI Updates\n\nThe chipmaker is fleshing out its physical AI ecosystem, from foundation models and edge hardware to software, developer tools and industrial partnerships.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -6160,7 +6100,6 @@ const POSTS_LIVE = [
   "when": "Jul 17",
   "body": "Ex-MBDA engineer develops AI drone to hunt mosquitoes\n\nFormer missile engineer applies defense tech to mosquito-killing drones ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -6202,9 +6141,8 @@ const POSTS_LIVE = [
   "when": "Jul 16",
   "body": "Can AI and Smart Sensors Cut Aerospace Maintenance Costs?\n\nFor an aircraft to have a safe and successful flight, thousands of components must do their job under extreme heat, vibration, and stress. That’s not an easy or inexpensive task.In fact, aircraft ...…",
   "tags": [
-   "C-Suite",
-   "Application Specialists",
-   "Marketing & Sales"
+   "Marketing & Sales",
+   "Application Specialists"
   ],
   "topic": "Industry AI",
   "link": {
@@ -6223,7 +6161,6 @@ const POSTS_LIVE = [
   "when": "Jul 16",
   "body": "GM’s AI tools could cut the car development timeline in half\n\nIn recent years, General Motors has dabbled with AI and virtual simulation tools to evolve the way it designs, engineers, tests, and manufactures its vehicles. Now the company has fully embraced these ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -6244,7 +6181,6 @@ const POSTS_LIVE = [
   "when": "Jul 16",
   "body": "'Conversational' AI Software Is Coming to Some Hondas and Acuras\n\nNine Honda and three Acura models will get updated software featuring Google Gemini, an AI assistant that listens and talks to drivers in a conversational tone.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -6265,7 +6201,6 @@ const POSTS_LIVE = [
   "when": "Jul 16",
   "body": "Hyundai Rotem develops rail-specific ADAS, eyes global market with domestic physical AI\n\nHyundai Rotem announced Thursday that it has developed an advanced driver assistance system (ADAS) tailored specifically for rail vehicles. The rail ADAS detect ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -6365,7 +6300,7 @@ const POSTS_LIVE = [
   "when": "Jul 16",
   "body": "What CEOs Need to Know About Sovereign AI\n\nCarolyn Geason-Beissel/MIT SMR &#124; Getty Images As multinational companies implement artificial intelligence workflows and look to adopt AI across their global operations, they are increasingly running up against country-specific regulations and policies th…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Adoption",
@@ -6492,7 +6427,7 @@ const POSTS_LIVE = [
   "when": "Jul 16",
   "body": "Most enterprise AI governance is already out of date\n\nGovernance frameworks need to operate as flexible policies integrated into core functions and operations of an organization.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -6512,7 +6447,6 @@ const POSTS_LIVE = [
   "when": "Jul 16",
   "body": "Airbus selects French cloud provider Scaleway for sensitive AI workloads\n\nAirbus (EADSY) has selected Iliad-owned Scaleway to host AI applications developed with French startup Mistral for its industrial and defense operations, Reuters reported. Under the multi-year ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -6553,7 +6487,6 @@ const POSTS_LIVE = [
   "when": "Jul 16",
   "body": "Hyundai Motor Group takes full control of Boston Dynamics, speeds physical AI\n\nBoston Dynamics will become a 100% subsidiary of Hyundai Motor Group. Hyundai Motor Group decided to acquire the remaining equity held by Japan's SoftBank. The acquisition is expected to accelerate ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -6574,7 +6507,6 @@ const POSTS_LIVE = [
   "when": "Jul 16",
   "body": "Cadence launches agentic AI platform AuraStack AI Super Agent\n\nThe AI-native environment is designed to streamline PCB and advanced packaging design from start to finish.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -6595,7 +6527,6 @@ const POSTS_LIVE = [
   "when": "Jul 16",
   "body": "Nvidia Deepens Japan Ties With Mitsubishi Heavy And Toyota — While China Access Remains A Separate Story\n\nNvidia announced on Wednesday that leading Japanese enterprises, startups, and research institutions are building industry-specialized AI models and applications using its Nemotron open models, data, ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -6616,7 +6547,7 @@ const POSTS_LIVE = [
   "when": "Jul 16",
   "body": "Who are Top AI Sources to follow on LinkedIn?\n\nPart I: I take my first preliminary look into this, for the first time in years.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Industry AI",
@@ -6636,7 +6567,6 @@ const POSTS_LIVE = [
   "when": "Jul 15",
   "body": "Lockheed taps Machina Labs to help build next-generation missile systems\n\nMachina Labs CEO Edward Mehr joins ‘Mornings with Maria’ to discuss the company's new Lockheed Martin qualification contract, how AI and robotics are transforming defense manufacturing and what the ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -6657,7 +6587,6 @@ const POSTS_LIVE = [
   "when": "Jul 15",
   "body": "Airbus picks Iliad's Scaleway for AI, defence work in sovereignty push\n\nBy Leo Marchandon and Gianluca Lo Nostro July 16 (Reuters) - Airbus said on Thursday it had signed a multi-year agreement with Iliad-owned Scaleway to provide cloud infrastructure for sensitive ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -6678,7 +6607,6 @@ const POSTS_LIVE = [
   "when": "Jul 15",
   "body": "Airbus selects Scaleway to support AI and defence cloud strategy (AIR)\n\nAirbus (EU:AIR) has signed a multi-year agreement with Scaleway, the cloud computing subsidiary of Iliad, to provide cloud infrastructure for sensitive industrial and defence applications as the ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -6699,7 +6627,6 @@ const POSTS_LIVE = [
   "when": "Jul 15",
   "body": "Airbus Signs Cloud Deal With Scaleway to Power Secure AI and Defense Applications\n\nAirbus has signed a multi-year agreement with French cloud provider Scaleway to support secure cloud infrastructure for sensitive industrial and defense workloads, strengthening its European ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -6720,7 +6647,6 @@ const POSTS_LIVE = [
   "when": "Jul 15",
   "body": "Nvidia Expands Toyota AI Partnership for Smart Cities, Factories\n\nNvidia Corp. will supply its artificial intelligence hardware and software to Toyota Motor Corp. to power smart cities, traffic intelligence systems and carmaking factories, broadening a decade-long ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -6741,7 +6667,6 @@ const POSTS_LIVE = [
   "when": "Jul 15",
   "body": "How Nissan Used AI To Cut The Car-Buying Journey In Half\n\nWhen traditional marketing metrics stopped keeping pace with modern car shoppers, Nissan CMO Allyson Witherspoon knew the brand needed a massive pivot. In this episode, Witherspoon explains how Nissan ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -6762,7 +6687,6 @@ const POSTS_LIVE = [
   "when": "Jul 15",
   "body": "Liberty Energy and SLB team up to supply power to data centers\n\nLiberty Energy LBRT and SLB SLB have entered into a strategic alliance focused on providing integrated power and modular infrastructure solutions for the growing artificial intelligence (“AI”) and ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -6784,7 +6708,7 @@ const POSTS_LIVE = [
   "when": "Jul 15",
   "body": "Meet GPT-Red: an LLM super-hacker OpenAI built to make its models safer\n\nCSET’s Jessica Ji shared her expert insight in an article published by MIT Technology Review. The article examines how OpenAI developed GPT-Red, an AI \"super-hacker\" designed to automatically identify vulnerabilities in large language models and strengthen the…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -6804,7 +6728,6 @@ const POSTS_LIVE = [
   "when": "Jul 15",
   "body": "IMTS 2026 brings the North American debut of EOS’s six-laser M4 Onyx\n\nExplore IMTS 2026 and AI advancements at McCormick Place, featuring cutting-edge technologies and the EOS M4 Onyx introduction.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -6884,7 +6807,7 @@ const POSTS_LIVE = [
   "when": "Jul 15",
   "body": "Why Companies Are Rethinking the Rush to Implement AI\n\nWharton professor Santiago Gallino explains why AI falls short and human judgment still matters. &#8230; Read&#160;More…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Adoption",
@@ -6964,7 +6887,6 @@ const POSTS_LIVE = [
   "when": "Jul 15",
   "body": "Japan’s Robotics and Manufacturing Leaders Build on NVIDIA Cosmos to Advance Physical AI Frontier\n\nNVIDIA today announced that Japan’s physical AI leaders are building on the NVIDIA Cosmos, NVIDIA Isaac, NVIDIA Metropolis and NVIDIA Jetson platforms to accelerate the deployment of intelligent ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -6986,9 +6908,8 @@ const POSTS_LIVE = [
   "when": "Jul 15",
   "body": "Siemens showcases industrial AI at Farnborough International Airshow\n\nWill show how a digital thread across the lifecycle improves agility, resilience, and operational readiness.…",
   "tags": [
-   "C-Suite",
-   "Application Specialists",
-   "Marketing & Sales"
+   "Marketing & Sales",
+   "Application Specialists"
   ],
   "topic": "Industry AI",
   "link": {
@@ -7027,7 +6948,6 @@ const POSTS_LIVE = [
   "when": "Jul 14",
   "body": "Siemens Advances Aerospace Innovation with Industrial AI at Farnborough International Airshow\n\n\"Industrial AI and the Digital Twin are helping aerospace and defense companies navigate increasing complexity and unlock new levels of innovation,” said Ben Sheath, vice president and managing ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7048,7 +6968,6 @@ const POSTS_LIVE = [
   "when": "Jul 14",
   "body": "Siemens expands Saskatoon R&D hub to advance Industrial AI in semiconductor design\n\nSiemens' electronic design automation (EDA) capabilities Up to 100 new high-tech roles planned to support AI-driven semiconductor design Investment reinforces Canada's role in Siemens' global ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7069,7 +6988,6 @@ const POSTS_LIVE = [
   "when": "Jul 14",
   "body": "SLB partners with Liberty Energy to supply modular parts, power to data centers\n\nJuly 14 (Reuters) - SLB said on Tuesday it has partnered with Liberty Energy to supply modular parts and power to data centers, as the oilfield services firms look to tap surging demand from the AI ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7090,7 +7008,6 @@ const POSTS_LIVE = [
   "when": "Jul 14",
   "body": "Leonardo DRS CEO on ‘nearly insatiable’ demand abroad, using AI and more\n\nJohn Baylouny became the new CEO of Leonardo DRS. But it’s hardly a new company for him — Baylouny has worked at the firm for decades, and was most re ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7111,7 +7028,6 @@ const POSTS_LIVE = [
   "when": "Jul 14",
   "body": "Cadence Expands AI Agents With AuraStack For PCB And Advanced Chip Packaging\n\nCadence believes the next level of AI-assisted engineering resides at the system level, and to that end, the company just announced its new AuraStack AI Super Agent.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7132,7 +7048,6 @@ const POSTS_LIVE = [
   "when": "Jul 14",
   "body": "Nvidia, Mitsubishi Heavy mull team up for AI data center cooling, power: report\n\nNvidia (NVDA) and Mitsubishi Heavy Industries (MHVYF) are considering a collaboration that could see the Japanese industrial conglomerate supply cooling systems and energy management equipment for ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7195,7 +7110,6 @@ const POSTS_LIVE = [
   "when": "Jul 14",
   "body": "Tesla AI Chief Ashok Elluswamy Says Optimus Has 'Big Shoes to Fill' After Model S, X Production Line Closure\n\nTesla Inc.‘s artificial intelligence lead, Ashok Elluswamy, hailed the sunset Model S and Model X premium vehicles as the Fremont facility gears up for Optimus humanoid robot production. ‘Big Shoes to ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7336,7 +7250,6 @@ const POSTS_LIVE = [
   "when": "Jul 13",
   "body": "Dassault Aviation: NAMIB, the New Electronic Warfare Payload Successfully Completes a Collaborative Flight with a Rafale\n\nPRESS RELEASE NAMIB, the New Electronic Warfare PayloadSuccessfully Completes a Collaborative Flight with a Rafale Paris - Saint-Cloud, France, July 13, 2026 - Dassault Aviation and Harmattan AI ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7357,7 +7270,6 @@ const POSTS_LIVE = [
   "when": "Jul 13",
   "body": "AI Agents Get Formal Team Roles With EOS-Based Platform\n\nPlatform Assigns AI Agents Formal Roles Within Entrepreneurial Operating System Teams Fairfield, United States - July ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7378,7 +7290,6 @@ const POSTS_LIVE = [
   "when": "Jul 13",
   "body": "Doosan Bobcat Partners With “Robot Brain Builder” for Autonomous Equipment\n\nDoosan Bobcat has signed a deal to collaborate with “robot brain builder” MAUM.AI to further develop autonomous technology for construction equipment.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7420,7 +7331,7 @@ const POSTS_LIVE = [
   "when": "Jul 13",
   "body": "What will be left for us to work on?\n\nMy keynote at ICML 2026…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Everyone"
   ],
   "topic": "Adoption",
@@ -7459,7 +7370,6 @@ const POSTS_LIVE = [
   "when": "Jul 12",
   "body": "A New Agent in Town: Inside the Industrial AI Workforce\n\nFor engineers, operators and reliability teams alike, turning disconnected data into actionable decisions require time-consuming manual investigation. Augury hopes to solve ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7480,7 +7390,6 @@ const POSTS_LIVE = [
   "when": "Jul 12",
   "body": "Goldman Sachs’ Insane SpaceX AI Forecast Has One Clear Winner: Micron Technology\n\nGoldman Sachs just released a SpaceX forecast so staggering it borders on science fiction, and buried inside its assumptions is a quiet argument for one semiconductor company that keeps the entire AI ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7521,7 +7430,6 @@ const POSTS_LIVE = [
   "when": "Jul 11",
   "body": "AI, Autonomy and Airpower",
   "tags": [
-   "C-Suite",
    "Marketing & Sales"
   ],
   "topic": "Company Watch",
@@ -7542,7 +7450,6 @@ const POSTS_LIVE = [
   "when": "Jul 11",
   "body": "Forget AI Hyperscalers: Tesla May Own the Most Valuable AI Application\n\nWhile investors fixate on Tesla's vehicle deliveries and margins, a quieter transformation is underway that positions the company to compete directly with the hyperscalers reshaping the global economy ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7584,7 +7491,6 @@ const POSTS_LIVE = [
   "when": "Jul 10",
   "body": "Debrief: How AI Agents Can Design A Better BWB\n\nThe impact of artificial intelligence (AI) is being felt throughout the life cycle of aerospace systems, even at the earliest stages of design where new tools are enabling the exploration of trade ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7605,7 +7511,6 @@ const POSTS_LIVE = [
   "when": "Jul 10",
   "body": "Raytheon, Rheinmetall Anchor AI Training Effort for UK Army\n\nThe UK Ministry of Defense awarded a &#163;2 billion ($2.7 billion) contract for AI-based military training to a Raytheon-led consortium that includes European defense prime Rheinmetall AG.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7647,7 +7552,6 @@ const POSTS_LIVE = [
   "when": "Jul 9",
   "body": "Airbus demos first-ever autonomous teaming mission at European air show with Primoco UAVs",
   "tags": [
-   "C-Suite",
    "Marketing & Sales"
   ],
   "topic": "Company Watch",
@@ -7668,7 +7572,6 @@ const POSTS_LIVE = [
   "when": "Jul 9",
   "body": "Elon Musk's SpaceX Poured $7.7 Billion Into AI Last Quarter. Here's the Bet Behind Its Widening Losses.\n\nSpaceX now runs three businesses, and the split in spending is telling. Its space segment, the rockets and launch operation, spent about $1.1 billion on capital projects last quarter. Its connectivity ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7689,7 +7592,6 @@ const POSTS_LIVE = [
   "when": "Jul 9",
   "body": "ABB Robotics collaborates with Roche to bring physical AI to laboratories\n\nABB Robotics has announced a global collaboration with Roche Diagnostics to develop and bring to market new robotic solutions for clinical laboratories.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7710,7 +7612,6 @@ const POSTS_LIVE = [
   "when": "Jul 9",
   "body": "Taco Bell Expands Drive-Thru Voice AI to Nearly 900 Restaurants Across the U.S. as Automation Gains Momentum\n\nTaco Bell’s expansion of drive-thru voice AI to nearly 900 U.S. restaurants is one of the largest deployments yet of automated order-taking technology in the quick-service restaurant industry. The ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7731,7 +7632,6 @@ const POSTS_LIVE = [
   "when": "Jul 9",
   "body": "Cursor Is Developing an AI Agent to Compete With Claude Cowork\n\nCursor is developing a general-purpose AI agent meant to compete with popular tools like Anthropic’s Claude Cowork, two people familiar with the project said, part of a broader push by the company to ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7752,7 +7652,6 @@ const POSTS_LIVE = [
   "when": "Jul 9",
   "body": "Citi's AI Robotics Picks: Rockwell, Emerson, Honeywell Lead the List\n\nCiti analyst Heath Terry names Rockwell Automation, Emerson Electric, Honeywell, Symbotic, Ralliant and Belden as his top plays on the industrial automation buildout. Data scarcity, not compute, is ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7774,7 +7673,7 @@ const POSTS_LIVE = [
   "when": "Jul 9",
   "body": "The EU AI Act deadline has moved, but data lineage can’t wait\n\nDespite moving deadlines, data lineage remains crucial for AI initiatives.…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Regulatory",
@@ -7795,9 +7694,8 @@ const POSTS_LIVE = [
   "when": "Jul 9",
   "body": "AI boom: Kingboard Group debuts 70,000-tonne electronic-grade glass fibre yarn production line\n\nTo ease supply constraints across the PCB industry, Asian glass fibre manufacturers are accelerating investments. Hong Kong-based Kingboard Group has commissioned a new glass fibre yarn production line in China, while Taiwan Glass and Jushi are also expanding …",
   "tags": [
-   "C-Suite",
-   "Application Specialists",
-   "Marketing & Sales"
+   "Marketing & Sales",
+   "Application Specialists"
   ],
   "topic": "Industry AI",
   "img": "https://www.jeccomposites.com/wp-content/uploads/2026/07/Kingboard-electronic-grade-glass-fibre-yarn-production-facility.jpg",
@@ -7816,7 +7714,7 @@ const POSTS_LIVE = [
   "when": "Jul 9",
   "body": "Up the Stack: How AI’s Escape From the Commodity Trap Risks Enterprise Lock-in\n\nCritics and boosters are both looking in the wrong place…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Everyone"
   ],
   "topic": "Adoption",
@@ -7836,7 +7734,7 @@ const POSTS_LIVE = [
   "when": "Jul 9",
   "body": "What’s Really Behind The So-Called “AI Layoffs”?\n\nIf you&#x2019;re a leader considering AI layoffs, please read this first Continue reading on Medium »…",
   "tags": [
-   "C-Suite",
+   "Marketing & Sales",
    "Product Managers"
   ],
   "topic": "Adoption",
@@ -7895,7 +7793,6 @@ const POSTS_LIVE = [
   "when": "Jul 8",
   "body": "Anduril Industries\n\nThe latest news and top stories on Anduril Industries. A Costa Mesa, California-based entity in the defence technology sector, Anduril Industries specialises in advanced autonomous systems, AI-powered ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7938,7 +7835,6 @@ const POSTS_LIVE = [
   "when": "Jul 8",
   "body": "Samsung Plans Floating Data Center Launch by 2028\n\nSamsung Heavy Industries plans to commercialize a floating AI data center by 2028 as power, land, and cooling constraints squeeze AI infrastructure.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7959,7 +7855,6 @@ const POSTS_LIVE = [
   "when": "Jul 8",
   "body": "Doosan Enerbility posts record-high hiring as nuclear, gas turbine demand surges on AI power boom\n\nDoosan Enerbility hired more new employees last year than in any other year this decade, as nuclear power plants and gas turbines emerged as key energy sources ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -7980,7 +7875,6 @@ const POSTS_LIVE = [
   "when": "Jul 8",
   "body": "Taco Bell ramps up voice AI use across nearly 900 drive-thrus\n\nTaco Bell has deployed Omilia voice AI at over 890 drive-thru locations across 38 states, automating orders while boosting employee retention.…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -8001,7 +7895,6 @@ const POSTS_LIVE = [
   "when": "Jul 8",
   "body": "Taco Bell Now Has Drive-Thru AI Ordering in About 900 Locations\n\nTaco Bell clearly believes in the future of automated voice ordering at the drive-thru. The technology is now active in over 890 U.S. restaurants in 38 states. The chain’s voice AI provider, Omilia, ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
@@ -8081,7 +7974,6 @@ const POSTS_LIVE = [
   "when": "Jul 7",
   "body": "Overcoming the range limitation: SpaceX thinks big, Siemens Energy believes in AI, and First Hydrogen solves earthly problems\n\nSiemens Energy Makes AI Data Centers Possible in the First Place Siemens Energy is a true heavyweight in the energy sector. The company is resolutely driving the scaling of global production ...…",
   "tags": [
-   "C-Suite",
    "Marketing & Sales",
    "Product Managers"
   ],
