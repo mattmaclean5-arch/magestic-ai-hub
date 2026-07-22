@@ -254,7 +254,7 @@ const COMPANY_RE = new RegExp("\\b(" + WATCHLIST.map(c => c.n.replace(/\s*\(.*?\
   .map(n => n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|") + ")\\b", "i");
 const WAR_NOISE = /\b(combat|weapon|missile|warhead|munition|battlefield|kamikaze|drone strike|air defen[cs]e|counter-?UAS|warfare|lethal)\b/i;
 const norm = (x) => (x || "").toLowerCase().replace(/[^a-z0-9]/g, "");
-const FIN_NOISE = /\b(stocks?|shares?|share price|earnings|dividend|NYSE|NASDAQ|price target|analyst rating|analysts? (?:say|rate|expect)|market cap|sell-?off|hedge fund|portfolio|52-week|strong buy|strong sell|buy rating|hold rating|undervalued|overvalued|bargain|too cheap|bullish|bearish|rall(?:y|ies)|upgraded?|downgraded?|top \d+ (?:AI )?stocks?|trading|traders?|IPO|ticker)\b|seeking ?alpha|motley ?fool|zacks|benzinga|marketbeat|barchart|insider ?monkey|investing\.com|investor.s business daily|simplywall|thestreet|barron|yahoo finance|24.7 ?wall ?st|cramer|\(NASDAQ|\(NYSE|\(ENXT|stock analysis/i;
+const FIN_NOISE = /\b(stocks?|shares?|share price|earnings|dividend|NYSE|NASDAQ|price target|analyst rating|analysts? (?:say|rate|expect)|market cap|sell-?off|hedge fund|portfolio|52-week|strong buy|strong sell|buy rating|hold rating|undervalued|overvalued|bargain|too cheap|bullish|bearish|rall(?:y|ies)|upgraded?|downgraded?|top \d+ (?:AI )?stocks?|trading|traders?|IPO|ticker)\b|seeking ?alpha|motley ?fool|zacks|benzinga|marketbeat|barchart|insider ?monkey|investing\.com|investor.s business daily|simplywall|thestreet|barron|yahoo finance|24.7 ?wall ?st|cramer|\(NASDAQ|\(NYSE|\(ENXT|stock analysis|wall street|cash burn|investor (?:faith|confidence|concerns?|worr)|valuation/i;
 const CORE_KW = /\b(nest(?:ing|s)?|punch(?:ing|es)?|nibbling|bin[- ]?packing|packing optimi|composite|prepreg|ply|layup|lay-up|draping|kitting|AFP|ATL|fiber placement|tape laying|honeycomb|sheet ?metal|TruLaser|TruTops|laser projection|laser cutting|laser templat|LPT|waterjet|plasma cutting|press brake|turret|CAM\b|CAD\b|toolpath|NC program|post[- ]?processor|material (?:yield|utilization)|cutting path|fabricat)\b/i;
 const OFFTOPIC = /\b(supply chain|logistics|warehous(?:e|ing)|procurement|freight|shipping|inventory management|webinar|register now)\b/i;
 const AI_KW = /\b(AI|A\.I\.|artificial intelligence|machine[- ]learning|deep learning|computer vision|digital twin|generative|GenAI|copilot|smart factory|neural|LLM|large language|GPT-?\d*|Claude|Gemini|Codex|agentic|autonomous)\b/i;
@@ -276,7 +276,9 @@ for (const f of FEEDS) {
     for (const it of feedItems.slice(0, f.max || DEFAULT_PER_FEED)) {
       const wt = (f.w || 0) + (CORE_KW.test(it.title + " " + it.desc) ? 3 : 0)
         + ((f.topic === "Tools" && (f.vid || (f.tags || []).includes("Developers"))) ? 2 : 0) + (f.vid ? 1 : 0)
-        + (f.topic === "Industry AI" ? 1 : 0);
+        + (f.topic === "Industry AI" ? 1 : 0)
+        /* any story naming a watchlist company (customer, partner, or competitor) ranks higher */
+        + (COMPANY_RE.test(it.title) ? 3 : 0);
       posts.push({
         a: f.a, s: f.who || `via ${new URL(f.url).hostname}`, av: f.av, t: f.t,
         ...(wt ? { w: wt } : {}),
@@ -331,7 +333,9 @@ async function pullCompany(c) {
         d: it.date.toISOString().slice(0, 10),
         when: it.date.toLocaleDateString("en-US", { month: "short", day: "numeric" }),
         body: it.title + (it.desc && !norm(it.desc).startsWith(norm(it.title).slice(0, 50)) ? "\n\n" + it.desc + "…" : ""), tags: ["Marketing & Sales", "Product Managers"], topic: "Company Watch",
-        ...(CORE_KW.test(it.title + " " + it.desc) ? { w: 3 } : {}),
+        /* Company Watch outranks everything else that day: watchlist companies (customers, partners,
+           competitors) are the highest-value news class. Priority accounts get the strongest boost. */
+        w: (c.p ? 7 : 6) + (CORE_KW.test(it.title + " " + it.desc) ? 2 : 0),
         ...(it.img ? { img: it.img } : {}),
         link: { u: it.link, b: it.title.slice(0, 90), s: (()=>{try{return new URL(it.link).hostname}catch{return "news"}})() },
       });
@@ -426,6 +430,11 @@ merged.forEach(p => {
   }
   if (p.img) p.img = upImg(p.img);
   if (p.tags) { const seen = new Set(); p.tags = p.tags.map(t => t === "C-Suite" ? "Marketing & Sales" : t).filter(t => !seen.has(t) && seen.add(t)); }
+  /* retro-apply the company-watch boost to carried archive items */
+  if (p.topic === "Company Watch") {
+    const c = WATCHLIST.find(x => x.n === p.a);
+    p.w = Math.max(p.w || 0, (c && c.p ? 7 : 6) + (CORE_KW.test(p.body || "") ? 2 : 0));
+  }
 });
 /* Bing thumbnails are upscaled from tiny sources — replace with the article's full-res og:image.
    60 per run, so the whole archive upgrades over a few refreshes. */

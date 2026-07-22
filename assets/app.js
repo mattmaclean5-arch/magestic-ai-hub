@@ -69,7 +69,10 @@ function renderFeed(){
   const sort=document.getElementById("sortSel").value;
   let posts=POSTS.filter(p=>matchesRole(p.tags)).filter(FEED_FILTERS[feedFilter]);
   if(q)posts=posts.filter(p=>(p.a+" "+p.body+" "+p.topic+" "+p.tags.join(" ")).toLowerCase().includes(q));
-  posts=[...posts].sort((x,y)=>sort==="topic"?x.topic.localeCompare(y.topic)||y.d.localeCompare(x.d):y.d.localeCompare(x.d)||(y.w||0)-(x.w||0));
+  // heavyweight posts (w>=4: company-watch and core-relevance stories) stay in the top bucket ~24h longer
+  const today=new Date().toISOString().slice(0,10);
+  const rankDay=p=>{if((p.w||0)>=4){const dt=new Date(p.d+"T00:00:00Z");dt.setUTCDate(dt.getUTCDate()+1);const s=dt.toISOString().slice(0,10);return s>today?today:s;}return p.d;};
+  posts=[...posts].sort((x,y)=>sort==="topic"?x.topic.localeCompare(y.topic)||y.d.localeCompare(x.d):rankDay(y).localeCompare(rankDay(x))||(y.w||0)-(x.w||0)||y.d.localeCompare(x.d));
   if(sort!=="topic")posts=spreadAuthors(posts); // never two consecutive posts from the same source
   // single unified feed, newest first; role/pill/search are pure filters
   document.getElementById("feedCount").textContent=
@@ -166,7 +169,7 @@ function renderCompanies(){
 /* ---------- learning ---------- */
 let learnFilter="All";
 function renderLearnPills(){
-  const cats=["All",...new Set(LEARNING.map(l=>l.cat))];
+  const cats=["All","Developers","Database Engineers","Leadership","Marketing"];
   document.getElementById("learnPills").innerHTML=cats.map(c=>
     `<button class="pill ${c===learnFilter?'active':''}" onclick="learnFilter='${c}';renderLearnPills();renderLearning();">${c}</button>`).join("");
 }
