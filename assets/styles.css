@@ -331,3 +331,6 @@
 .share-row.unread{border-left:2px solid var(--accent);padding-left:7px}
 .share-note{font-style:italic;color:var(--ink-2);font-size:12px}
 #sendModal select,#sendModal input{width:100%;box-sizing:border-box;margin:5px 0;padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--card);color:var(--ink)}
+.hub-word{display:flex;flex-direction:column;align-items:center;text-align:center}
+.hub-title{font-weight:800;font-size:22px;letter-spacing:1px;line-height:1.1}
+.hub-sub{display:block;font-weight:500;font-size:11px;color:var(--ink-3);letter-spacing:.4px}
