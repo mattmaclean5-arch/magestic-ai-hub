@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;600&display=swap" rel="stylesheet">
 <title>Magestic AI Hub · Research &amp; Learning Platform</title>
-<link rel="stylesheet" href="assets/styles.css?v=15">
+<link rel="stylesheet" href="assets/styles.css?v=16">
 </head>
 <body>
 
@@ -257,7 +257,11 @@
       <h3 style="margin-bottom:2px">What they cost — price per 1M output tokens</h3>
       <p style="font-size:12.5px;color:var(--ink-2);margin-bottom:10px"><span class="sw-key sw-closed-t">&#9632; Closed-weight API</span>&nbsp;&nbsp;<span class="sw-key sw-open-t">&#9632; Open-weight (hosted)</span></p>
       <div id="costChart"></div>
-      <p style="font-size:11.5px;color:var(--ink-3);margin-top:8px">Representative list prices, July 2026; hosted open-weight prices vary by provider. Note the pattern: near-frontier capability now exists at every price point.</p>
+      <p style="font-size:11.5px;color:var(--ink-3);margin:8px 0 18px">Representative list prices, July 2026; hosted open-weight prices vary by provider. Note the pattern: near-frontier capability now exists at every price point.</p>
+      <h3 style="margin-bottom:2px">The metric that isn't saturating — METR autonomous task horizon</h3>
+      <p style="font-size:12.5px;color:var(--ink-2);margin-bottom:10px">How long a software task frontier models complete autonomously at 50% reliability (log scale). This is the number that determines when an agent can carry a real workflow end-to-end.</p>
+      <div id="metrChart"></div>
+      <p style="font-size:11.5px;color:var(--ink-3);margin-top:8px">Source: METR time-horizon evaluations (metr.org). The horizon has doubled roughly every 7 months since 2020, accelerating to ~4–5 months recently; the dashed line extends that trend. Claude Fable 5 has no published METR figure yet.</p>
     </div>
   </div>
   <div class="grid-2" id="toolsGrid"></div>
@@ -287,8 +291,8 @@
 <script src="data/feed-live.js"></script>
 <script src="data/directory.js"></script>
 <script src="data/companies.js"></script>
-<script src="assets/app.js?v=15"></script>
+<script src="assets/app.js?v=16"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-<script src="assets/hub.js?v=15"></script>
+<script src="assets/hub.js?v=16"></script>
 </body>
 </html>
