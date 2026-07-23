@@ -101,10 +101,10 @@ const FEEDS = [
      Chinese-model scrutiny, data sovereignty, AI governance frameworks. w:2 so it ranks with premium trade press. */
   /* Breaking AI security & majors watch (added Jul 23 2026 after the OpenAI/Hugging Face breach was missed):
      high-weight lanes so major security incidents and frontier-lab news reach the top of the feed within a refresh. */
-  { w: 4, url: "https://www.bing.com/news/search?q=AI%20(hacked%20OR%20breach%20OR%20%22prompt%20injection%22%20OR%20vulnerability%20OR%20exploit)&format=rss", a: "AI Security & Threat Watch", who: "AI security incidents, breaches, and threat research", av: "auto", t: "official", tags: ["Developers", "Product Managers", "Everyone"], topic: "Regulatory", max: 4 },
-  { w: 4, url: "https://www.bing.com/news/search?q=%22Hugging%20Face%22&format=rss", a: "Hugging Face Watch", who: "News about the open-model hub", av: "auto", t: "official", tags: ["Developers", "Everyone"], topic: "Models", max: 3 },
-  { w: 3, url: "https://www.bing.com/news/search?q=%22OpenAI%22&format=rss", a: "OpenAI News Watch", who: "Major OpenAI news across all outlets (Reuters, Bloomberg, CNBC syndicated)", av: "openai", t: "official", tags: ["Everyone"], topic: "Models", max: 3 },
-  { w: 3, url: "https://www.bing.com/news/search?q=%22Anthropic%22&format=rss", a: "Anthropic News Watch", who: "Major Anthropic news across all outlets", av: "anthropic", t: "official", tags: ["Everyone"], topic: "Models", max: 3 },
+  { w: 9, url: "https://www.bing.com/news/search?q=AI%20(hacked%20OR%20breach%20OR%20%22prompt%20injection%22%20OR%20vulnerability%20OR%20exploit)&format=rss", a: "AI Security & Threat Watch", who: "AI security incidents, breaches, and threat research", av: "auto", t: "official", tags: ["Developers", "Product Managers", "Everyone"], topic: "Regulatory", max: 4 },
+  { w: 6, url: "https://www.bing.com/news/search?q=%22Hugging%20Face%22&format=rss", a: "Hugging Face Watch", who: "News about the open-model hub", av: "auto", t: "official", tags: ["Developers", "Everyone"], topic: "Models", max: 3 },
+  { w: 5, url: "https://www.bing.com/news/search?q=%22OpenAI%22&format=rss", a: "OpenAI News Watch", who: "Major OpenAI news across all outlets (Reuters, Bloomberg, CNBC syndicated)", av: "openai", t: "official", tags: ["Everyone"], topic: "Models", max: 3 },
+  { w: 5, url: "https://www.bing.com/news/search?q=%22Anthropic%22&format=rss", a: "Anthropic News Watch", who: "Major Anthropic news across all outlets", av: "anthropic", t: "official", tags: ["Everyone"], topic: "Models", max: 3 },
   { w: 2, url: "https://feeds.feedburner.com/TheHackersNews", kw: "title", a: "The Hacker News", who: "Cybersecurity news · AI-related items only", av: "auto", t: "industry", tags: ["Developers", "Product Managers"], topic: "Regulatory", max: 2 },
   { w: 3, url: "https://www.bing.com/news/search?q=AI%20(regulation%20OR%20legislation%20OR%20%22executive%20order%22)&format=rss", a: "AI Regulation Watch", who: "US & EU AI regulation news", av: "auto", t: "official", tags: ["Marketing & Sales", "Product Managers", "Everyone"], topic: "Regulatory", max: 3 },
   { w: 3, url: "https://www.bing.com/news/search?q=AI%20(ITAR%20OR%20%22export%20control%22%20OR%20%22export%20controls%22%20OR%20%22export%20restrictions%22)&format=rss", a: "AI Export Controls & ITAR", who: "Export control, ITAR, and trade-restriction news touching AI", av: "auto", t: "official", tags: ["Marketing & Sales", "Product Managers"], topic: "Regulatory", max: 3 },
@@ -308,9 +308,9 @@ for (const f of FEEDS) {
    Priority companies (p:1) are fetched every run; the rest rotate in slices of 30 per hour,
    so the full 265-company watchlist cycles roughly every 8 hours. */
 const COMPANIES = WATCHLIST;
-const coQ = (n) => '"' + n.replace(/\s*\(.*?\)/g, "") + '" AI (manufacturing OR production OR factory OR engineering OR software)';
-const gnUrl = (n) => `https://news.google.com/rss/search?q=${encodeURIComponent(coQ(n))}&hl=en-US&gl=US&ceid=US:en`;
-const bingUrl = (n) => `https://www.bing.com/news/search?q=${encodeURIComponent(coQ(n))}&format=rss`;
+const coQ = (c) => { const co = typeof c === "string" ? { n: c } : c; return co.q || ('"' + co.n.replace(/\s*\(.*?\)/g, "") + '" AI (manufacturing OR production OR factory OR engineering OR software)'); };
+const gnUrl = (c) => `https://news.google.com/rss/search?q=${encodeURIComponent(coQ(c))}&hl=en-US&gl=US&ceid=US:en`;
+const bingUrl = (c) => `https://www.bing.com/news/search?q=${encodeURIComponent(coQ(c))}&format=rss`;
 const prio = COMPANIES.filter(c => c.p);
 const rest = COMPANIES.filter(c => !c.p);
 const slice = Math.floor(new Date().getUTCHours() / 1) % Math.ceil(rest.length / 70);
@@ -321,14 +321,15 @@ async function pullCompany(c) {
   try {
     let its = [];
     try {
-      const rb = await fetch(bingUrl(c.n), { headers: { "user-agent": "Mozilla/5.0 (MagesticAIHub feed refresh)" }, signal: AbortSignal.timeout(15000) });
+      const rb = await fetch(bingUrl(c), { headers: { "user-agent": "Mozilla/5.0 (MagesticAIHub feed refresh)" }, signal: AbortSignal.timeout(15000) });
       if (rb.ok) its = items(await rb.text());
     } catch {}
     if (!its.length) {
-      const res = await fetch(gnUrl(c.n), { headers: { "user-agent": "Mozilla/5.0 (MagesticAIHub feed refresh)" }, signal: AbortSignal.timeout(15000) });
+      const res = await fetch(gnUrl(c), { headers: { "user-agent": "Mozilla/5.0 (MagesticAIHub feed refresh)" }, signal: AbortSignal.timeout(15000) });
       if (!res.ok) return;
       its = items(await res.text());
     }
+    if (c.bad) { const badRe = new RegExp(c.bad, "i"); its = its.filter(i => !badRe.test(i.title + " " + i.desc + " " + i.link)); }
     its = its.filter(i => AI_KW.test(i.title + " " + i.desc) && !FIN_NOISE.test(i.title + " " + i.desc + " " + i.link)
       && (!WAR_NOISE.test(i.title + " " + i.desc) || MFG_KW.test(i.title + " " + i.desc))
       && (!OFFTOPIC.test(i.title + " " + i.desc) || CORE_KW.test(i.title + " " + i.desc)));
@@ -421,7 +422,7 @@ for (const p of mergedAll) {
   dedupSeen.add(k); if (t) dedupTitles.add(t);
   mergedDedup.push(p);
 }
-const merged = mergedDedup.slice(0, 400);
+const merged = mergedDedup.filter(p => !p._drop).slice(0, 400);
 /* upgrade thumbnail resolution everywhere (including carried archive items):
    Bing th endpoint honors w/qlt params; YouTube maxresdefault is 1280x720 (frontend falls back if missing) */
 const upImg = (u) => {
@@ -440,6 +441,7 @@ merged.forEach(p => {
   /* retro-apply the company-watch boost to carried archive items */
   if (p.topic === "Company Watch") {
     const c = WATCHLIST.find(x => x.n === p.a);
+    if (c && c.bad && new RegExp(c.bad, "i").test((p.body || "") + " " + (p.link ? p.link.u : ""))) p._drop = true;
     p.w = Math.max(p.w || 0, (c && c.p ? 7 : 6) + (c && c.side === "s" ? 1 : 0) + ((c && c.score || 0) / 10) + (CORE_KW.test(p.body || "") ? 2 : 0));
   }
 });
@@ -453,7 +455,9 @@ console.log(`hi-res upgrade: attempted ${lowres.length} bing-thumbnail posts`);
 merged.forEach(p => { if (p.img) p.img = upImg(p.img); }); // re-normalize any og images that are themselves bing thumbs
 console.log(`archive: ${finalPosts.length} fresh + ${carried.length} carried = ${merged.length} total`);
 
+const publish = merged.filter(p => !p._drop);
+publish.forEach(p => { delete p._drop; });
 const banner = `/* AUTO-GENERATED by scripts/update-feed.mjs — do not edit by hand.
-   Generated: ${new Date().toISOString()} · ${merged.length} items (rolling archive) from ${FEEDS.length} feeds. */\n`;
-writeFileSync(OUT, banner + "const POSTS_LIVE = " + JSON.stringify(merged, null, 1) + ";\nconst FEED_GENERATED = " + JSON.stringify(new Date().toISOString()) + ";\n");
-console.log(`wrote ${merged.length} live posts -> data/feed-live.js`);
+   Generated: ${new Date().toISOString()} · ${publish.length} items (rolling archive) from ${FEEDS.length} feeds. */\n`;
+writeFileSync(OUT, banner + "const POSTS_LIVE = " + JSON.stringify(publish, null, 1) + ";\nconst FEED_GENERATED = " + JSON.stringify(new Date().toISOString()) + ";\n");
+console.log(`wrote ${publish.length} live posts -> data/feed-live.js`);
